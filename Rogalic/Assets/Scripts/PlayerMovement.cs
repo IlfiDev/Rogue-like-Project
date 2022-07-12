@@ -74,22 +74,7 @@ public class PlayerMovement : MonoBehaviour
         player_coordinates.eulerAngles = new;
         */
 
-        Lookatmouse();
-
     }
 
-    void Lookatmouse()
-    {
-        Plane playerPlane = new Plane(Vector3.up, transform.position);
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        float hitdist;
 
-        if(playerPlane.Raycast(ray, out hitdist))
-        {
-            Vector3 targetpoint = ray.GetPoint(hitdist);
-            Quaternion targettotation = Quaternion.LookRotation(targetpoint - transform.position);
-            player_coordinates.rotation = Quaternion.Slerp(transform.rotation, targettotation, mouseSens * Time.deltaTime);
-            Physics.SyncTransforms();
-        }
-    }
 }
