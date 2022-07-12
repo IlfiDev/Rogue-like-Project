@@ -5,14 +5,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int maxHealth = 100;
-    public int currentHealth;
+    public int currentHealth = 100;
     public int maxMana = 100;
     public int currentMana = 0;
     public int level = 0;
     public float speed = 10;
 
 
-
+    public AudioSource death_sound;
     public Transform player_coordinates;
     public HealthBar healthBar;
     public ManaBar manaBar;
@@ -65,6 +65,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void onSpawn()
+    {
+        Vector3 vector = new Vector3(0f, 1f, 0f);
+        player_coordinates.position = vector;
+        Physics.SyncTransforms();
+        currentHealth = maxHealth;
+        currentMana = maxMana;
+    }
+
     public void UseMana(int mana_cost)
     {
         if (currentMana - mana_cost >= 0)
@@ -80,10 +89,7 @@ public class Player : MonoBehaviour
 
     void onDeath()
     {
-        Vector3 vector = new Vector3(0f, 1f, 0f);
-        player_coordinates.position = vector;
-        Physics.SyncTransforms();
-        currentHealth = maxHealth;
-        currentMana = maxMana;
+        death_sound.Play();
+        onSpawn();
     }
 }
