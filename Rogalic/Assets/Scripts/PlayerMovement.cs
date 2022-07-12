@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float Speed = 10f;
     [SerializeField] private float JumpForce = 10f;
     [SerializeField] private float Gravity = -9.81f;
-    [SerializeField] private float mouseSens = 1500f;
 
     private Vector3 Velocity;
     private Vector3 PlayerMovementInput;

@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class idleBehaviour : StateMachineBehaviour
 {
+    EnemyUnit enemy;
     float timer;
     Transform player;
-    float chaseRange = 10;
+    int chaseRange;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer = 0;
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        enemy = animator.GetComponent<EnemyUnit>();
+        chaseRange = enemy.GetChaseRange();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

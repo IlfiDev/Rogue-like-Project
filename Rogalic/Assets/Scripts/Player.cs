@@ -47,7 +47,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
     // player methods
     IEnumerator passive_regeneratin()
     {

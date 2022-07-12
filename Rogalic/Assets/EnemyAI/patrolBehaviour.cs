@@ -5,14 +5,17 @@ using UnityEngine.AI;
 
 public class patrolBehaviour : StateMachineBehaviour
 {
+    EnemyUnit enemy;
     float timer;
     List<Transform> points = new List<Transform>();
     NavMeshAgent agent;
     Transform player;
-    float chaseRange = 10;
+    int chaseRange;
+    int moveSpeed;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+
         timer = 0;
         Transform pointsObject = GameObject.FindGameObjectWithTag("Points").transform;
         foreach (Transform t in pointsObject)
@@ -22,6 +25,10 @@ public class patrolBehaviour : StateMachineBehaviour
         agent.SetDestination(points[0].position);
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        enemy = animator.GetComponent<EnemyUnit>();
+        chaseRange = enemy.GetChaseRange();
+        moveSpeed = enemy.GetMoveSpeed();
+        agent.speed = moveSpeed;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

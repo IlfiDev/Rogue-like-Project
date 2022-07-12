@@ -5,16 +5,24 @@ using UnityEngine.AI;
 
 public class chaseBehaviour : StateMachineBehaviour
 {
+    EnemyUnit enemy;
     NavMeshAgent agent;
     Transform player;
-    float attackRange = 5;
-    float chaseRange = 10;
+    float attackRange;
+    float chaseRange;
+    int chaseSpeed;
+    int moveSpeed;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent = animator.GetComponent<NavMeshAgent>();
-        agent.speed = 6;
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        enemy = animator.GetComponent<EnemyUnit>();
+        attackRange = enemy.GetAttackRange();
+        chaseRange = enemy.GetChaseRange();
+        chaseSpeed = enemy.GetChaseSpeed();
+        moveSpeed = enemy.GetMoveSpeed();
+        agent.speed = chaseSpeed;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -23,13 +31,13 @@ public class chaseBehaviour : StateMachineBehaviour
         float distance = Vector3.Distance(animator.transform.position, player.position);
         if (distance < attackRange)
             animator.SetBool("isAttacking", true);
-        if (distance > 2 * chaseRange)
+        if (distance > chaseRange * 1.5)
             animator.SetBool("isChasing", false);
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent.SetDestination(agent.transform.position);
-        agent.speed = 3;
+        agent.speed = moveSpeed;
     }
 }
