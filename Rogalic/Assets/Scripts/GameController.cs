@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
 
     void SpawnCreature()
     {
-        Vector3 spawnPosition = new Vector3(Random.Range(- platformSizeX/2, platformSizeX/2), 1f, Random.Range(-platformSizeZ / 2, platformSizeZ / 2));
+        Vector3 spawnPosition = new Vector3(Random.Range(-platformSizeX / 2 + 5, platformSizeX / 2 - 5), 1f, Random.Range(-platformSizeZ / 2 + 5, platformSizeZ / 2 - 5));
         Quaternion spawnRotation = Quaternion.identity;
 
         Instantiate(enemy, spawnPosition, spawnRotation);  
@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour
     {
         for (int i = 0; i < 100; i++)
         {
-            Vector3 spawnPosition = new Vector3(Random.Range(-platformSizeX / 2 - 1, platformSizeX / 2 - 1), 1f, Random.Range(-platformSizeZ / 2, platformSizeZ / 2));
+            Vector3 spawnPosition = new Vector3(Random.Range(-platformSizeX / 2 + 5, platformSizeX / 2 - 5), 1f, Random.Range(-platformSizeZ / 2 + 5, platformSizeZ / 2- 5));
             Quaternion spawnRotation = Quaternion.identity;
 
             Instantiate(wayPoint, spawnPosition, spawnRotation, PointsFolder.transform);
