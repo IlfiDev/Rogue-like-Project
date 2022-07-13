@@ -9,31 +9,30 @@ public class Shooter : MonoBehaviour
     [SerializeField] GameObject target;
     private Vector3 targetVector;
     private void Start(){
-        if (target == null){
-            targetVector = Input.mousePosition;
-        }else{
-            targetVector = target.transform.position;
-        }
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
     
 
     private void Update(){
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        if (target == null){
-            targetVector = Input.mousePosition;
-        }else{
-            targetVector = target.transform.position;
-        }
+        
+        
         if(Input.GetButton("Fire1")){
-            Shoot(targetVector );
+            if (target == null){
+                targetVector = shootingPoint.position + shootingPoint.forward;
+                Shoot(targetVector);
+            }else{
+                targetVector = target.transform.position;
+                Shoot(targetVector);
+            }
+            
         }
     }
 
-    public void Shoot(Vector3 dir){
-        GameObject bullet = Instantiate(projectile, shootingPoint.position, Quaternion.identity);
+    public void Shoot(Vector3 target){
+        GameObject bullet = Instantiate(projectile, shootingPoint.position, shootingPoint.rotation);
 
-        Vector3 shootDir = ( dir - shootingPoint.position).normalized;
+        Vector3 shootDir = (target - shootingPoint.position).normalized;
         bullet.GetComponent<BulletBehaviour>().Setup(shootDir);
     }
 }
