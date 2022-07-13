@@ -2,18 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyUnit : MonoBehaviour
+public class Unit : MonoBehaviour
 {
     public int ID;
     public string Name;
+    public string Tag;
     public int maxHealth;
     public int currentHealth;
+    public int maxMana;
+    public int currentMana;
     public int damage;
     public int chaseSpeed;
     public int moveSpeed;
     public int attackRange;
     public int attackSpeed;
     public int chaseRange;
+    
+    public AudioSource death_sound;
+
+    public HealthBar healthBar;
+    public ManaBar manaBar;
+
+    public WaitForSeconds waitForSeconds;
+
+
 
     // ID
     public int GetID()
@@ -35,6 +47,16 @@ public class EnemyUnit : MonoBehaviour
         this.Name = Name;
     }
 
+    //Team
+    public string GetTag()
+    {
+        return this.Tag;
+    }
+    public void SetTag(string Tag)
+    {
+        this.Tag = Tag;
+    }
+
     //maxHealth
     public int GetMaxHealth()
     {
@@ -53,6 +75,26 @@ public class EnemyUnit : MonoBehaviour
     public void SetCurrentHealth(int currentHealth)
     {
         this.currentHealth = currentHealth;
+    }
+
+    //maxMana
+    public int GetMaxMana()
+    {
+        return this.maxMana;
+    }
+    public void SetMaxMana(int maxMana)
+    {
+        this.maxMana = maxMana;
+    }
+
+    //currentMana
+    public int GetCurrentMana()
+    {
+        return this.currentMana;
+    }
+    public void SetCurrentMana(int currentMana)
+    {
+        this.currentMana = currentMana;
     }
 
     //damage
@@ -118,11 +160,82 @@ public class EnemyUnit : MonoBehaviour
     // MainPart
     void Start()
     {
+        this.SetTag(gameObject.tag);
         
+        if (this.Tag == "Player")
+        {
+            StartCoroutine(passive_regeneratin());
+
+        }
+        if (this.Tag == "Enemy")
+        {
+
+        }
     }
 
     void Update()
     {
         
+    }
+
+    public void onSpawn()
+    {
+
+    }
+
+    public void onDeath()
+    {
+
+    }
+
+    public void TakeDamage(int damage)
+    {
+        this.currentHealth -= damage;
+    }
+
+    public void Attack()
+    {
+
+    }
+
+    public void HealHealth(int heal)
+    {
+        if (this.currentHealth + heal >= this.maxHealth)
+        {
+            this.currentHealth = this.maxHealth;
+        }
+        else
+        {
+            this.currentHealth += heal;
+        }
+    }
+
+    public void HealMana(int heal)
+    {
+        if (this.currentMana + heal >= this.maxMana)
+        {
+            this.currentMana = this.maxMana;
+        }
+        else
+        {
+            this.currentMana += heal;
+        }
+    }
+
+    public void UseMana(int mana)
+    {
+        if (this.currentMana - mana >= 0)
+            this.currentMana -= mana;
+    }
+
+    //Coroutines
+    IEnumerator passive_regeneratin()
+    {
+        while (true)
+        {
+            this.HealHealth(1);
+            this.HealMana(1);
+            yield return new WaitForSeconds(1);
+        }
     }
 }

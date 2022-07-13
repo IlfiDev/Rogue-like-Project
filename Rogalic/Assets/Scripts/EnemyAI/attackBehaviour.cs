@@ -5,22 +5,18 @@ using UnityEngine.AI;
 
 public class attackBehaviour : StateMachineBehaviour
 {
-    EnemyUnit enemy;
+    Unit enemy;
     NavMeshAgent agent;
     Transform player;
-    Player target;
+
     float timer;
-    int damage;
     int attackRange;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        enemy = animator.GetComponent<EnemyUnit>();
-        damage = enemy.GetDamage();
+        enemy = animator.GetComponent<Unit>();
         attackRange = enemy.GetAttackRange();
-        target.TakeDamage(damage);
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

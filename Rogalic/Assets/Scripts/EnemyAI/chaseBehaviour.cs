@@ -5,9 +5,10 @@ using UnityEngine.AI;
 
 public class chaseBehaviour : StateMachineBehaviour
 {
-    EnemyUnit enemy;
+    Unit enemy;
     NavMeshAgent agent;
     Transform player;
+
     float attackRange;
     float chaseRange;
     int chaseSpeed;
@@ -17,11 +18,13 @@ public class chaseBehaviour : StateMachineBehaviour
     {
         agent = animator.GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        enemy = animator.GetComponent<EnemyUnit>();
+        enemy = animator.GetComponent<Unit>();
+
         attackRange = enemy.GetAttackRange();
         chaseRange = enemy.GetChaseRange();
         chaseSpeed = enemy.GetChaseSpeed();
         moveSpeed = enemy.GetMoveSpeed();
+
         agent.speed = chaseSpeed;
     }
 
