@@ -13,14 +13,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float Speed = 10f;
     [SerializeField] private float JumpForce = 10f;
     [SerializeField] private float Gravity = -9.81f;
-    [SerializeField] private float mouseSens = 1500f;
 
     private Vector3 Velocity;
     private float ShiftTimer = 0;
     int i = 0;
     private void Start()
     {
-        player_coordinates = GameObject.Find("Player").transform;
+        player_coordinates = GameObject.FindGameObjectWithTag("Player").transform;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
