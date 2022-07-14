@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 8604942786745785348}
   - component: {fileID: 8604942786745785349}
   - component: {fileID: 8604942786745785406}
-  - component: {fileID: 3547711041943281864}
+  - component: {fileID: 3229446424280578995}
   m_Layer: 0
   m_Name: UnitCircle
   m_TagString: Enemy
@@ -259,8 +259,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 0
---- !u!135 &3547711041943281864
-SphereCollider:
+--- !u!136 &3229446424280578995
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -269,6 +269,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: -0.5, z: 0}
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
