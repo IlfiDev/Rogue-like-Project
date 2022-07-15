@@ -15,7 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float Gravity = -9.81f;
 
     private Vector3 Velocity;
-    private Vector3 PlayerMovementInput;
+    private float ShiftTimer = 0;
+    int i = 0;
     private void Start()
     {
         player_coordinates = GameObject.FindGameObjectWithTag("Player").transform;
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
         MovePlayer();
         characterController = this.GetComponent<CharacterController>();
     }
@@ -34,7 +36,14 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-        Vector3 move_x_z = new Vector3(x, 0, y);
+        Vector3 default_move_x_z = new Vector3(x, 0, y);
+        float angle_sin = Mathf.Sin(-45);
+        float angle_cos = Mathf.Cos(-45);
+        float ax = x * angle_cos - y * angle_sin;
+        //float ay = x * angle_sin + y * angle_cos;
+        float ay = x * angle_cos + y * angle_sin;
+        Vector3 move_x_z = new Vector3(ax, 0, y);
+
 
         //Vector3 move_x_z = transform.right * x + transform.forward * y;
 
@@ -51,7 +60,29 @@ public class PlayerMovement : MonoBehaviour
         {
             Velocity.y -= Gravity * -4f * Time.deltaTime;
         }
-        characterController.Move(move_x_z * Speed * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            Debug.Log(i);
+            i++;
+            characterController.Move(move_x_z * 2 * Speed * Time.deltaTime);
+        } else
+        {
+            characterController.Move(move_x_z * Speed * Time.deltaTime);
+        }
+
+
+        /*
+        if(ShiftTimer > 0)
+        {
+            ShiftTimer -= Time.deltaTime;
+            characterController.Move(move_x_z * 2 * Speed * Time.deltaTime);
+        } else
+        {
+            characterController.Move(move_x_z * Speed * Time.deltaTime);
+        }
+        */
+
         characterController.Move(Velocity * Time.deltaTime);
 
         /*
@@ -72,8 +103,5 @@ public class PlayerMovement : MonoBehaviour
         float angle_rot = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         player_coordinates.eulerAngles = new;
         */
-
     }
-
-
 }
