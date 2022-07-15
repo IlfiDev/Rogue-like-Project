@@ -11,8 +11,6 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private static float Speed = 10f;
     [SerializeField] private static float ShiftSpeed = Speed * 2;
-    [SerializeField] private static float JumpForce = 10f;
-    [SerializeField] private static float Gravity = -9.81f;
 
     private void Awake()
     {
@@ -27,31 +25,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        ShitMoveVersion();
     }
 
-    private void MovePlayer()
+    private void GoodMoveVersion()
     {
-        
         float x = Input.GetAxis("Vertical");
         float z = -Input.GetAxis("Horizontal");
-        
+
         Vector3 move_x_z = new Vector3(x, 0, z);
-        Vector3 Velocity = Vector3.zero;
-
-        if (characterController.isGrounded)
-        {
-            Velocity.y = -2f;
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Velocity.y = Mathf.Sqrt(PlayerMovement.JumpForce * -2f * PlayerMovement.Gravity);
-            }
-
-        }
-        else
-        {
-            Velocity.y -= PlayerMovement.Gravity * -4f * Time.deltaTime;
-        }
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -73,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
                 characterController.Move(move_x_z * PlayerMovement.Speed * Time.deltaTime);
             }
         }
-        characterController.Move(Velocity * Time.deltaTime);
 
         if(move_x_z != Vector3.zero)
         {
@@ -81,5 +62,77 @@ public class PlayerMovement : MonoBehaviour
             Quaternion Rotation = Quaternion.LookRotation(move_x_z, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Rotation, RotationSpeed * Time.deltaTime);
         }
+    }
+
+    private void ShitMoveVersion()
+    {
+        float x = Input.GetAxis("Vertical");
+        float z = -Input.GetAxis("Horizontal");
+
+        Vector3 move_x_z = Vector3.zero;
+
+        if (x != 0 && z == 0)
+        {
+            move_x_z = new Vector3(x, 0, x);
+        }
+
+        if (z != 0 && x == 0)
+        {
+            move_x_z = new Vector3(-z, 0, z);
+        }
+
+        if (x != 0 && z != 0)
+        {
+            if (x > 0 && z > 0)
+            {
+                move_x_z = new Vector3(0, 0, z);
+            }
+
+            if (x < 0 && z > 0)
+            {
+                move_x_z = new Vector3(x, 0, 0);
+            }
+
+            if (x < 0 && z < 0)
+            {
+                move_x_z = new Vector3(0, 0, z);
+            }
+
+            if (x > 0 && z < 0)
+            {
+                move_x_z = new Vector3(x, 0, 0);
+            }
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if (x != 0 && z != 0)
+            {
+                characterController.Move(move_x_z * PlayerMovement.ShiftSpeed * Time.deltaTime);
+            }
+            else
+            {
+                characterController.Move(move_x_z * (PlayerMovement.ShiftSpeed / 2) * Time.deltaTime);
+            }
+        }
+        else
+        {
+            if (x != 0 && z != 0)
+            {
+                characterController.Move(move_x_z * PlayerMovement.Speed * Time.deltaTime);
+            }
+            else
+            {
+                characterController.Move(move_x_z * (PlayerMovement.Speed / 2) * Time.deltaTime);
+            }
+        }
+
+        if (move_x_z != Vector3.zero)
+        {
+            float RotationSpeed = 720;
+            Quaternion Rotation = Quaternion.LookRotation(move_x_z, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Rotation, RotationSpeed * Time.deltaTime);
+        }
+
     }
 }
