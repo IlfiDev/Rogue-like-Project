@@ -8,100 +8,78 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public Transform player_coordinates;
 
     [SerializeField] private CharacterController characterController;
-    [SerializeField] private Camera cam;
 
-    [SerializeField] private float Speed = 10f;
-    [SerializeField] private float JumpForce = 10f;
-    [SerializeField] private float Gravity = -9.81f;
+    [SerializeField] private static float Speed = 10f;
+    [SerializeField] private static float ShiftSpeed = Speed * 2;
+    [SerializeField] private static float JumpForce = 10f;
+    [SerializeField] private static float Gravity = -9.81f;
 
-    private Vector3 Velocity;
-    private float ShiftTimer = 0;
-    int i = 0;
-    private void Start()
+    private void Awake()
     {
         player_coordinates = GameObject.FindGameObjectWithTag("Player").transform;
+        characterController = this.GetComponent<CharacterController>();
+    }
+
+    private void Start()
+    {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
-
         MovePlayer();
-        characterController = this.GetComponent<CharacterController>();
     }
 
     private void MovePlayer()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-
-        Vector3 default_move_x_z = new Vector3(x, 0, y);
-        float angle_sin = Mathf.Sin(-45);
-        float angle_cos = Mathf.Cos(-45);
-        float ax = x * angle_cos - y * angle_sin;
-        //float ay = x * angle_sin + y * angle_cos;
-        float ay = x * angle_cos + y * angle_sin;
-        Vector3 move_x_z = new Vector3(ax, 0, y);
-
-
-        //Vector3 move_x_z = transform.right * x + transform.forward * y;
+        
+        float x = Input.GetAxis("Vertical");
+        float z = -Input.GetAxis("Horizontal");
+        
+        Vector3 move_x_z = new Vector3(x, 0, z);
+        Vector3 Velocity = Vector3.zero;
 
         if (characterController.isGrounded)
         {
             Velocity.y = -2f;
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Velocity.y = Mathf.Sqrt(JumpForce * -2f * Gravity);
+                Velocity.y = Mathf.Sqrt(PlayerMovement.JumpForce * -2f * PlayerMovement.Gravity);
             }
 
         }
         else
         {
-            Velocity.y -= Gravity * -4f * Time.deltaTime;
+            Velocity.y -= PlayerMovement.Gravity * -4f * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            Debug.Log(i);
-            i++;
-            characterController.Move(move_x_z * 2 * Speed * Time.deltaTime);
+            if(x != 0 && z != 0)
+            {
+                characterController.Move(move_x_z * (PlayerMovement.ShiftSpeed / 2) * Time.deltaTime);
+            } else
+            {
+                characterController.Move(move_x_z * PlayerMovement.ShiftSpeed * Time.deltaTime);
+            }
         } else
         {
-            characterController.Move(move_x_z * Speed * Time.deltaTime);
+            if (x != 0 && z != 0)
+            {
+                characterController.Move(move_x_z * (PlayerMovement.Speed / 2) * Time.deltaTime);
+            }
+            else
+            {
+                characterController.Move(move_x_z * PlayerMovement.Speed * Time.deltaTime);
+            }
         }
-
-
-        /*
-        if(ShiftTimer > 0)
-        {
-            ShiftTimer -= Time.deltaTime;
-            characterController.Move(move_x_z * 2 * Speed * Time.deltaTime);
-        } else
-        {
-            characterController.Move(move_x_z * Speed * Time.deltaTime);
-        }
-        */
-
         characterController.Move(Velocity * Time.deltaTime);
 
-        /*
-        float mouse_x = Input.GetAxis("Mouse X");
-        float mouse_y = Input.GetAxis("Mouse Y");
-
-        player_coordinates.Rotate(Vector3.up * mouse_x);
-        player_coordinates.Rotate(Vector3.down * mouse_y);
-        */
-
-        //float mouseX = Input.GetAxis("Mouse X") * mouseSens * Time.deltaTime;
-        //player_coordinates.Rotate(Vector3.up * mouseX);
-
-        //player_coordinates.Rotate(0, Input.GetAxis("Mouse X"), 0);
-        /*
-        Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 lookDir = new Vector2(player_coordinates.position.x - mousePos.x, player_coordinates.position.z - mousePos.y);
-        float angle_rot = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        player_coordinates.eulerAngles = new;
-        */
+        if(move_x_z != Vector3.zero)
+        {
+            float RotationSpeed = 720;
+            Quaternion Rotation = Quaternion.LookRotation(move_x_z, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Rotation, RotationSpeed * Time.deltaTime);
+        }
     }
 }

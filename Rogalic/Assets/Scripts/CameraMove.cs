@@ -4,27 +4,23 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    private Transform player_coordinates;
-    private Transform camera_coordinates;
+    Transform player;
+    Vector3 defaul_position = new Vector3(-18.85f, 28.6f, -18.35f);
 
-    private float x = 0;
-    private float z = 0;
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        camera_coordinates = GameObject.Find("Main Camera").transform; 
-        player_coordinates = GameObject.Find("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        
+    }
+
     void Update()
     {
-        if(player_coordinates.position.x != x || player_coordinates.position.z != z)
-        {
-            Vector3 vector3 = new Vector3(player_coordinates.position.x + 1, 15, player_coordinates.position.z - 23);
-            camera_coordinates.position = vector3 * Time.deltaTime;
-            x = player_coordinates.position.x;
-            z = player_coordinates.position.z;
-        }
+        Vector3 new_cam_position = new Vector3(defaul_position.x + player.position.x, defaul_position.y + player.position.y,
+            defaul_position.z + player.position.z);
+        transform.position = new_cam_position;
     }
 }
