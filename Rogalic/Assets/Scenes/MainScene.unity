@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 1229579642}
-  enemy: {fileID: 8604942786745785351, guid: 976ada6b6693dd244ba8b8ab0aea9f68, type: 3}
+  enemy: {fileID: 5826536410816044727, guid: 03ccfee3162be6744ad52586e5846d6c, type: 3}
   wayPoint: {fileID: 1093995475964811641, guid: 0841e97f9efa6e9499cea110b5e7f18a, type: 3}
   PointsFolder: {fileID: 1377178480}
   player: {fileID: -1094006882351082115, guid: 4c42cafbb0afca24e9f1ee1003c0f6aa, type: 3}
