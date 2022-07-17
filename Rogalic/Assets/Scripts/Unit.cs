@@ -18,11 +18,14 @@ public class Unit : MonoBehaviour
     public int attackSpeed;
     public int chaseRange;
     
+    //audio sources
     public AudioSource death_sound;
 
+    //UI
     public HealthBar healthBar;
     public ManaBar manaBar;
 
+    //Other
     public WaitForSeconds waitForSeconds;
 
 
