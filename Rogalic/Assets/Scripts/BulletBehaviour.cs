@@ -22,5 +22,6 @@ public class BulletBehaviour : MonoBehaviour
         if(other.collider.TryGetComponent(out IDamagable damagable)){
             damagable.TakeDamage(damage);
         }
+        Destroy(this);
     }
 }

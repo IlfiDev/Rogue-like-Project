@@ -34,5 +34,6 @@ public class Shooter : MonoBehaviour
 
         Vector3 shootDir = (target - shootingPoint.position).normalized;
         bullet.GetComponent<BulletBehaviour>().Setup(shootDir);
+        Destroy(bullet, 3f);
     }
 }
