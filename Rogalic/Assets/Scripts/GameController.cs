@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public GameObject player;
     public GameObject playerSpawnPoint;
     public Vector3 spawnValues;
+    public GameObject main_camera;
 
     float platformSizeX;
     float platformSizeZ;    
@@ -21,6 +22,7 @@ public class GameController : MonoBehaviour
         platformSizeZ = platform.transform.localScale.z;
 
         SpawnPlayer();
+        SpawnCamera();
         SpawnWayPoints();
         SpawnCreature();
     }
@@ -39,6 +41,14 @@ public class GameController : MonoBehaviour
         Quaternion spawnRotation = Quaternion.identity;
 
         Instantiate(player, spawnPosition, spawnRotation);
+    }
+
+    void SpawnCamera()
+    {
+        Vector3 spawnPosition = new Vector3(playerSpawnPoint.transform.position.x, 1f, playerSpawnPoint.transform.position.z);
+        Quaternion spawnRotation = Quaternion.identity;
+
+        Instantiate(main_camera, spawnPosition, spawnRotation);
     }
 
     void SpawnWayPoints()

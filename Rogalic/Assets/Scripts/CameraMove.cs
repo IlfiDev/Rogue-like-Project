@@ -5,16 +5,15 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     Transform player;
-    Vector3 defaul_position = new Vector3(-18.85f, 28.6f, -18.35f);
+    Vector3 defaul_position = new Vector3(-7f, 28.6f, -7f);
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()

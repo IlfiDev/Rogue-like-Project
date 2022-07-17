@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private static float Speed = 10f;
     [SerializeField] private static float ShiftSpeed = Speed * 2;
+    [SerializeField] private static float Gravity = -9.81f;
 
     private void Awake()
     {
@@ -29,10 +30,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void GoodMoveVersion()
     {
-        float x = Input.GetAxis("Vertical");
-        float z = -Input.GetAxis("Horizontal");
+        float x = Input.GetAxisRaw("Vertical");
+        float z = -Input.GetAxisRaw("Horizontal");
 
         Vector3 move_x_z = new Vector3(x, 0, z);
+
+        if (characterController.isGrounded)
+        {
+            move_x_z.y = -2f;
+        } else
+        {
+            move_x_z.y -= PlayerMovement.Gravity * -4f * Time.deltaTime;
+        }
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -65,8 +74,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void ShitMoveVersion()
     {
-        float x = Input.GetAxis("Vertical");
-        float z = -Input.GetAxis("Horizontal");
+        float x = Input.GetAxisRaw("Vertical");
+        float z = -Input.GetAxisRaw("Horizontal");
 
         Vector3 move_x_z = Vector3.zero;
 
@@ -125,6 +134,16 @@ public class PlayerMovement : MonoBehaviour
                 characterController.Move(move_x_z * (PlayerMovement.Speed / 2) * Time.deltaTime);
             }
         }
+
+        Vector3 gravity = Vector3.zero;
+        if (characterController.isGrounded)
+        {
+            gravity.y = -2f;
+        } else
+        {
+            gravity.y -= PlayerMovement.Gravity * -4f * Time.deltaTime;
+        }
+        characterController.Move(gravity);
 
         if (move_x_z != Vector3.zero)
         {
