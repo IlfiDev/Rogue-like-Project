@@ -17,11 +17,12 @@ public class BulletBehaviour : MonoBehaviour
     public void Update(){
         transform.position += shootDir * moveSpeed * Time.deltaTime;
     }
-    void OnCollisionEnter(Collision other){
+    void OnTriggerEnter(Collider other){
         Debug.Log("Collision");
-        if(other.collider.TryGetComponent(out IDamagable damagable)){
+        if(other.TryGetComponent(out IDamagable damagable)){
             damagable.TakeDamage(damage);
+            
         }
-        Destroy(this);
+        Destroy(gameObject);
     }
 }
