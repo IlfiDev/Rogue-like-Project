@@ -7,6 +7,7 @@ TagManager:
   - Points
   - Enemy
   - Health Bar
+  - Mana bar
   layers:
   - Default
   - TransparentFX
