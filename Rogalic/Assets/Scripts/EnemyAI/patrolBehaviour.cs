@@ -12,7 +12,7 @@ public class patrolBehaviour : StateMachineBehaviour
 
     float timer;
     int chaseRange;
-    int moveSpeed;
+    float moveSpeed;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -28,8 +28,8 @@ public class patrolBehaviour : StateMachineBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = animator.GetComponent<Unit>();
 
-        chaseRange = enemy.GetChaseRange();
-        moveSpeed = enemy.GetMoveSpeed();
+        //chaseRange = enemy.GetChaseRange();
+        moveSpeed = enemy.getMoveSpeed();
 
         agent.speed = moveSpeed;
     }

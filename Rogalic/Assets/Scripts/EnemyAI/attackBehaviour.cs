@@ -16,7 +16,7 @@ public class attackBehaviour : StateMachineBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = animator.GetComponent<Unit>();
-        attackRange = enemy.GetAttackRange();
+        //attackRange = enemy.GetAttackRange();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

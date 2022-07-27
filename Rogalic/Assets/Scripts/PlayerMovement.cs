@@ -9,26 +9,22 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private CharacterController characterController;
 
-    [SerializeField] private static float Speed = 10f;
-    [SerializeField] private static float ShiftSpeed = Speed * 2;
-    [SerializeField] private static float Gravity = -9.81f;
+    [SerializeField] private static float Speed;
+    [SerializeField] private static float ShiftSpeed;
+    [SerializeField] private static float Gravity;
 
-    private void Awake()
+    public PlayerMovement(GameObject player)
     {
-        player_coordinates = GameObject.FindGameObjectWithTag("Player").transform;
-        characterController = this.GetComponent<CharacterController>();
+        player_coordinates = player.GetComponent<Transform>();
+        characterController = player.GetComponent<CharacterController>();
+
+        Unit player_info = player.GetComponent<Unit>();
+        Speed = player_info.getMoveSpeed();
+        ShiftSpeed = Speed * 2;
+        Gravity = player_info.getGravity();
     }
 
-    private void Start()
-    {
-    }
-
-    private void FixedUpdate()
-    {
-        ShitMoveVersion();
-    }
-
-    private void GoodMoveVersion()
+    public void GoodMoveVersion()
     {
         float x = Input.GetAxisRaw("Vertical");
         float z = -Input.GetAxisRaw("Horizontal");
@@ -68,11 +64,11 @@ public class PlayerMovement : MonoBehaviour
         {
             float RotationSpeed = 720;
             Quaternion Rotation = Quaternion.LookRotation(move_x_z, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Rotation, RotationSpeed * Time.deltaTime);
+            player_coordinates.rotation = Quaternion.RotateTowards(player_coordinates.rotation, Rotation, RotationSpeed * Time.deltaTime);
         }
     }
 
-    private void ShitMoveVersion()
+    public void ShitMoveVersion()
     {
         float x = Input.GetAxisRaw("Vertical");
         float z = -Input.GetAxisRaw("Horizontal");
@@ -149,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
         {
             float RotationSpeed = 720;
             Quaternion Rotation = Quaternion.LookRotation(move_x_z, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Rotation, RotationSpeed * Time.deltaTime);
+            player_coordinates.rotation = Quaternion.RotateTowards(player_coordinates.rotation, Rotation, RotationSpeed * Time.deltaTime);
         }
     }
 }

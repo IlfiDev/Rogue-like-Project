@@ -20,10 +20,10 @@ public class chaseBehaviour : StateMachineBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = animator.GetComponent<Unit>();
 
-        attackRange = enemy.GetAttackRange();
-        chaseRange = enemy.GetChaseRange();
-        chaseSpeed = enemy.GetChaseSpeed();
-        moveSpeed = enemy.GetMoveSpeed();
+        //attackRange = enemy.GetAttackRange();
+        //chaseRange = enemy.GetChaseRange();
+        //chaseSpeed = enemy.GetChaseSpeed();
+        //moveSpeed = enemy.GetMoveSpeed();
 
         agent.speed = chaseSpeed;
     }
