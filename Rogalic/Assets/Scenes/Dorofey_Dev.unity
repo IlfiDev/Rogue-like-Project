@@ -548,7 +548,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4ef77f026176f45c4bdd108ea76304d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5c62d98a023746408d416b188a7cfb0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -718,7 +718,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3faf572ee18fffb4fb747eaa97541e59, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca92d9401e53d9a4f89fefcfd67d71e3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -750,7 +750,7 @@ GameObject:
   - component: {fileID: 1090703327}
   - component: {fileID: 1090703331}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: Cube chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -848,6 +848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3
   player_coordinates: {fileID: 0}
+  item: {fileID: 11400000, guid: 69fbba056f23ff342832a4e9757b6c95, type: 2}
 --- !u!1 &1128403443
 GameObject:
   m_ObjectHideFlags: 0

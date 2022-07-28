@@ -6,6 +6,7 @@ public class Chest : MonoBehaviour
 {
     [SerializeField] private float radius = 3f;
     [SerializeField] private Transform player_coordinates;
+    [SerializeField] private Item item;
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class Chest : MonoBehaviour
         float distance = Vector3.Distance(player_coordinates.position, transform.position);
         if(distance <= radius)
         {
-            Debug.Log("Interact");
+            PickUp();
         }
     }
 
@@ -25,5 +26,16 @@ public class Chest : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
+    private void PickUp()
+    {
+        Inventory inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        bool isPickedUp = inventory.addItem(item);
+
+        if(isPickedUp)
+        {
+            Destroy(gameObject);
+        }
     }
 }

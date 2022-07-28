@@ -10,7 +10,8 @@ public class Player : Unit
 
     private void Start()
     {
-        playerMovement = new PlayerMovement(gameObject);
+        playerMovement = gameObject.AddComponent<PlayerMovement>();
+        Inventory inventory = gameObject.AddComponent<Inventory>();
 
         healthBar = GameObject.FindGameObjectWithTag("Health Bar").GetComponent<HealthBar>();
         healthBar.SetMaxHealth(getMaxHealth());
@@ -21,7 +22,6 @@ public class Player : Unit
 
     void FixedUpdate()
     {
-        playerMovement.ShitMoveVersion();
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
