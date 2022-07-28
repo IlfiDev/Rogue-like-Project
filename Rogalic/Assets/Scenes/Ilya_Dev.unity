@@ -291,7 +291,7 @@ MonoBehaviour:
   enemy: {fileID: 1562463755}
   wayPoint: {fileID: 1093995475964811641, guid: 0841e97f9efa6e9499cea110b5e7f18a, type: 3}
   PointsFolder: {fileID: 645468866}
-  player: {fileID: 325098499652449553, guid: 4c42cafbb0afca24e9f1ee1003c0f6aa, type: 3}
+  player: {fileID: 7343044535872448894, guid: 30174a8b6120c676aaa11bebe2ba46f2, type: 3}
   playerSpawnPoint: {fileID: 809583932}
   spawnValues: {x: 0, y: 0, z: 0}
   main_camera: {fileID: 2546796388507589381, guid: 25b33d52717917246ae12d9ba0c2a616, type: 3}
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3faf572ee18fffb4fb747eaa97541e59, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca92d9401e53d9a4f89fefcfd67d71e3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -523,7 +523,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.221}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -724,7 +724,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1061,7 +1061,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4ef77f026176f45c4bdd108ea76304d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5c62d98a023746408d416b188a7cfb0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1097,7 +1097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1538112419
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -114,6 +114,8 @@ MonoBehaviour:
   _projectile: {fileID: 0}
   _damage: 10
   _shootingPoint: {fileID: 0}
+  _timeStamp: 0
+  canShoot: 1
 --- !u!1 &3225507498030711872
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,10 +162,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a3b75debd962a0f80a38bc29b6eb14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cooldownTime: 1
+  _cooldownTime: 3.4
   _projectile: {fileID: 3540083283258943794, guid: 02ee2a659e809a1ccb0d554b36d9f37a, type: 3}
   _damage: 10
   _shootingPoint: {fileID: 3225507498039630484}
+  _timeStamp: 0
+  canShoot: 1
 --- !u!1 &3225507498039630485
 GameObject:
   m_ObjectHideFlags: 0
