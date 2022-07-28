@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
         SpawnPlayer();
         SpawnCamera();
         SpawnWayPoints();
-        SpawnCreature();
+        //SpawnCreature();
     }
 
     void SpawnCreature()
@@ -60,5 +60,22 @@ public class GameController : MonoBehaviour
 
             Instantiate(wayPoint, spawnPosition, spawnRotation, PointsFolder.transform);
         }
+    }
+    
+    public void RespawnPlayer()
+    {
+        Debug.Log("Respawn player");
+        Vector3 spawnPosition = new Vector3(0f, 1f, 0f);
+        Quaternion spawnRotation = Quaternion.identity;
+
+        GameObject temp_player = GameObject.FindGameObjectWithTag("Player");
+
+        CharacterController characterController = temp_player.GetComponent<CharacterController>();
+        characterController.enabled = false;
+
+        Transform player_coordinates = temp_player.GetComponent<Transform>();
+        player_coordinates.SetPositionAndRotation(spawnPosition, spawnRotation);
+
+        characterController.enabled = true;
     }
 }

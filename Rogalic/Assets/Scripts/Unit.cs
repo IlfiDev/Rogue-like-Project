@@ -4,49 +4,49 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] protected int maxHealth = 100;
-    [SerializeField] protected int currentHealth = 100;
-    [SerializeField] protected int maxMana = 200;
-    [SerializeField] protected int currentMana = 200;
+    [SerializeField] protected float maxHealth = 100;
+    [SerializeField] protected float currentHealth = 100;
+    [SerializeField] protected float maxMana = 200;
+    [SerializeField] protected float currentMana = 200;
     [SerializeField] protected float moveSpeed = 10f;
     [SerializeField] protected float Gravity = -9.81f;
 
-    public void setMaxHealth(int newMaxHealth)
+    public void setMaxHealth(float newMaxHealth)
     {
         maxHealth = newMaxHealth;
     }
 
-    public int getMaxHealth()
+    public float getMaxHealth()
     {
         return maxHealth;
     }
 
-    public void setCurrentHealth(int newCurrentHealth)
+    public void setCurrentHealth(float newCurrentHealth)
     {
         currentHealth = newCurrentHealth;
     }
 
-    public int getCurrentHealth()
+    public float getCurrentHealth()
     {
         return currentHealth;
     }
     
-    public void setMaxMana(int newMaxMana)
+    public void setMaxMana(float newMaxMana)
     {
         maxMana = newMaxMana;
     }
 
-    public int getMaxMana()
+    public float getMaxMana()
     {
         return maxMana;
     }
 
-    public void setCurrentMana(int newCurrentMana)
+    public void setCurrentMana(float newCurrentMana)
     {
         currentMana = newCurrentMana;
     }
 
-    public int getCurrentMana()
+    public float getCurrentMana()
     {
         return currentMana;
     }
