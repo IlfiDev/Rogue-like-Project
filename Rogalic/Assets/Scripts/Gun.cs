@@ -8,8 +8,8 @@ public class Gun : MonoBehaviour, IAttack
     [SerializeField] private GameObject _projectile;
     [SerializeField] private float _damage = 10f;
     [SerializeField] private Transform _shootingPoint;
-    private float _timeStamp;
-    private bool canShoot = true;
+    [SerializeField] private float _timeStamp;
+    public bool canShoot = true;
     private List<GameObject> bullets = new List<GameObject>();
     private void Start(){
         _timeStamp = Time.time;
@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour, IAttack
     }
 
     private void Update(){
+        
         if (_timeStamp <= Time.time){
             canShoot = true;
         }
@@ -26,18 +27,19 @@ public class Gun : MonoBehaviour, IAttack
     }
     public void Attack(float damageMultiplier, Vector3 target){
         
+        _shootingPoint = gameObject.GetComponent<Transform>();
+        Debug.Log(_shootingPoint.position);
         if (canShoot){
             
+            _timeStamp = Time.time + _cooldownTime;
+           
             GameObject bullet = Instantiate(_projectile, _shootingPoint.position, _shootingPoint.rotation);
             Vector3 shootDir = (target - _shootingPoint.position).normalized;
             bullet.GetComponent<BulletBehaviour>().Setup( _damage * damageMultiplier, shootDir);
             bullets.Add(bullet);
             
-            // foreach(var bullet in bullets){
-                
-            //     //Destroy(bullet, 2f);
-            // }
-            _timeStamp = Time.time + _cooldownTime;
+    
+            
         
         }
     }
