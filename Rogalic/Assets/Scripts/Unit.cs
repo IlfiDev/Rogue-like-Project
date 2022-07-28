@@ -21,12 +21,12 @@ public class Unit : MonoBehaviour
         return maxHealth;
     }
 
-    public void seCurrentMaxHealth(int newCurrentMaxHealth)
+    public void setCurrentHealth(int newCurrentHealth)
     {
-        currentHealth = newCurrentMaxHealth;
+        currentHealth = newCurrentHealth;
     }
 
-    public int getCurrentMaxHealth()
+    public int getCurrentHealth()
     {
         return currentHealth;
     }
