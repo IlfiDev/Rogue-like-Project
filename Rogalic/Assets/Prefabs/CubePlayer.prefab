@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3419608467838609749}
   - component: {fileID: 3419608467838609748}
   - component: {fileID: 3419608467838609750}
-  - component: {fileID: 3419608467838609768}
   - component: {fileID: 6068803260495329928}
   m_Layer: 0
   m_Name: CubePlayer
@@ -119,21 +118,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3419608467838609768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: -1094006882351082115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0701a3d756b530337b04dd86f94d4367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 3540083283258943794, guid: 02ee2a659e809a1ccb0d554b36d9f37a, type: 3}
-  shootingPoint: {fileID: 3419608468043402114}
-  target: {fileID: 0}
 --- !u!114 &6068803260495329928
 MonoBehaviour:
   m_ObjectHideFlags: 0
