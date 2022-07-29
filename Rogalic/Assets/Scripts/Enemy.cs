@@ -5,6 +5,22 @@ using UnityEngine;
 public class Enemy : Unit, IDamagable
 {
 
+    HealthBar healthBar;
+    CharacterController characterController;
+
+    private void Start()
+    {
+        healthBar = gameObject.GetComponentInChildren<HealthBar>();
+        healthBar.SetMaxHealth(getMaxHealth());
+
+        characterController = gameObject.GetComponent<CharacterController>();
+    }
+
+    private void FixedUpdate()
+    {
+        EnemyMovements();
+    }
+
     public void TakeDamage(float damage)
     {
         float temp_health = getCurrentHealth() - damage;
@@ -16,6 +32,7 @@ public class Enemy : Unit, IDamagable
         else
         {
             setCurrentHealth(temp_health);
+            healthBar.SetHealth(temp_health);
         }
     }
 
@@ -27,5 +44,19 @@ public class Enemy : Unit, IDamagable
     private void Death()
     {
         Destroy(gameObject);
+    }
+
+    private void EnemyMovements()
+    {
+        Vector3 gravity = Vector3.zero;
+        if (characterController.isGrounded)
+        {
+            gravity.y = -2f;
+        }
+        else
+        {
+            gravity.y -= getGravity() * -4f * Time.deltaTime;
+        }
+        characterController.Move(gravity);
     }
 }

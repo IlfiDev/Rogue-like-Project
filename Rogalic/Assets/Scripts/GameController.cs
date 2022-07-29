@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
     public Vector3 spawnValues;
     public GameObject main_camera;
 
+    public GameObject simple_enemy;
+
     float platformSizeX;
     float platformSizeZ;    
 
@@ -25,6 +27,9 @@ public class GameController : MonoBehaviour
         SpawnCamera();
         SpawnWayPoints();
         //SpawnCreature();
+
+        SpawnSimpleEnemy();
+
     }
 
     void SpawnCreature()
@@ -77,5 +82,13 @@ public class GameController : MonoBehaviour
         player_coordinates.SetPositionAndRotation(spawnPosition, spawnRotation);
 
         characterController.enabled = true;
+    }
+
+    void SpawnSimpleEnemy()
+    {
+        Vector3 spawnPosition = new Vector3(0, 1f, 0);
+        Quaternion spawnRotation = Quaternion.identity;
+
+        Instantiate(simple_enemy, spawnPosition, spawnRotation);
     }
 }
