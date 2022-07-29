@@ -30,7 +30,6 @@ public class Gun : MonoBehaviour, IAttack
     public void Attack(float damageMultiplier, Vector3 target){
         
         _shootingPoint = gameObject.GetComponent<Transform>();
-        Debug.Log(_shootingPoint.position);
         if (canShoot){
             
             _timeStamp = Time.time + _cooldownTime;

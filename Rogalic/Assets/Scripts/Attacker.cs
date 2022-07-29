@@ -6,7 +6,7 @@ public class Attacker : MonoBehaviour
 {
     [SerializeField] private Transform _weaponPoint;
     private GameObject physicalWeapon;
-    [SerializeField] private GameObject target;
+    [SerializeField] private GameObject _target;
     [SerializeField] private GameObject _currentWeapon;
     private Vector3 targetVector;
     [SerializeField] bool isPlayer = false;
@@ -19,7 +19,7 @@ public class Attacker : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         if (!isPlayer){
-            target = GameObject.FindGameObjectWithTag("Player");
+            _target = GameObject.FindGameObjectWithTag("Player");
         }
     }
     
@@ -31,6 +31,10 @@ public class Attacker : MonoBehaviour
         if(Input.GetButton("Fire1") && isPlayer){
             targetVector = _weaponPoint.position + _weaponPoint.forward;
             Attack(targetVector); 
+        }
+        if(Input.GetButton("Fire1") && !isPlayer){
+            
+            Attack(_target.transform.position - _weaponPoint.position); 
         }
     }
 

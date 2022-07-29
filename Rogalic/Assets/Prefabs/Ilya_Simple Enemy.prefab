@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8144975281842892846}
   - component: {fileID: 4404283322624919420}
   - component: {fileID: 6961826622991906832}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 8553534214003880281}
   - component: {fileID: 496590942958997988}
   - component: {fileID: 3877542093653845796}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy bars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,10 +188,9 @@ GameObject:
   - component: {fileID: 8037751085874933568}
   - component: {fileID: 1272601601833125501}
   - component: {fileID: 2324292422778724099}
-  - component: {fileID: 984546358151780564}
   - component: {fileID: 7654473444382252745}
   - component: {fileID: 2932352810434964394}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Temp Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,19 +263,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &984546358151780564
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2354656150475187748}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7654473444382252745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +310,7 @@ GameObject:
   - component: {fileID: 7433860602503934024}
   - component: {fileID: 5942009824778563334}
   - component: {fileID: 3266869134777852729}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,7 +387,7 @@ GameObject:
   - component: {fileID: 662150153030392627}
   - component: {fileID: 2245857706709729983}
   - component: {fileID: 7118943889672593302}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,8 +501,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4378539285654485685}
-  m_Layer: 0
-  m_Name: Simple Enemy
+  m_Layer: 8
+  m_Name: Ilya_Simple Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

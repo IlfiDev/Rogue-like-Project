@@ -86,7 +86,7 @@ public class GameController : MonoBehaviour
 
     void SpawnSimpleEnemy()
     {
-        Vector3 spawnPosition = new Vector3(0, 1f, 0);
+        Vector3 spawnPosition = new Vector3(0, 2f, 0);
         Quaternion spawnRotation = Quaternion.identity;
 
         Instantiate(simple_enemy, spawnPosition, spawnRotation);

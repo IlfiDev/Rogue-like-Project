@@ -295,6 +295,7 @@ MonoBehaviour:
   playerSpawnPoint: {fileID: 809583932}
   spawnValues: {x: 0, y: 0, z: 0}
   main_camera: {fileID: 2546796388507589381, guid: 25b33d52717917246ae12d9ba0c2a616, type: 3}
+  simple_enemy: {fileID: 7036053768460775697, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
 --- !u!4 &478126206
 Transform:
   m_ObjectHideFlags: 0

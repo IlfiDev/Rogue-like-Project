@@ -10,7 +10,13 @@ public class BulletBehaviour : MonoBehaviour
     public float _damage = 20;
 
 
+    private void Start(){
+        Physics.IgnoreLayerCollision(0, 7);
+        Physics.IgnoreLayerCollision(7, 7);
+    }
+
     public void Setup(float damage, Vector3 shootDir){
+        
         this.shootDir = shootDir;
         this._damage = damage;
         //Пофиксить поворот снарядов
@@ -18,14 +24,16 @@ public class BulletBehaviour : MonoBehaviour
     }
 
     public void Update(){
+        
         transform.position += shootDir * moveSpeed * Time.deltaTime;
     }
-    void OnTriggerEnter(Collider other){
+    void OnCollisionEnter(Collision other){
         Debug.Log("Collision");
-        if(other.TryGetComponent(out IDamagable damagable)){
+        if(other.transform.TryGetComponent(out IDamagable damagable)){
             damagable.TakeDamage(_damage);
             
         }
+        Debug.Log(other.transform.name);
         Destroy(gameObject);
     }
 }
