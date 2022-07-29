@@ -14,6 +14,7 @@ public class BulletBehaviour : MonoBehaviour
         this.shootDir = shootDir;
         this._damage = damage;
         //Пофиксить поворот снарядов
+        Destroy(gameObject, 1.5f);
     }
 
     public void Update(){
