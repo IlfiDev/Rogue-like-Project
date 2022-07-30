@@ -8,7 +8,11 @@ TagManager:
   - Enemy
   - Health Bar
   - Mana bar
+<<<<<<< HEAD
   - PlayerSpawnPoint
+=======
+  - Weapon
+>>>>>>> b4a9a3a86af6cf5defce88b19031f2e3331c757a
   layers:
   - Default
   - TransparentFX
@@ -16,9 +20,9 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Pushbox
+  - Hitbox
+  - Hurtbox
   - 
   - 
   - 

@@ -7,22 +7,33 @@ public class BulletBehaviour : MonoBehaviour
     private Vector3 shootDir;
     
     public float moveSpeed = 100f;  
-    public int damage = 20;
-    public void Setup(Vector3 shootDir){
+    public float _damage = 20;
+
+
+    private void Start(){
+        Physics.IgnoreLayerCollision(0, 7);
+        Physics.IgnoreLayerCollision(7, 7);
+    }
+
+    public void Setup(float damage, Vector3 shootDir){
+        
         this.shootDir = shootDir;
+        this._damage = damage;
         //Пофиксить поворот снарядов
-        Destroy(this, 5f);
+        Destroy(gameObject, 1.5f);
     }
 
     public void Update(){
+        
         transform.position += shootDir * moveSpeed * Time.deltaTime;
     }
-    void OnTriggerEnter(Collider other){
+    void OnCollisionEnter(Collision other){
         Debug.Log("Collision");
-        if(other.TryGetComponent(out IDamagable damagable)){
-            damagable.TakeDamage(damage);
+        if(other.transform.TryGetComponent(out IDamagable damagable)){
+            damagable.TakeDamage(_damage);
             
         }
+        Debug.Log(other.transform.name);
         Destroy(gameObject);
     }
 }

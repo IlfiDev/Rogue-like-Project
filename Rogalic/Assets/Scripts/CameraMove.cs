@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     Transform player;
-    Vector3 defaul_position = new Vector3(-7f, 28.6f, -7f);
+    Vector3 defaul_position = new Vector3(-0.16f, 23.3f, -15f);
 
     private void Awake()
     {

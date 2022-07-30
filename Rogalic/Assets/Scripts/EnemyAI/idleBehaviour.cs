@@ -15,7 +15,7 @@ public class idleBehaviour : StateMachineBehaviour
         timer = 0;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = animator.GetComponent<Unit>();
-        chaseRange = enemy.GetChaseRange();
+        //chaseRange = enemy.GetChaseRange();
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
