@@ -6,7 +6,8 @@ public class BulletBehaviour : MonoBehaviour
 {
     private Vector3 shootDir;
     
-    public float moveSpeed = 100f;  
+    public float moveSpeed = 100f;
+    [SerializeField] private float _size = 1f; 
     public float _damage = 20;
 
 
@@ -16,7 +17,7 @@ public class BulletBehaviour : MonoBehaviour
     }
 
     public void Setup(float damage, Vector3 shootDir){
-        
+        transform.localScale = new Vector3(_size, _size, _size);
         this.shootDir = shootDir;
         this._damage = damage;
         Rigidbody rb = GetComponent<Rigidbody>();
