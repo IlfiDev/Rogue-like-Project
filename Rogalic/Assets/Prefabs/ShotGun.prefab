@@ -165,5 +165,5 @@ MonoBehaviour:
   _damage: 10
   _shootingPoint: {fileID: 1743207094492366237}
   _timeStamp: 0
-  _scatter: 50
+  _scatter: 0.5
   _numberOfShots: 10
