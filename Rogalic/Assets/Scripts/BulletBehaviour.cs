@@ -11,29 +11,33 @@ public class BulletBehaviour : MonoBehaviour
 
 
     private void Start(){
-        Physics.IgnoreLayerCollision(0, 7);
-        Physics.IgnoreLayerCollision(7, 7);
+        // Physics.IgnoreLayerCollision(0, 7);
+        // Physics.IgnoreLayerCollision(7, 7);
     }
 
     public void Setup(float damage, Vector3 shootDir){
         
         this.shootDir = shootDir;
         this._damage = damage;
-        //Пофиксить поворот снарядов
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.AddForce(shootDir * moveSpeed, ForceMode.Impulse);
         Destroy(gameObject, 1.5f);
     }
 
-    public void Update(){
+    // public void Update(){
         
-        transform.position += shootDir * moveSpeed * Time.deltaTime;
-    }
-    void OnCollisionEnter(Collision other){
+    //     transform.position += shootDir * moveSpeed * Time.deltaTime;
+    // }
+    void OnTriggerEnter(Collider other){
         Debug.Log("Collision");
-        if(other.transform.TryGetComponent(out IDamagable damagable)){
+        if(other.tag != "Bullet"){
+            if(other.TryGetComponent(out IDamagable damagable)){
             damagable.TakeDamage(_damage);
             
         }
         Debug.Log(other.transform.name);
         Destroy(gameObject);
+        }
+        
     }
 }
