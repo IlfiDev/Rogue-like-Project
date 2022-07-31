@@ -13,10 +13,10 @@ public class Chest : MonoBehaviour
         player_coordinates = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         float distance = Vector3.Distance(player_coordinates.position, transform.position);
-        if(distance <= radius)
+        if (distance <= radius)
         {
             PickUp();
         }
