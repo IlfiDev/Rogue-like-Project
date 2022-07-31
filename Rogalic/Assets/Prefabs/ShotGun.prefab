@@ -160,10 +160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e68640f29090a053b2daf822543a540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cooldownTime: 1
-  _projectile: {fileID: 3540083283258943794, guid: 02ee2a659e809a1ccb0d554b36d9f37a, type: 3}
+  _cooldownTime: 0.8
+  _projectile: {fileID: 3540083283258943794, guid: eaaa7525589fe52859521fce14161caa, type: 3}
   _damage: 10
   _shootingPoint: {fileID: 1743207094492366237}
   _timeStamp: 0
-  _scatter: 0
-  _numberOfShots: 5
+  _scatter: 0.5
+  _numberOfShots: 10

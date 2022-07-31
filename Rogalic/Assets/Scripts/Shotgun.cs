@@ -22,7 +22,7 @@ public class Shotgun : Gun, IAttack
             _timeStamp = Time.time + _cooldownTime;
             for(int i = 0; i < _numberOfShots; i++){
                 GameObject bullet = Instantiate(_projectile, _shootingPoint.position, _shootingPoint.rotation);
-                Vector3 shootDir = (target - _shootingPoint.position).normalized + new Vector3 (Random.Range(-0.5f, 0.5f), 0f, Random.Range(-0.5f, 0.5f));
+                Vector3 shootDir = ((target - _shootingPoint.position).normalized + new Vector3 (Random.Range(-_scatter, _scatter), 0f, Random.Range(-_scatter, _scatter)));
                 bullet.GetComponent<BulletBehaviour>().Setup( _damage * damageMultiplier, shootDir);
                 bullets.Add(bullet);
             }

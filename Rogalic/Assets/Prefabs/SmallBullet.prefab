@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4254890542145513209}
   - component: {fileID: -6099423640657972187}
   m_Layer: 7
-  m_Name: bullet
+  m_Name: SmallBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1936f509bce7b4ccb7abe536df6556d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 30
-  _size: 0.43
-  _damage: 20
+  moveSpeed: 40
+  _size: 0.2
+  _damage: 5
 --- !u!65 &4254890542145513209
 BoxCollider:
   m_ObjectHideFlags: 0
