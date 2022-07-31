@@ -14,6 +14,10 @@ public class NewGameController : MonoBehaviour
     List<Transform> stands = new List<Transform>();
     Transform[] standsArray;
 
+    public GameObject simple_enemy;
+    public GameObject chest;
+    public GameObject player_screen;
+
     void Start()
     {
         CreateStartRoom();
@@ -21,6 +25,10 @@ public class NewGameController : MonoBehaviour
         playerSpawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawnPoint");
         SpawnPlayer();
         SpawnCamera();
+
+        SpawnSimpleEnemy();
+        SpawnChest();
+        SpawnUserUI();
     }
 
     void Update()
@@ -57,5 +65,46 @@ public class NewGameController : MonoBehaviour
         Quaternion spawnRotation = Quaternion.identity;
 
         Instantiate(main_camera, spawnPosition, spawnRotation);
+    }
+
+    public void RespawnPlayer()
+    {
+        Debug.Log("Respawn player");
+        Vector3 spawnPosition = new Vector3(0f, 1f, 0f);
+        Quaternion spawnRotation = Quaternion.identity;
+
+        GameObject temp_player = GameObject.FindGameObjectWithTag("Player");
+
+        CharacterController characterController = temp_player.GetComponent<CharacterController>();
+        characterController.enabled = false;
+
+        Transform player_coordinates = temp_player.GetComponent<Transform>();
+        player_coordinates.SetPositionAndRotation(spawnPosition, spawnRotation);
+
+        characterController.enabled = true;
+    }
+
+    void SpawnSimpleEnemy()
+    {
+        Vector3 spawnPosition = new Vector3(0f, 1f, 0f);
+        Quaternion spawnRotation = Quaternion.identity;
+
+        Instantiate(simple_enemy, spawnPosition, spawnRotation);
+    }
+
+    public void SpawnChest()
+    {
+        Vector3 spawnPosition = new Vector3(5f, 1f, 5f);
+        Quaternion spawnRotation = Quaternion.identity;
+
+        Instantiate(chest, spawnPosition, spawnRotation);
+    }
+
+    void SpawnUserUI()
+    {
+        Vector3 spawnPosition = new Vector3(0f, 0f, 0f);
+        Quaternion spawnRotation = Quaternion.identity;
+
+        Instantiate(player_screen, spawnPosition, spawnRotation);
     }
 }

@@ -6,7 +6,7 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private Transform ParentOfSlots;
     private Inventory inventory;
-    private GameController gameController;
+    private NewGameController newGameController;
 
     InventorySlot[] slots;
     int what_slot_active = 0;
@@ -19,7 +19,7 @@ public class InventoryUI : MonoBehaviour
         slots = ParentOfSlots.GetComponentsInChildren<InventorySlot>();
         slots[what_slot_active].SlotButtonPress();
 
-        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        newGameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<NewGameController>();
         
     }
 
@@ -60,7 +60,7 @@ public class InventoryUI : MonoBehaviour
         if (Input.GetKey(KeyCode.F) && slots[what_slot_active].item != null)
         {
             inventory.removeItem(slots[what_slot_active].item);
-            gameController.SpawnChest();
+            newGameController.SpawnChest();
 
             Debug.Log("Fuck");
         }
