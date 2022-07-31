@@ -4,25 +4,35 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Points
   - Enemy
-  - Health Bar
-  - Mana bar
-<<<<<<< HEAD
-  - PlayerSpawnPoint
-=======
   - Weapon
->>>>>>> b4a9a3a86af6cf5defce88b19031f2e3331c757a
+  - Mana bar
+  - Health Bar
+  - Points
+  - PlayerSpawnPoint
+  - RoomFloor
+  - StartRoomFloor
+  - ConnectorButtonRight
+  - ConnectorButtonLeft
+  - Door
+  - Room
+  - Stage1stands
+  - StandRight
+  - StandLeft
+  - Stand
+  - Connector
+  - InConnector
+  - RoomTrigger
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
-  - Pushbox
-  - Hitbox
-  - Hurtbox
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -49,7 +59,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: 1
-    uniqueID: 4150271941
     locked: 0

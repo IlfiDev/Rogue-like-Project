@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 838487148719837247}
   m_Layer: 0
-  m_Name: Room
+  m_Name: Hui
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -921,7 +921,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 17c44fb3e5be9644586a0728a5f5a386, type: 2}
+  - {fileID: 2100000, guid: 9dd21b081ef0b3145ba6fa197728db8a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
