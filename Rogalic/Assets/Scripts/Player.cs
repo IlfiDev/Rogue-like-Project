@@ -48,8 +48,8 @@ public class Player : Unit, IDamagable
         setCurrentMana(temp_max_mana);
         manaBar.SetMana(temp_max_mana);
 
-        GameController gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        gameController.RespawnPlayer();
+        NewGameController gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<NewGameController>();
+        //gameController.RespawnPlayer();
     }
 
     public void TakeDamage(float damage)

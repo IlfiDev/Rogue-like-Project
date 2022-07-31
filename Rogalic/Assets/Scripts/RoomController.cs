@@ -23,7 +23,6 @@ public class RoomController : MonoBehaviour
     List<Transform> stands = new List<Transform>();
     Transform[] standsArray;
     List<Transform> Rooms = new List<Transform>();
-    Transform[] RoomsArray;
 
     private bool DoorIsOpen = false;
 
