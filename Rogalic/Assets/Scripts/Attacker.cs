@@ -33,15 +33,15 @@ public class Attacker : MonoBehaviour
             targetVector = _weaponPoint.position + _weaponPoint.forward;
             Attack(targetVector); 
         }
-        if(Input.GetButton("Fire1") && !isPlayer){
-            
+        if(!isPlayer){ 
+
+            _target = GameObject.FindGameObjectWithTag("Player");
             Attack(_target.transform.position - _weaponPoint.position); 
         }
     }
 
     public void Attack(Vector3 target){
         if(_currentWeapon.TryGetComponent(out IAttack attack)){
-            
             attack.Attack(1f, target);
             
         }

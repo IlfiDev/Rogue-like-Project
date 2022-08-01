@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3225507496714168042}
   - component: {fileID: 3225507496714168046}
   - component: {fileID: 3225507496714168047}
-  - component: {fileID: 3225507496714168041}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -84,25 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3225507496714168041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3225507496714168043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37a3b75debd962a0f80a38bc29b6eb14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cooldownTime: 0.3
-  _projectile: {fileID: 0}
-  _damage: 10
-  _shootingPoint: {fileID: 0}
-  _timeStamp: 0
-  _scatter: 0
-  _numberOfShots: 0
 --- !u!1 &3225507498030711872
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3225507498030711879}
-  - component: {fileID: 3225507498030711878}
+  - component: {fileID: 5812792430424938054}
   m_Layer: 0
   m_Name: SimpleGun
   m_TagString: Weapon
@@ -137,7 +117,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &3225507498030711878
+--- !u!114 &5812792430424938054
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,16 +126,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 3225507498030711872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37a3b75debd962a0f80a38bc29b6eb14, type: 3}
+  m_Script: {fileID: 11500000, guid: 62be261f8852ef7998f2d313d9828864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cooldownTime: 0.36
+  _cooldownTime: 1
   _projectile: {fileID: 3540083283258943794, guid: 02ee2a659e809a1ccb0d554b36d9f37a, type: 3}
   _damage: 10
   _shootingPoint: {fileID: 3225507498039630484}
   _timeStamp: 0
-  _scatter: 0
+  _scatter: 0.05
   _numberOfShots: 1
+  _knockback: 0.1
+  _startupTime: 0
 --- !u!1 &3225507498039630485
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,3 +8,7 @@ public interface IAttack{
 public interface IReload{
     public void Reload();
 }
+
+public interface IKnockable{
+	public void TakeKnockback(float power, Vector3 direction);
+}

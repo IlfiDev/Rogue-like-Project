@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Gun : MonoBehaviour
+public  class Gun : MonoBehaviour
 {
     [SerializeField] protected float _cooldownTime = 0.3f;
     [SerializeField] protected GameObject _projectile;
