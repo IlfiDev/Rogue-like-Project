@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Gun : MonoBehaviour
+public class SimpleGun : MonoBehaviour, IAttack
 {
     [SerializeField] protected float _cooldownTime = 0.3f;
     [SerializeField] protected GameObject _projectile;
@@ -29,6 +29,22 @@ public abstract class Gun : MonoBehaviour
             canShoot = false;
         }
     }
+    public void Attack(float damageMultiplier, Vector3 target){
+        
+        _shootingPoint = gameObject.GetComponent<Transform>();
+        if (canShoot){
+            
+            _timeStamp = Time.time + _cooldownTime;
+            for(int i = 0; i < _numberOfShots; i++){
+                GameObject bullet = Instantiate(_projectile, _shootingPoint.position, _shootingPoint.rotation);
+                Vector3 shootDir = (target - _shootingPoint.position).normalized + new Vector3 (Random.Range(-_scatter, _scatter), 0f, Random.Range(-_scatter, _scatter));
+                bullet.GetComponent<BulletBehaviour>().Setup( _damage * damageMultiplier, shootDir);
+                bullets.Add(bullet);
+            }
+            
     
-
+            
+        
+        }
+    }
 }

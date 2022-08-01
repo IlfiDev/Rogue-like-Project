@@ -14,6 +14,7 @@ public class Attacker : MonoBehaviour
     private List<GameObject> _projectiles = new List<GameObject>();
 
     private void Start(){
+        
         _currentWeapon = Instantiate(_weapons[0], _weaponPoint.position, _weaponPoint.rotation);
         _currentWeapon.transform.parent = _weaponPoint.parent;
         Cursor.visible = true;
