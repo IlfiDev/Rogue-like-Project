@@ -14,6 +14,21 @@ public class Attacker : MonoBehaviour
     private List<GameObject> _projectiles = new List<GameObject>();
 
     private void Start(){
+		        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        if (!isPlayer){
+            _target = GameObject.FindGameObjectWithTag("Player");
+        }
+    }
+	public void GetWeapons(GameObject[] weapons){
+		for (int i = 0; i < 3; i++){
+			if (weapons[i] != null){
+				_weapons = weapons;
+			}
+		}
+	}
+	public void UpdateWeapon(int index, GameObject weapon){
+		_weapons[index] = Instantiate(weapon, _weaponPoint.position, _weaponPoint.rotation);
 		for(int i = 0; i < 3; i++){
 			if(_weapons[i] != null){
 				_weapons[i] = Instantiate(_weapons[i], _weaponPoint.position, _weaponPoint.rotation);
@@ -24,6 +39,7 @@ public class Attacker : MonoBehaviour
 		}
 		_currentWeapon = _weapons[0];
 		_currentWeapon.SetActive(true);
+<<<<<<< Updated upstream
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         if (!isPlayer){
@@ -39,6 +55,9 @@ public class Attacker : MonoBehaviour
 	}
 	public void UpdateWeapon(int index, GameObject weapon){
 		_weapons[index] = Instantiate(weapon, _weaponPoint.position, _weaponPoint.rotation);
+=======
+
+>>>>>>> Stashed changes
 	}
     public void SwitchWeapon(int index){
 		foreach(GameObject weapon in _weapons){
