@@ -10,7 +10,7 @@ public class Attacker : MonoBehaviour
     [SerializeField] private GameObject _currentWeapon;
     private Vector3 targetVector;
     [SerializeField] bool isPlayer = false;
-	[SerializeField] private GameObject[] _weapons = new GameObject[3];
+	[SerializeField] private List<GameObject> _weapons = new List<GameObject>();
     private List<GameObject> _projectiles = new List<GameObject>();
 
     private void Start(){
@@ -21,7 +21,8 @@ public class Attacker : MonoBehaviour
             _target = GameObject.FindGameObjectWithTag("Player");
         }
     }
-	public void GetWeapons(GameObject[] weapons){
+	public void GetWeapons(List<GameObject> weapons){
+		_weapons = weapons;
 		for(int i = 0; i < 3; i++){
 			if(_weapons[i] != null){
 				_weapons[i] = Instantiate(_weapons[i], _weaponPoint.position, _weaponPoint.rotation);
