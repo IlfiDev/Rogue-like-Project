@@ -15,9 +15,12 @@ public class Attacker : MonoBehaviour
 
     private void Start(){
 		for(int i = 0; i < 3; i++){
-			_weapons[i] = Instantiate(_weapons[i], _weaponPoint.position, _weaponPoint.rotation);
-			_weapons[i].transform.parent = _weaponPoint.parent;
-			_weapons[i].SetActive(false);
+			if(_weapons[i] != null){
+				_weapons[i] = Instantiate(_weapons[i], _weaponPoint.position, _weaponPoint.rotation);
+				_weapons[i].transform.parent = _weaponPoint.parent;
+				_weapons[i].SetActive(false);
+			}
+			
 		}
 		_currentWeapon = _weapons[0];
 		_currentWeapon.SetActive(true);
@@ -28,7 +31,11 @@ public class Attacker : MonoBehaviour
         }
     }
 	public void GetWeapons(GameObject[] weapons){
-		_weapons = weapons;
+		for (int i = 0; i < 3; i++){
+			if (weapons[i] != 0){
+				_weapons = weapons;
+			}
+		}
 	}
 	public void UpdateWeapon(int index, GameObject weapon){
 		_weapons[index] = Instantiate(weapon, _weaponPoint.position, _weaponPoint.rotation);
