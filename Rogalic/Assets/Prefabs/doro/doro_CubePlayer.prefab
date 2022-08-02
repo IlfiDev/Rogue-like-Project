@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponPoint: {fileID: 4197936874088068993}
-  target: {fileID: 0}
+  _target: {fileID: 0}
   _currentWeapon: {fileID: 0}
   isPlayer: 1
   _weapons:

@@ -6,6 +6,7 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private Transform ParentOfSlots;
     private Inventory inventory;
+    private Attacker attacker;
     private NewGameController newGameController;
 
     InventorySlot[] slots;
@@ -13,7 +14,22 @@ public class InventoryUI : MonoBehaviour
 
     void Start()
     {
-        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        attacker = GameObject.FindGameObjectWithTag("Player").GetComponent<Attacker>();
+        inventory = attacker.GetComponent<Inventory>();
+
+        GameObject[] gameObjects = new GameObject[3];
+        for(int i = 0; i < gameObjects.Length; i++)
+        {
+            gameObjects[i] = null;
+        }
+
+        for(int i = 0; i < inventory.items.Count; i++)
+        {
+            gameObjects[i] = inventory.items[i].gameObject;
+        }
+
+        attacker.GetWeapons(gameObjects);
+
         inventory.itemsChanged += UpdateUI;
 
         slots = ParentOfSlots.GetComponentsInChildren<InventorySlot>();
@@ -32,6 +48,7 @@ public class InventoryUI : MonoBehaviour
                 slots[0].SlotButtonPress();
                 slots[what_slot_active].SlotButtonUnPressed();
                 what_slot_active = 0;
+                attacker.SwitchWeapon(0);
             }
         }
 
@@ -43,6 +60,7 @@ public class InventoryUI : MonoBehaviour
                 slots[1].SlotButtonPress();
                 slots[what_slot_active].SlotButtonUnPressed();
                 what_slot_active = 1;
+                attacker.SwitchWeapon(1);
             }
         }
 
@@ -54,13 +72,19 @@ public class InventoryUI : MonoBehaviour
                 slots[2].SlotButtonPress();
                 slots[what_slot_active].SlotButtonUnPressed();
                 what_slot_active = 2;
+                attacker.SwitchWeapon(2);
             }
         }
 
         if (Input.GetKey(KeyCode.F) && slots[what_slot_active].item != null)
         {
+            //Call the method in Player Script, that will drop the item on the ground
+            Player player = inventory.GetComponent<Player>();
+            player.DropTheItem(slots[what_slot_active].item);
+
             inventory.removeItem(slots[what_slot_active].item);
-            newGameController.SpawnChest();
+
+            //newGameController.SpawnChest();
 
             Debug.Log("Fuck");
         }
@@ -78,6 +102,7 @@ public class InventoryUI : MonoBehaviour
             }
 
             slots[what_slot_active].SlotButtonPress();
+            attacker.SwitchWeapon(what_slot_active);
         }
 
         if(Input.GetAxis("Mouse ScrollWheel") < 0f)
@@ -93,6 +118,7 @@ public class InventoryUI : MonoBehaviour
             }
 
             slots[what_slot_active].SlotButtonPress();
+            attacker.SwitchWeapon(what_slot_active);
         }
     }
 
@@ -117,14 +143,11 @@ public class InventoryUI : MonoBehaviour
             if (slots[i].name == str)
             {
                 slots[i].SlotButtonPress();
+                attacker.SwitchWeapon(i);
                 slots[what_slot_active].SlotButtonUnPressed();
                 what_slot_active = i;
+                return;
             }
         }
-    }
-
-    private void MouseWheelMovements()
-    {
-
     }
 }

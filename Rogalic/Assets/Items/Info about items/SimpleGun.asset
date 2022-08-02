@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4b807add6b36314e8c3c88bd74794ec, type: 3}
-  m_Name: Chest_info
+  m_Name: SimpleGun
   m_EditorClassIdentifier: 
-  itemName: Chest
-  icon: {fileID: 21300000, guid: 6100dcbbe33a02940a9940c7413c1986, type: 3}
+  itemName: 
+  icon: {fileID: 0}
   isAbility: 0
-  gameObject: {fileID: 2754667139826174344, guid: 13027a4801754b842a5803ff0c53895b, type: 3}
+  gameObject: {fileID: 3225507498030711872, guid: 48a8f6b9440fb48969baf2cb33c9f20c, type: 3}

@@ -34,6 +34,8 @@ public class InventorySlot : MonoBehaviour
     {
         itemButton.GetComponent<Image>().color = itemButton.colors.pressedColor;
         //Debug.Log("You press slot buttton");
+
+        //If item != null, display 3d object on the scene
         
     }
 

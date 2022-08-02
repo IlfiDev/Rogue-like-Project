@@ -17,6 +17,7 @@ public class NewGameController : MonoBehaviour
     public GameObject simple_enemy;
     public GameObject chest;
     public GameObject player_screen;
+    public GameObject tooltip;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class NewGameController : MonoBehaviour
         SpawnSimpleEnemy();
         SpawnChest();
         SpawnUserUI();
+        SpawnTooltip();
     }
 
     void Update()
@@ -106,5 +108,13 @@ public class NewGameController : MonoBehaviour
         Quaternion spawnRotation = Quaternion.identity;
 
         Instantiate(player_screen, spawnPosition, spawnRotation);
+    }
+
+    void SpawnTooltip()
+    {
+        Vector3 spawnPosition = new Vector3(0f, 0f, 0f);
+        Quaternion spawnRotation = Quaternion.identity;
+
+        Instantiate(tooltip, spawnPosition, spawnRotation);
     }
 }

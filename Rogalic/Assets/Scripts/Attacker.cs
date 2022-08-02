@@ -32,7 +32,7 @@ public class Attacker : MonoBehaviour
     }
 	public void GetWeapons(GameObject[] weapons){
 		for (int i = 0; i < 3; i++){
-			if (weapons[i] != 0){
+			if (weapons[i] != null){
 				_weapons = weapons;
 			}
 		}

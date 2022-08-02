@@ -9,5 +9,6 @@ public class Item : ScriptableObject
     [SerializeField] public string itemName = "";
     [SerializeField] public Sprite icon = null;
     [SerializeField] public bool isAbility = false;
+    [SerializeField] public GameObject gameObject = null;
 
 }
