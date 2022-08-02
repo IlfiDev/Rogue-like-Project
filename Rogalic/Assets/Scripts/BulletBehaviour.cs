@@ -41,6 +41,6 @@ public class BulletBehaviour : MonoBehaviour, IKnockable
         
     }
 	public void TakeKnockback(float power, Vector3 direction){
-		rb.AddForce((transform.position - direction).normalized * power, ForceMode.Impulse);
+		rb.AddForce((transform.position - direction).normalized * power * moveSpeed, ForceMode.Impulse);
 	}
 }

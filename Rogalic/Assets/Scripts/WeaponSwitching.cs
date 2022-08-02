@@ -2,17 +2,13 @@ using UnityEngine;
 
 public class WeaponSwitching : MonoBehaviour
 {
-    [SerializeField] private Inventory _inventory;
-    [SerializeField] private Attacker _attacker;
-    
-    void Start()
-    {
-        
-    }
+	[SerializeField] private Attacker attacker;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private void Start(){
+		attacker = transform.GetComponent<Attacker>();
+	}
+
+	public void SwitchWeapon(int index){
+		return;
+	}
 }
