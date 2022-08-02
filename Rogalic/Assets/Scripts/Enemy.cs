@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Unit, IDamagable
+public class Enemy : Unit, IDamagable, IKnockable
 {
 
     HealthBar healthBar;
@@ -59,4 +59,7 @@ public class Enemy : Unit, IDamagable
         }
         characterController.Move(gravity);
     }
+	public void TakeKnockback(float power, Vector3 direction){
+		characterController.Move((transform.position - direction).normalized * power);
+	}
 }

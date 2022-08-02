@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+public class Unit : MonoBehaviour 
 {
     [SerializeField] protected float maxHealth = 100;
     [SerializeField] protected float currentHealth = 100;
