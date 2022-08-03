@@ -21,7 +21,14 @@ public class BulletBehaviour : MonoBehaviour, IKnockable
     public void Setup(float damage, Vector3 shootDir){
         transform.localScale = new Vector3(_size, _size, _size);
         this.shootDir = shootDir;
+		Debug.Log(shootDir);
+		Debug.Log(moveSpeed);
         this._damage = damage;
+		rb = gameObject.GetComponent<Rigidbody>();
+		if (rb == null){
+			Debug.Log("Cock");
+		}
+		
         rb.AddForce(shootDir * moveSpeed, ForceMode.Impulse);
         Destroy(gameObject, 1.5f);
     }

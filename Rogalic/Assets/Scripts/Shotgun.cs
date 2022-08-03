@@ -23,6 +23,8 @@ public class Shotgun : Gun, IAttack
             for(int i = 0; i < _numberOfShots; i++){
                 GameObject bullet = Instantiate(_projectile, _shootingPoint.position, _shootingPoint.rotation);
                 Vector3 shootDir = ((target - _shootingPoint.position).normalized + new Vector3 (Random.Range(-_scatter, _scatter), 0f, Random.Range(-_scatter, _scatter)));
+				Debug.Log(shootDir);
+				Debug.Log(bullet.transform.tag);
                 bullet.GetComponent<BulletBehaviour>().Setup( _damage * damageMultiplier, shootDir);
                 bullets.Add(bullet);
             }

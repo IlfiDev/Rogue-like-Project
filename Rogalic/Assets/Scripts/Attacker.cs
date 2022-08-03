@@ -39,10 +39,18 @@ public class Attacker : MonoBehaviour
 	}
 	public void UpdateWeapon(int index, GameObject weapon){
 		if (weapon == null){
+			_weapons[index].transform.parent = null;
 			_weapons[index] = Instantiate(_defaultWeapon, _weaponPoint.position, _weaponPoint.rotation);
 		}
 		else{
+			if (_weapons[index].transform.tag == "Fists"){
 
+			Destroy(_weapons[index]);
+			}
+			else{
+			_weapons[index].transform.parent = null;
+
+			}
 			_weapons[index] = Instantiate(weapon, _weaponPoint.position, _weaponPoint.rotation);
 		}
 		_weapons[index].transform.parent = _weaponPoint.parent;
