@@ -123,71 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &77863514
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4378539285654485685, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378539285654485685, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.1141977
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378539285654485685, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 9.61
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378539285654485685, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -19.154444
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378539285654485685, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378539285654485685, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378539285654485685, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378539285654485685, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378539285654485685, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378539285654485685, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4378539285654485685, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7036053768460775697, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
-      propertyPath: m_Name
-      value: Ilya_Simple Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7433860602503934024, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7433860602503934024, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 87025e91b20ca9d2a9e825a176924597, type: 3}
 --- !u!1 &1279117466
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +159,7 @@ MonoBehaviour:
   simple_enemy: {fileID: 7036053768460775697, guid: 21fcadffddd3b194b9ad6f2b875757e6, type: 3}
   chest: {fileID: 2754667139826174344, guid: 13027a4801754b842a5803ff0c53895b, type: 3}
   player_screen: {fileID: 2060005839839352433, guid: f634c557129aefa4c83cb79d35aa49d2, type: 3}
+  tooltip: {fileID: 0}
 --- !u!4 &1279117468
 Transform:
   m_ObjectHideFlags: 0
@@ -335,5 +271,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

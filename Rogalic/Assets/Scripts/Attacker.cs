@@ -12,9 +12,20 @@ public class Attacker : MonoBehaviour
     [SerializeField] bool isPlayer = false;
 	[SerializeField] private List<GameObject> _weapons = new List<GameObject>();
     private List<GameObject> _projectiles = new List<GameObject>();
+	[SerializeField] private GameObject _defaultWeapon;
 
     private void Start(){
+		for(int i = 0; i < 3; i++){
 
+			_weapons.Add(_defaultWeapon);
+			_weapons[i] = Instantiate(_weapons[i], _weaponPoint.position, _weaponPoint.rotation);
+			_weapons[i].transform.parent = _weaponPoint.parent;
+			_weapons[i].SetActive(false);
+
+
+		}
+			_currentWeapon = _weapons[0];
+		_currentWeapon.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         if (!isPlayer){
@@ -24,21 +35,12 @@ public class Attacker : MonoBehaviour
 
 	public void GetWeapons(List<GameObject> weapons){
 		_weapons = weapons;
-		for(int i = 0; i < weapons.Count; i++){
-			if(_weapons[i] != null){
-				_weapons[i] = Instantiate(_weapons[i], _weaponPoint.position, _weaponPoint.rotation);
-				_weapons[i].transform.parent = _weaponPoint.parent;
-				_weapons[i].SetActive(false);
-			}
-			
-		}
-        if (weapons.Count > 0)
-        {
-            _currentWeapon = _weapons[0];
-            _currentWeapon.SetActive(true);
-        }
+        
 	}
 	public void UpdateWeapon(int index, GameObject weapon){
+		if (weapon == null){
+			_weapons[index] = Instantiate(_defaultWeapon, _weaponPoint.position, _weaponPoint.rotation);
+		}
 		_weapons[index] = Instantiate(weapon, _weaponPoint.position, _weaponPoint.rotation);
 	}
     public void SwitchWeapon(int index){
@@ -46,11 +48,8 @@ public class Attacker : MonoBehaviour
 			weapon.SetActive(false);
 		}
 
-        if (_weapons[index] == null)
-        {
-            _currentWeapon = _weapons[index];
-            _currentWeapon.SetActive(true);
-        }
+        _currentWeapon = _weapons[index];
+        _currentWeapon.SetActive(true);
     }
 
     private void Update(){
