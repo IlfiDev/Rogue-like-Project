@@ -296,5 +296,5 @@ MonoBehaviour:
   _target: {fileID: 0}
   _currentWeapon: {fileID: 0}
   isPlayer: 1
-  _weapons:
-  - {fileID: 8637524902280000443, guid: 7b85a1ede1278396c901a47f6f174bde, type: 3}
+  _weapons: []
+  _defaultWeapon: {fileID: 6178781514430296132, guid: 8c0fb396a2a0f5840bf9fd50b75b2774, type: 3}

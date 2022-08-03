@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chest : MonoBehaviour
+public class Interactible : MonoBehaviour
 {
     [SerializeField] private float radius = 3f;
     [SerializeField] private Transform player_coordinates;
