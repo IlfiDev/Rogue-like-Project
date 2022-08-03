@@ -10,6 +10,12 @@ public class Inventory : MonoBehaviour
     public delegate void ItemsChanged();
     public ItemsChanged itemsChanged;
 
+    Attacker attacker;
+
+    private void Start()
+    {
+        attacker = GameObject.FindGameObjectWithTag("Player").GetComponent<Attacker>();
+    }
 
     //Отправляем список с предметами Илюхе
     public bool addItem(Item item)
@@ -18,9 +24,12 @@ public class Inventory : MonoBehaviour
         {
 
             items.Add(item);
+            attacker.UpdateWeapon(items.IndexOf(item), item.gameObject);
 
             if(itemsChanged != null)
                 itemsChanged.Invoke();
+
+
 
             return true;
 
@@ -30,6 +39,7 @@ public class Inventory : MonoBehaviour
     //Отправляем список с предметами Илюхе
     public bool removeItem(Item item)
     {
+        attacker.UpdateWeapon(items.IndexOf(item), null);
         items.Remove(item);
 
         if (itemsChanged != null)

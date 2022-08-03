@@ -18,7 +18,6 @@ public class InventoryUI : MonoBehaviour
         attacker = GameObject.FindGameObjectWithTag("Player").GetComponent<Attacker>();
         inventory = attacker.GetComponent<Inventory>();
         player = inventory.GetComponent<Player>();
-        //Илюха лох
 
         inventory.itemsChanged += UpdateUI;
 
