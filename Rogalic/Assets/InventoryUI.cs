@@ -11,24 +11,14 @@ public class InventoryUI : MonoBehaviour
 
     InventorySlot[] slots;
     int what_slot_active = 0;
+    Player player;
 
     void Start()
     {
         attacker = GameObject.FindGameObjectWithTag("Player").GetComponent<Attacker>();
         inventory = attacker.GetComponent<Inventory>();
-
-        GameObject[] gameObjects = new GameObject[3];
-        for(int i = 0; i < gameObjects.Length; i++)
-        {
-            gameObjects[i] = null;
-        }
-
-        for(int i = 0; i < inventory.items.Count; i++)
-        {
-            gameObjects[i] = inventory.items[i].gameObject;
-        }
-
-        attacker.GetWeapons(gameObjects);
+        player = inventory.GetComponent<Player>();
+        //Илюха лох
 
         inventory.itemsChanged += UpdateUI;
 
@@ -79,7 +69,6 @@ public class InventoryUI : MonoBehaviour
         if (Input.GetKey(KeyCode.F) && slots[what_slot_active].item != null)
         {
             //Call the method in Player Script, that will drop the item on the ground
-            Player player = inventory.GetComponent<Player>();
             player.DropTheItem(slots[what_slot_active].item);
 
             inventory.removeItem(slots[what_slot_active].item);

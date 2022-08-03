@@ -21,9 +21,10 @@ public class Attacker : MonoBehaviour
             _target = GameObject.FindGameObjectWithTag("Player");
         }
     }
+
 	public void GetWeapons(List<GameObject> weapons){
 		_weapons = weapons;
-		for(int i = 0; i < 3; i++){
+		for(int i = 0; i < weapons.Count; i++){
 			if(_weapons[i] != null){
 				_weapons[i] = Instantiate(_weapons[i], _weaponPoint.position, _weaponPoint.rotation);
 				_weapons[i].transform.parent = _weaponPoint.parent;
@@ -31,8 +32,11 @@ public class Attacker : MonoBehaviour
 			}
 			
 		}
-		_currentWeapon = _weapons[0];
-		_currentWeapon.SetActive(true);
+        if (weapons.Count > 0)
+        {
+            _currentWeapon = _weapons[0];
+            _currentWeapon.SetActive(true);
+        }
 	}
 	public void UpdateWeapon(int index, GameObject weapon){
 		_weapons[index] = Instantiate(weapon, _weaponPoint.position, _weaponPoint.rotation);
@@ -41,8 +45,12 @@ public class Attacker : MonoBehaviour
 		foreach(GameObject weapon in _weapons){
 			weapon.SetActive(false);
 		}
-        _currentWeapon = _weapons[index];
-		_currentWeapon.SetActive(true);
+
+        if (_weapons[index] == null)
+        {
+            _currentWeapon = _weapons[index];
+            _currentWeapon.SetActive(true);
+        }
     }
 
     private void Update(){

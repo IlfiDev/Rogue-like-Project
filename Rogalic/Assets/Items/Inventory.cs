@@ -5,11 +5,13 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private int amountSlots = 3;
-    public List<Item> items = new List<Item>();
+    [SerializeField] public List<Item> items = new List<Item>();
 
     public delegate void ItemsChanged();
     public ItemsChanged itemsChanged;
 
+
+    //Отправляем список с предметами Илюхе
     public bool addItem(Item item)
     {
         if(items.Count < amountSlots)
@@ -25,6 +27,7 @@ public class Inventory : MonoBehaviour
         } else return false;
     }
 
+    //Отправляем список с предметами Илюхе
     public bool removeItem(Item item)
     {
         items.Remove(item);
