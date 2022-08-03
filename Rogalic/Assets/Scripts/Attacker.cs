@@ -41,7 +41,11 @@ public class Attacker : MonoBehaviour
 		if (weapon == null){
 			_weapons[index] = Instantiate(_defaultWeapon, _weaponPoint.position, _weaponPoint.rotation);
 		}
-		_weapons[index] = Instantiate(weapon, _weaponPoint.position, _weaponPoint.rotation);
+		else{
+
+			_weapons[index] = Instantiate(weapon, _weaponPoint.position, _weaponPoint.rotation);
+		}
+		_weapons[index].transform.parent = _weaponPoint.parent;
 	}
     public void SwitchWeapon(int index){
 		foreach(GameObject weapon in _weapons){
