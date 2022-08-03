@@ -14,4 +14,14 @@ public abstract class MeleeWeapon : MonoBehaviour
    [SerializeField] protected bool canDestroyProjectiles = false;
    [SerializeField] protected LayerMask _layer;
    [SerializeField] protected float _knockbackPower = 1f;
+	protected Vector3 _target;
+
+   protected void checkCooldown(){
+		if(_timeStamp <= Time.time){
+			canAttack = true;
+		}
+		else{
+			canAttack = false;
+		}
+   }
 }

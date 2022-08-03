@@ -4,18 +4,11 @@ using UnityEngine;
 
 public class SimpleSword : MeleeWeapon, IAttack
 {
-	private Vector3 _target;
-	private void Start(){
+		private void Start(){
 		_timeStamp = Time.time;
 	}
 	private void Update(){
-		if(_timeStamp <= Time.time){
-			canAttack = true;
-		} 
-		else
-		{
-			canAttack = false;
-		}
+		checkCooldown();
 	}
     
 	public void Attack(float damageMultiplier, Vector3 target){
