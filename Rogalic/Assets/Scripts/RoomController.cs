@@ -15,7 +15,6 @@ public class RoomController : MonoBehaviour
 
     private string MyTag;
     
-
     private Vector3 OutDoorPositionNew;
     private Vector3 InDoorPositionNew;
 
@@ -63,6 +62,7 @@ public class RoomController : MonoBehaviour
                 DoorIsOpen = true;
             }
         }
+        
         if (TriggerName == "Trigger")
         {
             try
@@ -74,6 +74,10 @@ public class RoomController : MonoBehaviour
         if (DoorIsOpen == true)
         {
             OutDoor.transform.position = Vector3.Lerp(OutDoor.transform.position, OutDoorPositionNew, Time.deltaTime * 5f);
+            if (OutDoor.transform.position.y > OutDoorPositionNew.y - 0.1)
+            {
+                OutDoor.GetComponent<Renderer>().enabled = false;
+            }
         }
     }
 
