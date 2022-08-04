@@ -18,6 +18,7 @@ public class Tooltip : MonoBehaviour
 
     private bool makeFadeAnimationIn = false;
     private bool makeFadeAnimationOut = false;
+    private bool changeToolTipPosition = false;
 
     private void Start()
     {
@@ -57,27 +58,33 @@ public class Tooltip : MonoBehaviour
     {
         canvasGroup.alpha = 0;
         makeFadeAnimationIn = true;
+        changeToolTipPosition = true;
     }
 
     public void FadeAnimationOut()
     {
+        makeFadeAnimationIn = false;
         makeFadeAnimationOut = true;
+        changeToolTipPosition = false;
         
     }
 
     private void Update()
     {
-        Vector2 mousePosition = Input.mousePosition;
+        if(changeToolTipPosition)
+        {
+            Vector2 mousePosition = Input.mousePosition;
+            transform.position = mousePosition;
 
-        float pivotX = mousePosition.x / Screen.width;
-        float pivotY = mousePosition.y / Screen.height;
+            float pivotX = mousePosition.x / Screen.width;
+            float pivotY = mousePosition.y / Screen.height;
 
-        rectTransform.pivot = new Vector2(pivotX, pivotY);
-        transform.position = mousePosition;
+            rectTransform.pivot = new Vector2(pivotX, pivotY);
+        }
 
         if(makeFadeAnimationIn && canvasGroup.alpha < 1)
         {
-            canvasGroup.alpha += Time.deltaTime;
+            canvasGroup.alpha += Time.deltaTime * 5;
             if(canvasGroup.alpha >= 1)
             {
                 makeFadeAnimationIn = false;
@@ -87,7 +94,7 @@ public class Tooltip : MonoBehaviour
 
         if(makeFadeAnimationOut && canvasGroup.alpha > 0)
         {
-            canvasGroup.alpha -= Time.deltaTime;
+            canvasGroup.alpha -= Time.deltaTime * 5;
             if(canvasGroup.alpha <= 0)
             {
                 makeFadeAnimationOut = false;
