@@ -15,12 +15,18 @@ public class TooltipSystem : MonoBehaviour
 
     public static void Show(string newContentText, string newTitleText = "")
     {
-        current.tooltip.SetText(newContentText, newTitleText);
         current.tooltip.FadeAnimationIn();
+
+        current.tooltip.SetText(newContentText, newTitleText);
     }
 
     public static void Hide()
     {
         current.tooltip.FadeAnimationOut();
+    }
+
+    public static void SetTextTooltip(string newContentText, string newTitleText = "")
+    {
+        current.tooltip.SetText(newContentText, newTitleText);
     }
 }

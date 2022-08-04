@@ -66,12 +66,4 @@ public class Player : Unit, IDamagable
             healthBar.SetHealth(temp_health);
         }
     }
-
-    public void DropTheItem(Item item)
-    {
-        Vector3 spawnPosition = new Vector3(-3f, 1f, -3f);
-        Quaternion spawnRotation = Quaternion.identity;
-
-        Instantiate(item.gameObject, spawnPosition, spawnRotation);
-    }
 }

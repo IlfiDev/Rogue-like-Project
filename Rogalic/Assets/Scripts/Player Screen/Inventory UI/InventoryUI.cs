@@ -68,7 +68,6 @@ public class InventoryUI : MonoBehaviour
         if (Input.GetKey(KeyCode.F) && slots[what_slot_active].item != null)
         {
             //Call the method in Player Script, that will drop the item on the ground
-            player.DropTheItem(slots[what_slot_active].item);
 
             inventory.removeItem(slots[what_slot_active].item);
 
