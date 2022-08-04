@@ -3,7 +3,31 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bullet
+  - Health Bar
+  - Mana bar
+  - Points
+  - Weapon
+  - RoomTrigger
+  - Connector
+  - InConnector
+  - ConnectorButtonLeft
+  - PlayerSpawnPoint
+  - Stand
+  - Door
+  - StandRight
+  - ConnectorButtonRight
+  - StandLeft
+  - Stage1stands
+  - Whall
+  - FloorTrigger
+  - Fists
+  - RoomFloor
+  - StartRoom
+  - Stage_1_Room
+  - Stage_2_Room
+  - Stage_3_Room
   layers:
   - Default
   - TransparentFX

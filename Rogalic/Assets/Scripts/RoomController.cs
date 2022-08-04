@@ -1,65 +1,75 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RoomController : MonoBehaviour
 {
-    public Transform NextRoomStands;
-    public Transform NextRooms;
+    private Transform[] AllRooms;
 
-    private GameObject OutDoor;
-    private GameObject InDoor;
-    private Transform RoomRight;
-    private Transform RoomLeft;
+    private Transform OutDoor;
+    private Transform InDoor;
+    private Transform StandRight;
+    private Transform StandLeft;
+    private Transform MyFloor;
+
+    private string MyTag;
+    
 
     private Vector3 OutDoorPositionNew;
     private Vector3 InDoorPositionNew;
 
     private string TriggerName;
 
-    private float RoomSizeX;
-    private float RoomSizeZ;
+    private float MySizeX;
+    private float MySizeZ;
 
+    List<Transform> NextRooms = new List<Transform>();
+    Transform[] NextRoomsArray = new Transform[2];
     List<Transform> stands = new List<Transform>();
     Transform[] standsArray;
-    List<Transform> Rooms = new List<Transform>();
 
     private bool DoorIsOpen = false;
 
     void Start()
     {
-        OutDoor = GameObject.FindGameObjectWithTag("Door");
-        InDoor = GameObject.FindGameObjectWithTag("InConnector");
-        OutDoorPositionNew = new Vector3(OutDoor.transform.position.x, OutDoor.transform.position.y + 5, OutDoor.transform.position.z);
-        InDoorPositionNew = new Vector3(InDoor.transform.position.x, InDoor.transform.position.y - 5, InDoor.transform.position.z);
-        foreach (Transform child in NextRoomStands)
+        MyTag = gameObject.tag;
+        FindMyObjects();
+        MySizeX = MyFloor.localScale.x;
+        MySizeZ = MyFloor.localScale.z;
+        AllRooms = Resources.LoadAll<Transform>("Rooms");
+        if (MyTag != "FinishRoom")
         {
-            stands.Add(child);
-        }
-        foreach (Transform child in NextRooms)
-        {
-            Rooms.Add(child);
-        }
-        CreateStands();
+            FindNextRooms();
+            ChooseNextRooms(NextRooms.ToArray());
+            CreateStands();
+        }   
     }
 
     void Update()
     {
-        if (TriggerName == "button_right")
+        if (DoorIsOpen == false)
         {
-            CreateNextRoom(RoomRight);
-            TriggerName = "";
-            DoorIsOpen = true;
-        }
-        if (TriggerName == "button_left")
-        {
-            CreateNextRoom(RoomLeft);
-            TriggerName = "";
-            DoorIsOpen = true;
+            if (TriggerName == "button_right")
+            {
+                CreateNextRoom(NextRoomsArray[0]);
+                TriggerName = "";
+                DoorIsOpen = true;
+            }
+            if (TriggerName == "button_left")
+            {
+                CreateNextRoom(NextRoomsArray[1]);
+                TriggerName = "";
+                DoorIsOpen = true;
+            }
         }
         if (TriggerName == "Trigger")
         {
-            InDoor.transform.position = Vector3.Lerp(InDoor.transform.position, InDoorPositionNew, Time.deltaTime * 5f);
+            try
+            {
+                InDoor.transform.position = Vector3.Lerp(InDoor.transform.position, InDoorPositionNew, Time.deltaTime * 5f);
+            }
+            catch { }
         }
         if (DoorIsOpen == true)
         {
@@ -67,63 +77,99 @@ public class RoomController : MonoBehaviour
         }
     }
 
-    void CreateNextRoom(Transform room)
+    void FindMyObjects()
     {
-        Vector3 spawnPosition = new Vector3(0f, 0f, 50f);
-        Quaternion spawnRotation = Quaternion.identity;
+        foreach (Transform child in gameObject.GetComponentsInChildren<Transform>())
+        {
+            if (child.tag == "Door")
+                OutDoor = child;
+            if (child.tag == "InConnector")
+                InDoor = child;
+            if (child.tag == "StandRight")
+                StandRight = child;
+            if (child.tag == "StandLeft")
+                StandLeft = child;
+            if (child.tag == "RoomFloor")
+                MyFloor = child;
+        }
 
-        Instantiate(room, spawnPosition, spawnRotation);
+        try
+        {
+            OutDoorPositionNew = new Vector3(OutDoor.transform.position.x, OutDoor.transform.position.y + 5, OutDoor.transform.position.z);
+        }
+        catch { }
+        
+        try
+        {
+            InDoorPositionNew = new Vector3(InDoor.transform.position.x, InDoor.transform.position.y - 5, InDoor.transform.position.z);
+        }
+        catch { }
+
+        MySizeX = MyFloor.transform.localScale.x;
+        MySizeZ = MyFloor.transform.localScale.z;
+    }
+
+    void FindNextRooms()
+    {
+        string targetRoomTag = null;
+        if (MyTag == "StartRoom") { targetRoomTag = "Stage_1_Room"; }
+        if (MyTag == "Stage_1_Room") { targetRoomTag = "Stage_2_Room"; }
+        if (MyTag == "Stage_2_Room") { targetRoomTag = "Stage_3_Room"; }
+        if (MyTag == "Stage_3_Room") { targetRoomTag = "FinishRoom"; }
+        foreach (Transform room in AllRooms)
+        {
+            if (room.tag == targetRoomTag)
+            {
+               NextRooms.Add(room);
+            }
+        }
+    }
+
+    void ChooseNextRooms(Transform[] array)
+    {
+        int size = array.Length;
+        int firstIndex = 0;
+        int secondIndex = 0;
+        while (firstIndex == secondIndex)
+        {
+            firstIndex = Random.Range(0, size);
+            secondIndex = Random.Range(0, size);
+        }
+        NextRoomsArray[0] = array[firstIndex];
+        NextRoomsArray[1] = array[secondIndex];
     }
 
     void CreateStands()
     {
-        standsArray = stands.ToArray();
-        Transform[] GeneratedStands = new Transform[2];
-        GeneratedStands = ChooseSet(2);
-        string roomNameOne = GeneratedStands[0].name;
-        string roomNameTwo = GeneratedStands[1].name;
-        foreach (Transform room in Rooms)
+        foreach (Transform room in NextRoomsArray)
         {
-            if(room.name == roomNameOne)
+            foreach (Transform child in room.GetComponentsInChildren<Transform>())
             {
-                RoomRight = room;
-            }
-            if (room.name == roomNameTwo)
-            {
-                RoomLeft = room;
+                if (child.tag == "RoomStand") { stands.Add(child); }
             }
         }
-        GameObject StandRight = GameObject.FindGameObjectWithTag("StandRight");
-        GameObject StandLeft = GameObject.FindGameObjectWithTag("StandLeft");
+        standsArray = stands.ToArray();
         Vector3 StandRightPos = StandRight.GetComponent<Transform>().position;
         Vector3 StandLeftPos = StandLeft.GetComponent<Transform>().position;
         Quaternion spawnRotation = Quaternion.identity;
         Vector3 StandRightPosNew = new Vector3(StandRightPos.x, StandRightPos.y + 1, StandRightPos.z);
         Vector3 StandLeftPosNew = new Vector3(StandLeftPos.x, StandLeftPos.y + 1, StandLeftPos.z);
-        Instantiate(GeneratedStands[0], StandRightPosNew, spawnRotation);
-        Instantiate(GeneratedStands[1], StandLeftPosNew, spawnRotation);
+        Instantiate(standsArray[0], StandRightPosNew, spawnRotation);
+        Instantiate(standsArray[1], StandLeftPosNew, spawnRotation);
     }
 
-    Transform[] ChooseSet(int numRequired)
+    void CreateNextRoom(Transform room)
     {
-        Transform[] result = new Transform[numRequired];
-        int numToChoose = numRequired;
-        for (int numLeft = standsArray.Length; numLeft > 0; numLeft--)
+        float roomSizeZ = 0;
+        foreach (Transform child in room.GetComponentsInChildren<Transform>())
         {
-            float prob = (float)numToChoose / (float)numLeft;
-
-            if (Random.value <= prob)
-            {
-                numToChoose--;
-                result[numToChoose] = standsArray[numLeft - 1];
-
-                if (numToChoose == 0)
-                {
-                    break;
-                }
-            }
+            if (child.tag == "RoomFloor")
+                roomSizeZ = child.transform.localScale.z;
         }
-        return result;
+        Vector3 spawnPosition = new Vector3(0f, 0f, gameObject.transform.position.z + (MySizeZ/2 + roomSizeZ/2));
+        Quaternion spawnRotation = Quaternion.identity;
+
+        Instantiate(room, spawnPosition, spawnRotation);
     }
 
     public void SetTriggerName(string TriggerName)

@@ -8,6 +8,7 @@ public class Trigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        room.SetTriggerName(gameObject.name);
+        if (other.tag == "Player")
+            room.SetTriggerName(gameObject.name);
     }
 }
