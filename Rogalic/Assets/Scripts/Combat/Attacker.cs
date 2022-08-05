@@ -51,7 +51,10 @@ public class Attacker : MonoBehaviour
 			_weapons[index].transform.parent = null;
 
 			}
-			_weapons[index] = Instantiate(weapon, _weaponPoint.position, _weaponPoint.rotation);
+			_weapons[index] = weapon;
+			_weapons[index].transform.position = _weaponPoint.position;
+			_weapons[index].transform.rotation = _weaponPoint.rotation;
+			Instantiate(weapon, _weaponPoint.position, _weaponPoint.rotation);
 		}
 		_weapons[index].transform.parent = _weaponPoint.parent;
 	}
