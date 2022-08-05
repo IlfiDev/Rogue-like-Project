@@ -5,15 +5,15 @@ using UnityEngine;
 public class Enemy : Unit, IDamagable, IKnockable
 {
 
-    HealthBar healthBar;
-    CharacterController characterController;
+    private EnemyHealthBar _healthBar;
+    private CharacterController _characterController;
 
     private void Start()
     {
-        healthBar = gameObject.GetComponentInChildren<HealthBar>();
-        healthBar.SetMaxHealth(getMaxHealth());
+        _healthBar = gameObject.GetComponentInChildren<EnemyHealthBar>();
+        _healthBar.SetMaxHealth(getMaxHealth());
 
-        characterController = gameObject.GetComponent<CharacterController>();
+        _characterController = gameObject.GetComponent<CharacterController>();
     }
 
     private void FixedUpdate()
@@ -32,7 +32,8 @@ public class Enemy : Unit, IDamagable, IKnockable
         else
         {
             setCurrentHealth(temp_health);
-            healthBar.SetHealth(temp_health);
+
+            _healthBar.SetHealth(temp_health);
         }
     }
 
@@ -49,7 +50,7 @@ public class Enemy : Unit, IDamagable, IKnockable
     private void EnemyMovements()
     {
         Vector3 gravity = Vector3.zero;
-        if (characterController.isGrounded)
+        if (_characterController.isGrounded)
         {
             gravity.y = -2f;
         }
@@ -57,9 +58,9 @@ public class Enemy : Unit, IDamagable, IKnockable
         {
             gravity.y -= getGravity() * -4f * Time.deltaTime;
         }
-        characterController.Move(gravity);
+        _characterController.Move(gravity);
     }
 	public void TakeKnockback(float power, Vector3 direction){
-		characterController.Move((transform.position - direction).normalized * power);
+		_characterController.Move((transform.position - direction).normalized * power);
 	}
 }

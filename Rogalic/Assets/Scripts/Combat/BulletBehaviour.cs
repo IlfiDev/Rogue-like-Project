@@ -18,8 +18,8 @@ public class BulletBehaviour : MonoBehaviour, IKnockable
 		rb = transform.GetComponent<Rigidbody>();
     }
 
-    public void Setup(float damage, Vector3 shootDir){
-        transform.localScale = new Vector3(_size, _size, _size);
+    public void Setup(float damage, Vector3 shootDir, float bulletSize){
+        transform.localScale = transform.localScale * bulletSize;
         this.shootDir = shootDir;
 		Debug.Log(shootDir);
 		Debug.Log(moveSpeed);

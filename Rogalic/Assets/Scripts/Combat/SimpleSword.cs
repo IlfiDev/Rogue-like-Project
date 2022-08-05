@@ -2,38 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleSword : MeleeWeapon, IAttack
+public class SimpleSword : MeleeWeapon
 {
-		private void Start(){
-		_timeStamp = Time.time;
+	private void Start(){
+		timeStamp = Time.time;
 	}
 	private void Update(){
 		checkCooldown();
 	}
     
-	public void Attack(float damageMultiplier, Vector3 target){
+	public override void Attack(float damageMultiplier, Vector3 target){
 		if (canAttack){
-			_target = target;
+			this.target = target;
 		    Transform shootingPoint = gameObject.GetComponent<Transform>();
 
-			_timeStamp = Time.time + _cooldownTime;
+			timeStamp = Time.time + CooldownTime;
 
-			Collider[] hitEnemies = Physics.OverlapSphere(target, _radius, _layer);
+			Collider[] hitEnemies = Physics.OverlapSphere(target, radius, layer);
 
 			foreach(Collider enemy in hitEnemies){
 
 				if(enemy.TryGetComponent(out IDamagable damagable)){
 					Debug.Log("Took Damage");
-					damagable.TakeDamage(_damage);
+					damagable.TakeDamage(Damage);
 					
 				}
 				if(enemy.TryGetComponent(out IKnockable knockable)){
-						knockable.TakeKnockback(_knockbackPower, shootingPoint.position);
+						knockable.TakeKnockback(KnockbackPower, shootingPoint.position);
 					}
 			}
 		}
 	}
 	void OnDrawGizmosSelected(){
-		Gizmos.DrawWireSphere(_target, _radius);
+		Gizmos.DrawWireSphere(target, radius);
 	}
 }

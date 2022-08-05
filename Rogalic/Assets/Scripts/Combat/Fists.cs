@@ -18,17 +18,17 @@ public class Fists : MeleeWeapon, IAttack
 
 	public void Attack(float damageMultiplier, Vector3 target){
 		if (canAttack){
-			_target = target;
+			this.target = target;
 			Transform shootingPoint = gameObject.GetComponent<Transform>();
-			_timeStamp = Time.time + _cooldownTime;
+			timeStamp = Time.time + CooldownTime;
 
-			Collider[] hitEnemies = Physics.OverlapBox(target, new Vector3(_radius, _radius, _radius), Quaternion.identity, _layer);
+			Collider[] hitEnemies = Physics.OverlapBox(target, new Vector3(radius, radius, radius), Quaternion.identity, layer);
 			foreach(Collider enemy in hitEnemies){
 				if(enemy.TryGetComponent(out IDamagable damagable)){
-					damagable.TakeDamage(_damage * damageMultiplier);
+					damagable.TakeDamage(Damage * damageMultiplier);
 				}
 				if(enemy.TryGetComponent(out IKnockable knockable)){
-					knockable.TakeKnockback(_knockbackPower, shootingPoint.position);
+					knockable.TakeKnockback(KnockbackPower, shootingPoint.position);
 				}
 			}
 		}
@@ -36,6 +36,6 @@ public class Fists : MeleeWeapon, IAttack
 
 	void OnDrawGizmosSelected(){
 
-		Gizmos.DrawCube(_target, new Vector3(_radius * 2, _radius * 2, _radius * 2));
+		Gizmos.DrawCube(target, new Vector3(radius * 2, radius * 2));
 	}
 }

@@ -123,7 +123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8193393869238229772}
-  - component: {fileID: -234921112232570888}
+  - component: {fileID: -6343137684491508752}
   m_Layer: 0
   m_Name: ShotGun
   m_TagString: Untagged
@@ -148,7 +148,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-234921112232570888
+--- !u!114 &-6343137684491508752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,13 +157,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8637524902280000443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e68640f29090a053b2daf822543a540, type: 3}
+  m_Script: {fileID: 11500000, guid: 37a3b75debd962a0f80a38bc29b6eb14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cooldownTime: 0.8
-  _projectile: {fileID: 3540083283258943794, guid: eaaa7525589fe52859521fce14161caa, type: 3}
-  _damage: 10
-  _shootingPoint: {fileID: 1743207094492366237}
-  _timeStamp: 0
-  _scatter: 0.5
-  _numberOfShots: 10
+  CooldownTime: 0.3
+  Scatter: 0.1
+  NumberOfAttacks: 10
+  StartupTime: 0
+  Damage: 10
+  Knockback: 0.1
+  shootingPoint: {fileID: 1743207094492366237}
+  projectile: {fileID: 3540083283258943794, guid: 02ee2a659e809a1ccb0d554b36d9f37a, type: 3}
+  ProjectileSize: 0.21
