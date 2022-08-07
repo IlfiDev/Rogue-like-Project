@@ -31,6 +31,7 @@ public class RoomController : MonoBehaviour
     List<string> StageTags = new List<string>() {"StartRoom", "Stage_1_Room", "Stage_2_Room", "Stage_3_Room", "FinishRoom"};
 
     private bool DoorIsOpen = false;
+    private bool RoomIsComplited = false;
 
     void Start()
     {
@@ -49,18 +50,16 @@ public class RoomController : MonoBehaviour
 
     void Update()
     {
-        if (DoorIsOpen == false)
+        if (DoorIsOpen == false && RoomIsComplited == true)
         {
             if (TriggerName == "button_right")
             {
                 CreateNextRoom(NextRoomsArray[0]);
-                TriggerName = "";
                 DoorIsOpen = true;
             }
             if (TriggerName == "button_left")
             {
                 CreateNextRoom(NextRoomsArray[1]);
-                TriggerName = "";
                 DoorIsOpen = true;
             }
         }
@@ -101,6 +100,10 @@ public class RoomController : MonoBehaviour
             {
                 OutDoor.GetComponent<Renderer>().enabled = false;
             }
+        }
+        if (TriggerName != "Trigger")
+        {
+            TriggerName = "";
         }
     }
 
@@ -207,5 +210,10 @@ public class RoomController : MonoBehaviour
     public void SetTriggerName(string TriggerName)
     {
         this.TriggerName = TriggerName;
+    }
+
+    public void SetRoomComplition()
+    {
+        this.RoomIsComplited = true;
     }
 }

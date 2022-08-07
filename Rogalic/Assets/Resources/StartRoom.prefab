@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 838487148719837247}
   - component: {fileID: 6402668822264606796}
+  - component: {fileID: 5807114660723492669}
   m_Layer: 0
   m_Name: StartRoom
   m_TagString: StartRoom
@@ -50,8 +51,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac128f89a22684e45af9cc71c5461abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextRoomStands: {fileID: 0}
-  NextRooms: {fileID: 0}
+--- !u!114 &5807114660723492669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115344067534038968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6ea3711837ac248a4ff1c860689475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &271553126404350929
 GameObject:
   m_ObjectHideFlags: 0
