@@ -152,13 +152,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc91569a35e20d41a8d57584e41a41f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartRoom: {fileID: 2195972118258862269, guid: f07f8978d6dff2046baac9d4ef863bf5, type: 3}
+  StartRoom: {fileID: 115344067534038968, guid: b8943f1ffa7ee7c4a81c63e8ba45061a, type: 3}
   player: {fileID: 7343044535872448894, guid: d631289180af92a4a8f9a944857fe649, type: 3}
   main_camera: {fileID: 2546796388507589381, guid: 25b33d52717917246ae12d9ba0c2a616, type: 3}
   light: {fileID: 378881154124500644, guid: 4b16dc8232a79944ca9468cb37a882a3, type: 3}
   simple_enemy: {fileID: 7036053768460775697, guid: 21fcadffddd3b194b9ad6f2b875757e6, type: 3}
   chest: {fileID: 2754667139826174344, guid: 13027a4801754b842a5803ff0c53895b, type: 3}
   player_screen: {fileID: 2060005839839352433, guid: f634c557129aefa4c83cb79d35aa49d2, type: 3}
+  tooltip: {fileID: 0}
 --- !u!4 &564019354
 Transform:
   m_ObjectHideFlags: 0

@@ -28,6 +28,8 @@ public class RoomController : MonoBehaviour
     List<Transform> stands = new List<Transform>();
     Transform[] standsArray;
 
+    List<string> StageTags = new List<string>() {"StartRoom", "Stage_1_Room", "Stage_2_Room", "Stage_3_Room", "FinishRoom"};
+
     private bool DoorIsOpen = false;
 
     void Start()
@@ -68,6 +70,27 @@ public class RoomController : MonoBehaviour
             try
             {
                 InDoor.transform.position = Vector3.Lerp(InDoor.transform.position, InDoorPositionNew, Time.deltaTime * 5f);
+            }
+            catch { }
+            try
+            {
+                int i = 0;
+                GameObject[] StandsOnScene = GameObject.FindGameObjectsWithTag("RoomStand");
+                while(i < StageTags.Count)
+                {
+                    if (StageTags[i] == MyTag)
+                    {
+                        GameObject PreviousRoom = GameObject.FindGameObjectWithTag(StageTags[i - 1]);
+                        Destroy(PreviousRoom);
+                    }
+                    if (StandsOnScene[i].transform.position.z < gameObject.transform.position.z)
+                    {
+                        Destroy(StandsOnScene[i]);
+                    }
+                    i++;
+                }
+                
+
             }
             catch { }
         }
@@ -174,6 +197,11 @@ public class RoomController : MonoBehaviour
         Quaternion spawnRotation = Quaternion.identity;
 
         Instantiate(room, spawnPosition, spawnRotation);
+    }
+
+    void FindPreviousRoom(string tag)
+    {
+
     }
 
     public void SetTriggerName(string TriggerName)
