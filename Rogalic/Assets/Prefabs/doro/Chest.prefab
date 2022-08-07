@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2754667139826174344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -112,4 +112,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3
   player_coordinates: {fileID: 0}
-  item: {fileID: 11400000, guid: 37bddb69a1f2b2e408257b612b055e9c, type: 2}
+  item: {fileID: 8637524902280000443, guid: 7b85a1ede1278396c901a47f6f174bde, type: 3}
+  icon: {fileID: 21300000, guid: 6100dcbbe33a02940a9940c7413c1986, type: 3}
+  tooltip: {fileID: 4848206261288463084, guid: 24e914e44f573a04aa8e0a7667000530, type: 3}

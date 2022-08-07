@@ -102,7 +102,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2307823531147753898}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.69}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
@@ -110,7 +110,7 @@ RectTransform:
   - {fileID: 187415034331964939}
   m_Father: {fileID: 8037751085874933568}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 1.75}
@@ -189,8 +189,8 @@ GameObject:
   - component: {fileID: 1272601601833125501}
   - component: {fileID: 2324292422778724099}
   - component: {fileID: 984546358151780564}
-  - component: {fileID: 7654473444382252745}
   - component: {fileID: 2932352810434964394}
+  - component: {fileID: 7175643329710024217}
   m_Layer: 0
   m_Name: Temp Enemy
   m_TagString: Untagged
@@ -277,24 +277,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7654473444382252745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2354656150475187748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbaaf1279ea8c5249aa076a89c28946d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
-  maxMana: 200
-  currentMana: 200
-  moveSpeed: 10
-  Gravity: -9.81
 --- !u!143 &2932352810434964394
 CharacterController:
   m_ObjectHideFlags: 0
@@ -313,6 +295,25 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7175643329710024217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2354656150475187748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbaaf1279ea8c5249aa076a89c28946d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
+  maxMana: 200
+  currentMana: 200
+  moveSpeed: 10
+  Gravity: -9.81
+  characterController: {fileID: 0}
 --- !u!1 &4584925390817088552
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,6 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7719f6580a1b18743af1b30e36d734c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  my_camera: {fileID: 0}
 --- !u!1 &7036053768460775697
 GameObject:
   m_ObjectHideFlags: 0

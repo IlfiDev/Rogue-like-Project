@@ -1,16 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Interactible : MonoBehaviour
 {
     [SerializeField] private float radius = 3f;
     [SerializeField] private Transform player_coordinates;
-    [SerializeField] private Item item;
+
+    [SerializeField] private GameObject item;
+    [SerializeField] private Sprite icon;
+
+    [SerializeField] private GameObject tooltip;
+
+    private GameObject temp_tooltip;
+    private Itemtooltip itemtooltip;
 
     private void Start()
     {
         player_coordinates = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+        item = gameObject;
+
+        Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y + 5f, transform.position.z);
+        Quaternion spawnRotation = Quaternion.identity;
+
+        temp_tooltip = Instantiate(tooltip, spawnPosition, spawnRotation);
+        temp_tooltip.transform.SetParent(transform);
+
+        itemtooltip = temp_tooltip.GetComponentInChildren<Itemtooltip>();
     }
 
     private void FixedUpdate()
@@ -18,7 +36,10 @@ public class Interactible : MonoBehaviour
         float distance = Vector3.Distance(player_coordinates.position, transform.position);
         if (distance <= radius)
         {
-            PickUp();
+            if(Input.GetKey(KeyCode.E))
+            {
+                PickUp();
+            }
         }
     }
 
@@ -31,11 +52,12 @@ public class Interactible : MonoBehaviour
     private void PickUp()
     {
         Inventory inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
-        bool isPickedUp = inventory.addItem(item);
+        bool isPickedUp = inventory.addItem(item, icon);
 
         if(isPickedUp)
         {
-            Destroy(gameObject);
+            itemtooltip.Hide();
+            GetComponent<Interactible>().enabled = false;
         }
     }
 }

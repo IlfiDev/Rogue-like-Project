@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
-    public Item item;
+    public GameObject item;
     public Image icon;
     public Button itemButton;
 
     public InventoryUI inventoryUI;
 
-    public void AddItem(Item newItem)
+    public void AddItem(GameObject newItem, Sprite item_icon)
     {
         //Debug.Log("You add item");
 
         item = newItem;
-        icon.sprite = item.icon;
+        icon.sprite = item_icon;
         icon.enabled = true;
 
     }

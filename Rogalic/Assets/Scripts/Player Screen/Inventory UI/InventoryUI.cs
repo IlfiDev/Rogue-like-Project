@@ -69,7 +69,7 @@ public class InventoryUI : MonoBehaviour
         {
             //Call the method in Player Script, that will drop the item on the ground
 
-            inventory.removeItem(slots[what_slot_active].item);
+            inventory.removeItem(slots[what_slot_active].item, slots[what_slot_active].icon.sprite);
 
             //newGameController.SpawnChest();
 
@@ -115,7 +115,7 @@ public class InventoryUI : MonoBehaviour
         {
             if(i < inventory.items.Count)
             {
-                slots[i].AddItem(inventory.items[i]);
+                slots[i].AddItem(inventory.items[i], inventory.icons[i]);
             } else
             {
                 slots[i].RemoveItem();
