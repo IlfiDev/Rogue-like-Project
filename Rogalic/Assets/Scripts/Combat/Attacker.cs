@@ -41,6 +41,7 @@ public class Attacker : MonoBehaviour
 		if (weapon == null){
 			_weapons[index].transform.parent = null;
 			_weapons[index] = Instantiate(_defaultWeapon, _weaponPoint.position, _weaponPoint.rotation);
+			_weapons[index].transform.parent = transform;
 		}
 		else{
 			if (_weapons[index].transform.tag == "Fists"){
