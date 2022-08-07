@@ -38,7 +38,7 @@ public class BulletBehaviour : MonoBehaviour, IKnockable
     //     transform.position += shootDir * moveSpeed * Time.deltaTime;
     // }
     void OnTriggerEnter(Collider other){
-        if(other.tag != "Bullet"){
+        if(other.tag != "Bullet" && other.tag != "FloorTrigger"){
             if(other.TryGetComponent(out IDamagable damagable)){
             damagable.TakeDamage(_damage);
             
