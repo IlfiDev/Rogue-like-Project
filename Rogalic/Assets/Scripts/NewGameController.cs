@@ -63,7 +63,8 @@ public class NewGameController : MonoBehaviour
 
     void SpawnCamera()
     {
-        Vector3 spawnPosition = new Vector3(playerSpawnPoint.transform.position.x, 1f, playerSpawnPoint.transform.position.z);
+        GameObject TruePlayer = GameObject.FindGameObjectWithTag("Player");
+        Vector3 spawnPosition = new Vector3(TruePlayer.transform.position.x, TruePlayer.transform.position.y, TruePlayer.transform.position.z);
         Quaternion spawnRotation = Quaternion.identity;
 
         Instantiate(main_camera, spawnPosition, spawnRotation);

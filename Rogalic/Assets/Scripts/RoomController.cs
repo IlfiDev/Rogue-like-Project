@@ -88,8 +88,6 @@ public class RoomController : MonoBehaviour
                     }
                     i++;
                 }
-                
-
             }
             catch { }
         }
@@ -200,11 +198,6 @@ public class RoomController : MonoBehaviour
         Quaternion spawnRotation = Quaternion.identity;
 
         Instantiate(room, spawnPosition, spawnRotation);
-    }
-
-    void FindPreviousRoom(string tag)
-    {
-
     }
 
     public void SetTriggerName(string TriggerName)

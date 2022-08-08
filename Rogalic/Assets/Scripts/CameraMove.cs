@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    Transform player;
-    Vector3 defaul_position = new Vector3(-0.16f, 30.3f, -5.5f);
-
-    private void Awake()
-    {
-    }
+    private Transform player;
+    private Vector3 PlayerPosition;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        Vector3 new_cam_position = new Vector3(defaul_position.x + player.position.x, defaul_position.y + player.position.y,
-            defaul_position.z + player.position.z);
-        transform.position = new_cam_position;
+        PlayerPosition = new Vector3(player.position.x, player.position.y + 30, player.position.z - 10);
+        gameObject.GetComponentInChildren<Transform>().LookAt(player);
+        if(Mathf.Abs(player.position.z - gameObject.transform.position.z) > 1f || Mathf.Abs(player.position.x - gameObject.transform.position.x) > 2f)
+        {
+            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, PlayerPosition, Time.deltaTime * 7f);
+        }
+
     }
 }

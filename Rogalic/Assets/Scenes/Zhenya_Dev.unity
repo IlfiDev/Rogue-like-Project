@@ -174,4 +174,4 @@ MonoBehaviour:
   simple_enemy: {fileID: 7036053768460775697, guid: 21fcadffddd3b194b9ad6f2b875757e6, type: 3}
   chest: {fileID: 2754667139826174344, guid: 13027a4801754b842a5803ff0c53895b, type: 3}
   player_screen: {fileID: 2060005839839352433, guid: f634c557129aefa4c83cb79d35aa49d2, type: 3}
-  tooltip: {fileID: 0}
+  tooltip: {fileID: 5359735667608118104, guid: 98b16815ba4f03f4ba3588bd97c18d1b, type: 3}
