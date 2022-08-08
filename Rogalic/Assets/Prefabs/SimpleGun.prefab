@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3225507498030711879}
   - component: {fileID: -4771601541367331765}
+  - component: {fileID: 7955860973278110522}
   m_Layer: 0
   m_Name: SimpleGun
   m_TagString: Weapon
@@ -137,6 +138,24 @@ MonoBehaviour:
   Knockback: 0.1
   shootingPoint: {fileID: 3225507498039630484}
   projectile: {fileID: 3540083283258943794, guid: 02ee2a659e809a1ccb0d554b36d9f37a, type: 3}
+  ProjectileSize: 0.43
+--- !u!114 &7955860973278110522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3225507498030711872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79dba2258d85c304e88875d19cbaaf28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 3
+  player_coordinates: {fileID: 0}
+  item: {fileID: 3225507498030711872}
+  icon: {fileID: 21300000, guid: 6100dcbbe33a02940a9940c7413c1986, type: 3}
+  tooltip: {fileID: 4848206261288463084, guid: 24e914e44f573a04aa8e0a7667000530, type: 3}
 --- !u!1 &3225507498039630485
 GameObject:
   m_ObjectHideFlags: 0
