@@ -5,22 +5,42 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     private Transform player;
-    private Vector3 PlayerPosition;
+    private Transform camera;
 
+    private float distanceFromMouse;
+    private float distanceFromPlayer;
+
+    private bool moveSwitcher = false;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        
+        camera = gameObject.GetComponentInChildren<Camera>().GetComponent<Transform>();
+        camera.LookAt(player);
     }
 
-    void FixedUpdate()
+    private void Update()
     {
-        PlayerPosition = new Vector3(player.position.x, player.position.y + 30, player.position.z - 10);
-        gameObject.GetComponentInChildren<Transform>().LookAt(player);
-        if(Mathf.Abs(player.position.z - gameObject.transform.position.z) > 1f || Mathf.Abs(player.position.x - gameObject.transform.position.x) > 2f)
+        Plane playerPlane = new Plane(Vector3.up, player.transform.position);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        float hitdist;
+        if (playerPlane.Raycast(ray, out hitdist))
         {
-            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, PlayerPosition, Time.deltaTime * 7f);
-        }
+            Vector3 targetpoint = ray.GetPoint(hitdist);
+            distanceFromMouse = Vector3.Distance(player.position, targetpoint);
+            //try
+            //{
+            //    if (Vector3.Distance(camera.position, transform.position) < 35f)
+            //    {
+            //        camera.position = Vector3.Lerp(camera.position, targetpoint, Time.deltaTime * 7f);
+            //    }
+            //    else
+            //    {
 
+            //    }
+            //}
+            //catch { }
+        }
+        distanceFromPlayer = Vector3.Distance(transform.position, player.position);
+        transform.position = Vector3.Lerp(transform.position, player.position, Time.deltaTime * 7f);
     }
 }
