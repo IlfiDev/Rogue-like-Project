@@ -31,7 +31,7 @@ public class RoomController : MonoBehaviour
     List<string> StageTags = new List<string>() {"StartRoom", "Stage_1_Room", "Stage_2_Room", "Stage_3_Room", "FinishRoom"};
 
     private bool DoorIsOpen = false;
-    private bool RoomIsComplited = false;
+    private bool RoomIsComplited = true;
 
     void Start()
     {
