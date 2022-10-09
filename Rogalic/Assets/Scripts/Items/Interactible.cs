@@ -15,6 +15,7 @@ public class Interactible : MonoBehaviour
 
     private GameObject temp_tooltip;
     private Itemtooltip itemtooltip;
+    private bool showBool = false;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class Interactible : MonoBehaviour
         temp_tooltip.transform.SetParent(transform);
 
         itemtooltip = temp_tooltip.GetComponentInChildren<Itemtooltip>();
+        //itemtooltip.Show();
     }
 
     private void FixedUpdate()
@@ -36,16 +38,29 @@ public class Interactible : MonoBehaviour
         float distance = Vector3.Distance(player_coordinates.position, transform.position);
         if (distance <= radius)
         {
+            if(!showBool)
+            {
+                showBool = true;
+                itemtooltip.Show();
+            }
+   
             if(Input.GetKey(KeyCode.E))
             {
                 PickUp();
+            }
+        } else
+        {
+            if (showBool)
+            {
+                showBool = false;
+                itemtooltip.Hide();
             }
         }
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 

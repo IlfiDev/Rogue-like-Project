@@ -69,11 +69,11 @@ public class InventoryUI : MonoBehaviour
         {
             //Call the method in Player Script, that will drop the item on the ground
 
+            
             inventory.removeItem(slots[what_slot_active].item, slots[what_slot_active].icon.sprite);
 
             //newGameController.SpawnChest();
 
-            Debug.Log("Fuck");
         }
 
         if(Input.GetAxisRaw("Mouse ScrollWheel") > 0f) 

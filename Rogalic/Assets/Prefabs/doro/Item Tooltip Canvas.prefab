@@ -286,7 +286,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3447766710661867836}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -305,6 +305,7 @@ MonoBehaviour:
   title_text: {fileID: 3875987095445321577}
   content_text: {fileID: 6443027159086403037}
   my_camera: {fileID: 0}
+  my_group: {fileID: 0}
 --- !u!1 &4692839308450153885
 GameObject:
   m_ObjectHideFlags: 0

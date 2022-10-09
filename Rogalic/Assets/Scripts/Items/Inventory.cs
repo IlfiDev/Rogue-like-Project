@@ -19,7 +19,6 @@ public class Inventory : MonoBehaviour
         attacker = GameObject.FindGameObjectWithTag("Player").GetComponent<Attacker>();
     }
 
-    //Отправляем список с предметами Илюхе
     public bool addItem(GameObject item, Sprite icon)
     {
         if(items.Count < amountSlots)
@@ -39,12 +38,13 @@ public class Inventory : MonoBehaviour
         } else return false;
     }
 
-    //Отправляем список с предметами Илюхе
     public bool removeItem(GameObject item, Sprite icon)
     {
+        
         attacker.UpdateWeapon(items.IndexOf(item), null);
+        
         item.GetComponent<Interactible>().enabled = true;
-        item.GetComponent<Itemtooltip>().Show();
+
         icons.Remove(icon);
         items.Remove(item);
 
