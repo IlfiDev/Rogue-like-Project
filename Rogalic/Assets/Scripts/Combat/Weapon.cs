@@ -31,6 +31,7 @@ public class Weapon : MonoBehaviour, IAttack
 		return;
 	}
 
+
    protected void checkCooldown(){
 		if(timeStamp <= Time.time){
 			canAttack = true;

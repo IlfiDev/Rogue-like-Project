@@ -13,10 +13,9 @@ public class Attacker : MonoBehaviour
 	[SerializeField] private List<GameObject> _weapons = new List<GameObject>();
     private List<GameObject> _projectiles = new List<GameObject>();
 	[SerializeField] private GameObject _defaultWeapon;
-	private int _slotIndex = 1;
+	private int _slotIndex = 0;
     private void Start(){
 		for(int i = 0; i < 3; i++){
-
 			_weapons.Add(_defaultWeapon);
 			_weapons[i] = Instantiate(_weapons[i], _weaponPoint.position, _weaponPoint.rotation);
 			_weapons[i].transform.parent = _weaponPoint.parent;
@@ -59,7 +58,9 @@ public class Attacker : MonoBehaviour
 			_weapons[index].transform.position = _weaponPoint.position;
 			_weapons[index].transform.rotation = _weaponPoint.rotation;
 		}
-		if (index == _slotIndex){
+        Debug.Log(index);
+        Debug.Log(_slotIndex);
+		if (index  == _slotIndex){
 			_currentWeapon = _weapons[index];
 		}
 		_weapons[index].transform.parent = _weaponPoint.parent;

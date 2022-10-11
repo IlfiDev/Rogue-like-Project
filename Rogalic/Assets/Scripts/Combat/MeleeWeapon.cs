@@ -12,7 +12,6 @@ public abstract class MeleeWeapon : Weapon
    public float KnockbackPower;
    [Space(10)]
    [SerializeField] protected LayerMask layer;
-
    protected void checkCooldown(){
 		if(timeStamp <= Time.time){
 			canAttack = true;
