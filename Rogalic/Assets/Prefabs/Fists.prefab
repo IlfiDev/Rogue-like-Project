@@ -96,13 +96,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff4159a83e631d49bf8b8950a5ce952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
-  _cooldownTime: 0.3
-  _radius: 1
-  attackArea: {fileID: 0}
-  canDeflectProjectiles: 0
-  canDestroyProjectiles: 0
-  _layer:
+  CooldownTime: 0.3
+  Scatter: 0
+  NumberOfAttacks: 1
+  StartupTime: 0
+  Damage: 10
+  Knockback: 0.1
+  shootingPoint: {fileID: 0}
+  radius: 1
+  AttackArea: {fileID: 0}
+  CanDeflectProjectiles: 0
+  CanDestroyProjectiles: 0
+  KnockbackPower: 0
+  layer:
     serializedVersion: 2
     m_Bits: 0
-  _knockbackPower: 1

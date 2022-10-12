@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
         Gravity = player_info.getGravity();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         SecondGoodMoveVersion();
     }

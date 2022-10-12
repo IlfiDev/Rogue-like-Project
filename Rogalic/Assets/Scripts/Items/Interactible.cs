@@ -30,7 +30,6 @@ public class Interactible : MonoBehaviour
         temp_tooltip.transform.SetParent(transform);
 
         itemtooltip = temp_tooltip.GetComponentInChildren<Itemtooltip>();
-        //itemtooltip.Show();
     }
 
     private void FixedUpdate()
@@ -41,7 +40,7 @@ public class Interactible : MonoBehaviour
             if(!showBool)
             {
                 showBool = true;
-                itemtooltip.Show();
+                itemtooltip.ShowAnim();
             }
    
             if(Input.GetKey(KeyCode.E))
@@ -53,7 +52,7 @@ public class Interactible : MonoBehaviour
             if (showBool)
             {
                 showBool = false;
-                itemtooltip.Hide();
+                itemtooltip.HideAnim();
             }
         }
     }
@@ -66,13 +65,16 @@ public class Interactible : MonoBehaviour
 
     private void PickUp()
     {
+        itemtooltip.Hide();
         Inventory inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         bool isPickedUp = inventory.addItem(item, icon);
 
-        if(isPickedUp)
+        if (isPickedUp)
         {
-            itemtooltip.Hide();
             GetComponent<Interactible>().enabled = false;
+        } else
+        {
+            itemtooltip.Show();
         }
     }
 }

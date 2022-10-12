@@ -11,7 +11,6 @@ public class Itemtooltip : MonoBehaviour
     [SerializeField] Camera my_camera;
     [SerializeField] CanvasGroup my_group;
 
-    private bool lookAt = false;
     private bool fadeIn = false;
     private Coroutine coroutine = null;
 
@@ -27,20 +26,13 @@ public class Itemtooltip : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (lookAt)
-        {
-            transform.LookAt(transform.position + my_camera.transform.rotation * Vector3.back, my_camera.transform.rotation * Vector3.up);
-        }
-
-        if(lookAt)
-        {
-            transform.LookAt(transform.position + my_camera.transform.rotation * Vector3.back, my_camera.transform.rotation * Vector3.up);
-        }
-
+        transform.LookAt(transform.position + my_camera.transform.rotation * Vector3.back, my_camera.transform.rotation * Vector3.up);
     }
 
-    public void Show()
+    public void ShowAnim()
     {
+        if (my_group.alpha == 1) return;
+
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
@@ -48,12 +40,26 @@ public class Itemtooltip : MonoBehaviour
 
         fadeIn = true;
         coroutine = StartCoroutine(FadeAnim());
-
-        lookAt = true;
     }
 
-    public void Hide()
+    public void Show()
     {
+        if (my_group.alpha == 1) return;
+
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+        coroutine = null;
+
+        my_group.alpha = 1;
+    }
+
+    public void HideAnim()
+    {
+        if (my_group.alpha == 0) return;
+
+
         if (coroutine != null)
         {
             StopCoroutine(coroutine);
@@ -61,8 +67,19 @@ public class Itemtooltip : MonoBehaviour
 
         fadeIn = false;
         coroutine = StartCoroutine(FadeAnim());
+    }
 
-        lookAt = false;
+    public void Hide()
+    {
+        if (my_group.alpha == 0) return;
+
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+        coroutine = null;
+
+        my_group.alpha = 0;
     }
 
     IEnumerator FadeAnim()
@@ -70,7 +87,7 @@ public class Itemtooltip : MonoBehaviour
         if(fadeIn)
         {
 
-            for(float i = 0; i <= 1; i += Time.deltaTime)
+            for(float i = 0; i <= 0.25f; i += Time.deltaTime)
             {
                 my_group.alpha = i;
 
@@ -81,10 +98,10 @@ public class Itemtooltip : MonoBehaviour
         } else
         {
 
-            for(float i = 1; i >= 0; i -= Time.deltaTime)
+            for(float i = 0.25f; i >= 0; i -= Time.deltaTime)
             {
                 my_group.alpha = i;
-
+                
                 yield return null;
             }
             my_group.alpha = 0;
