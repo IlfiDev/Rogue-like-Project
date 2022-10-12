@@ -20,14 +20,23 @@ public class Player : Unit, IDamagable
         manaBar.SetMaxMana(getMaxMana());
     }
 
-    void FixedUpdate()
+    void Update()
     {
-
         if(Input.GetKeyDown(KeyCode.Space))
         {
             TakeDamage(20);
         }
-
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            Plane playerPlane = new Plane(Vector3.up, transform.position);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            float hitdist;
+            if (playerPlane.Raycast(ray, out hitdist))
+            {
+                Vector3 targetpoint = ray.GetPoint(hitdist);
+                blink(targetpoint);
+            }
+        }
     }
 
     public void ManaDamage(int mana_damge)
@@ -64,6 +73,14 @@ public class Player : Unit, IDamagable
         {
             setCurrentHealth(temp_health);
             healthBar.SetHealth(temp_health);
+        }
+    }
+
+    public void blink(Vector3 targetPosition)
+    {
+        if(Vector3.Distance(gameObject.transform.position, targetPosition) < 50f)
+        {
+            gameObject.transform.position = targetPosition;
         }
     }
 }
