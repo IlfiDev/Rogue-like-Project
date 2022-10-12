@@ -213,6 +213,10 @@ MonoBehaviour:
   shootingPoint: {fileID: 0}
   projectile: {fileID: 0}
   ProjectileSize: 0.43
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _rayObject: {fileID: 0}
 --- !u!4 &1626919165
 Transform:
   m_ObjectHideFlags: 0
@@ -325,7 +329,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1860410935
 MonoBehaviour:
@@ -361,7 +365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2747757848105701110, guid: cc9e6c5ccbf0835cfa5c942aeac16e1c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2747757848105701110, guid: cc9e6c5ccbf0835cfa5c942aeac16e1c, type: 3}
       propertyPath: m_LocalPosition.x
