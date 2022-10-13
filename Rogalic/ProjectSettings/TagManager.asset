@@ -28,6 +28,7 @@ TagManager:
   - Stage_1_Room
   - Stage_2_Room
   - Stage_3_Room
+  - RoomStand
   layers:
   - Default
   - TransparentFX

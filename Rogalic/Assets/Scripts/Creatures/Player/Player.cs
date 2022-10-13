@@ -76,7 +76,7 @@ public class Player : Unit, IDamagable
         }
     }
 
-    public void blink(Vector3 targetPosition)
+    private void blink(Vector3 targetPosition)
     {
         if(Vector3.Distance(gameObject.transform.position, targetPosition) < 20f)
         {
