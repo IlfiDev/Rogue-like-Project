@@ -37,6 +37,10 @@ public class Player : Unit, IDamagable
                 blink(targetpoint);
             }
         }
+        if (gameObject.transform.position.y < -50f)
+        {
+            Death();
+        }
     }
 
     public void ManaDamage(int mana_damge)
@@ -58,7 +62,7 @@ public class Player : Unit, IDamagable
         manaBar.SetMana(temp_max_mana);
 
         NewGameController gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<NewGameController>();
-        //gameController.RespawnPlayer();
+        gameController.RespawnPlayer();
     }
 
     public void TakeDamage(float damage)
@@ -84,10 +88,7 @@ public class Player : Unit, IDamagable
         }
         else
         {
-            //float x = (targetPosition.x - gameObject.transform.position.x) / 2;
-            //float z = (targetPosition.z - gameObject.transform.position.z) / 2;
-            //Vector3 vector = new Vector3(gameObject.transform.position.x + x, targetPosition.y, gameObject.transform.position.z + z);
-            //gameObject.transform.position = vector;
+            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, targetPosition, 20f);
         }
     }
 }

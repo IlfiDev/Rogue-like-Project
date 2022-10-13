@@ -35,7 +35,7 @@ public class NewGameController : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     void SpawnLight()
@@ -73,7 +73,8 @@ public class NewGameController : MonoBehaviour
     public void RespawnPlayer()
     {
         Debug.Log("Respawn player");
-        Vector3 spawnPosition = new Vector3(0f, 1f, 0f);
+        playerSpawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawnPoint");
+        Vector3 spawnPosition = playerSpawnPoint.transform.position;
         Quaternion spawnRotation = Quaternion.identity;
 
         GameObject temp_player = GameObject.FindGameObjectWithTag("Player");

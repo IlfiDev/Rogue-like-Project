@@ -596,7 +596,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltipTrigger: {fileID: 0}
-  Hello: 0
 --- !u!1 &2060005840874290570
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,6 +959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716dbd0d9a487704fbb608f822474b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tooltipTrigger: {fileID: 0}
 --- !u!1001 &2060005840857944063
 PrefabInstance:
   m_ObjectHideFlags: 0
