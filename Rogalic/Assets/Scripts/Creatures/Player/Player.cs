@@ -7,6 +7,7 @@ public class Player : Unit, IDamagable
     PlayerMovement playerMovement;
     HealthBar healthBar;
     ManaBar manaBar;
+    private MeshRenderer blinkRadius = null;
 
     private void Start()
     {
@@ -18,6 +19,16 @@ public class Player : Unit, IDamagable
 
         manaBar = GameObject.FindGameObjectWithTag("Mana bar").GetComponent<ManaBar>();
         manaBar.SetMaxMana(getMaxMana());
+
+        MeshRenderer[] meshObjects = gameObject.GetComponentsInChildren<MeshRenderer>();
+        
+        foreach (MeshRenderer meshRenderer in meshObjects)
+        {
+            if (meshRenderer.name == "Cylinder")
+            {
+                blinkRadius = meshRenderer;
+            }
+        }
     }
 
     void Update()
@@ -36,6 +47,14 @@ public class Player : Unit, IDamagable
                 Vector3 targetpoint = ray.GetPoint(hitdist);
                 blink(targetpoint);
             }
+        }
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            blinkRadius.enabled = true;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftAlt))
+        {
+            blinkRadius.enabled = false;
         }
         if (gameObject.transform.position.y < -50f)
         {

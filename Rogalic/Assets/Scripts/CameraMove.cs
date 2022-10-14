@@ -11,18 +11,19 @@ public class CameraMove : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         camera = gameObject.GetComponentInChildren<Camera>().GetComponent<Transform>();
-        camera.LookAt(player);
+        //camera.LookAt(player);
     }
 
     private void Update()
-    {
+    {   
         Plane playerPlane = new Plane(Vector3.up, transform.position);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         float hitdist;
         if (playerPlane.Raycast(ray, out hitdist))
         {
             Vector3 targetpoint = ray.GetPoint(hitdist);
-            if (Vector3.Distance(player.position, targetpoint) < 5f)
+            
+            if (Vector3.Distance(player.position, targetpoint) < 3f)
             {
                 gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, targetpoint, 5f * Time.deltaTime);
             }
