@@ -7,10 +7,6 @@ public class CameraMove : MonoBehaviour
     private Transform player;
     private Transform camera;
 
-    private float distanceFromMouse;
-    private float distanceFromPlayer;
-
-    private bool moveSwitcher = false;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -20,27 +16,20 @@ public class CameraMove : MonoBehaviour
 
     private void Update()
     {
-        Plane playerPlane = new Plane(Vector3.up, player.transform.position);
+        Plane playerPlane = new Plane(Vector3.up, transform.position);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         float hitdist;
         if (playerPlane.Raycast(ray, out hitdist))
         {
             Vector3 targetpoint = ray.GetPoint(hitdist);
-            distanceFromMouse = Vector3.Distance(player.position, targetpoint);
-            //try
-            //{
-            //    if (Vector3.Distance(camera.position, transform.position) < 35f)
-            //    {
-            //        camera.position = Vector3.Lerp(camera.position, targetpoint, Time.deltaTime * 7f);
-            //    }
-            //    else
-            //    {
-
-            //    }
-            //}
-            //catch { }
+            if (Vector3.Distance(player.position, targetpoint) < 5f)
+            {
+                gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, targetpoint, 5f * Time.deltaTime);
+            }
+            else
+            {
+                gameObject.transform.position = Vector3.Lerp(gameObject.transform.position,Vector3.MoveTowards(player.position, targetpoint, 3f), 5f * Time.deltaTime);
+            }
         }
-        distanceFromPlayer = Vector3.Distance(transform.position, player.position);
-        transform.position = Vector3.Lerp(transform.position, player.position, Time.deltaTime * 7f);
     }
 }
