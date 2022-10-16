@@ -14,7 +14,7 @@ public class RayGun : Gun, IAttack
 		checkCooldown(); 
     }
 
-    public void Attack(float damageMultiplier, Vector3 target){
+    public void PrimaryAttack(float damageMultiplier, Vector3 target){
         Ray ray = new Ray(shootingPoint.position, transform.forward);
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit, 100f, _layerMask, QueryTriggerInteraction.Ignore)){

@@ -12,11 +12,11 @@ public class Inventory : MonoBehaviour
     public delegate void ItemsChanged();
     public ItemsChanged itemsChanged;
 
-    Attacker attacker;
+    WeaponSwitcher switcher;
 
     private void Start()
     {
-        attacker = GameObject.FindGameObjectWithTag("Player").GetComponent<Attacker>();
+        switcher = GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponSwitcher>();
     }
 
     public bool addItem(GameObject item, Sprite icon)
@@ -26,7 +26,7 @@ public class Inventory : MonoBehaviour
 
             items.Add(item);
             icons.Add(icon);
-            attacker.UpdateWeapon(items.IndexOf(item), item.gameObject);
+            switcher.UpdateWeapon(items.IndexOf(item), item.gameObject);
 
             if(itemsChanged != null)
                 itemsChanged.Invoke();
@@ -41,7 +41,7 @@ public class Inventory : MonoBehaviour
     public bool removeItem(GameObject item, Sprite icon)
     {
         
-        attacker.UpdateWeapon(items.IndexOf(item), null);
+        switcher.UpdateWeapon(items.IndexOf(item), null);
         
         item.GetComponent<Interactible>().enabled = true;
 

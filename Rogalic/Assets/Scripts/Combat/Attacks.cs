@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public interface IAttack{
-    public void Attack(float damageMultiplier, Vector3 target);
+    public void PrimaryAttack(float damageMultiplier, Vector3 target);
+    public void SecondaryAttack(float damageMultiplier, Vector3 target);
 }
 
 public interface IReload{

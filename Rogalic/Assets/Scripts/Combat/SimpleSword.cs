@@ -11,7 +11,7 @@ public class SimpleSword : MeleeWeapon
 		checkCooldown();
 	}
     
-	public override void Attack(float damageMultiplier, Vector3 target){
+	public override void PrimaryAttack(float damageMultiplier, Vector3 target){
 		if (canAttack){
 			this.target = target;
 		    Transform shootingPoint = gameObject.GetComponent<Transform>();

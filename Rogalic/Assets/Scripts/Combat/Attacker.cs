@@ -82,14 +82,11 @@ public class Attacker : MonoBehaviour
         if(!isPlayer){ 
 
             _target = GameObject.FindGameObjectWithTag("Player");
-            Attack(_target.transform.position - _weaponPoint.position); 
+            Attack(_target.transform.position - _weaponPoint.position);
         }
     }
 
     public void Attack(Vector3 target){
-        if(_currentWeapon.TryGetComponent(out IAttack attack)){
-            attack.Attack(1f, target);
-            
-        }
+        return;
     }
 }

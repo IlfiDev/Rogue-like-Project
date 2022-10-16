@@ -6,17 +6,20 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private Transform ParentOfSlots;
     private Inventory inventory;
-    private Attacker attacker;
+    private WeaponSwitcher switcher;
     private NewGameController newGameController;
 
     InventorySlot[] slots;
     int what_slot_active = 0;
     Player player;
+    void Awake(){
 
+    }
     void Start()
     {
-        attacker = GameObject.FindGameObjectWithTag("Player").GetComponent<Attacker>();
-        inventory = attacker.GetComponent<Inventory>();
+        
+        switcher = GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponSwitcher>();
+        inventory = switcher.GetComponent<Inventory>();
         player = inventory.GetComponent<Player>();
 
         inventory.itemsChanged += UpdateUI;
@@ -37,7 +40,7 @@ public class InventoryUI : MonoBehaviour
                 slots[0].SlotButtonPress();
                 slots[what_slot_active].SlotButtonUnPressed();
                 what_slot_active = 0;
-                attacker.SwitchWeapon(0);
+                switcher.SwitchWeapon(0);
             }
         }
 
@@ -49,7 +52,7 @@ public class InventoryUI : MonoBehaviour
                 slots[1].SlotButtonPress();
                 slots[what_slot_active].SlotButtonUnPressed();
                 what_slot_active = 1;
-                attacker.SwitchWeapon(1);
+                switcher.SwitchWeapon(1);
             }
         }
 
@@ -61,7 +64,7 @@ public class InventoryUI : MonoBehaviour
                 slots[2].SlotButtonPress();
                 slots[what_slot_active].SlotButtonUnPressed();
                 what_slot_active = 2;
-                attacker.SwitchWeapon(2);
+                switcher.SwitchWeapon(2);
             }
         }
 
@@ -89,7 +92,7 @@ public class InventoryUI : MonoBehaviour
             }
 
             slots[what_slot_active].SlotButtonPress();
-            attacker.SwitchWeapon(what_slot_active);
+            switcher.SwitchWeapon(what_slot_active);
         }
 
         if(Input.GetAxis("Mouse ScrollWheel") < 0f)
@@ -105,7 +108,7 @@ public class InventoryUI : MonoBehaviour
             }
 
             slots[what_slot_active].SlotButtonPress();
-            attacker.SwitchWeapon(what_slot_active);
+            switcher.SwitchWeapon(what_slot_active);
         }
     }
 
@@ -130,7 +133,7 @@ public class InventoryUI : MonoBehaviour
             if (slots[i].name == str)
             {
                 slots[i].SlotButtonPress();
-                attacker.SwitchWeapon(i);
+                switcher.SwitchWeapon(i);
                 slots[what_slot_active].SlotButtonUnPressed();
                 what_slot_active = i;
                 return;

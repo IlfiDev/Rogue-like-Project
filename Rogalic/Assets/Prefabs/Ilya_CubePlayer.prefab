@@ -157,7 +157,8 @@ GameObject:
   - component: {fileID: 4197936873883915607}
   - component: {fileID: 4197936873883915605}
   - component: {fileID: 4687766698007398027}
-  - component: {fileID: -6197241520310322536}
+  - component: {fileID: -2282308041005983315}
+  - component: {fileID: 1682990883313654878}
   m_Layer: 0
   m_Name: Ilya_CubePlayer
   m_TagString: Player
@@ -280,7 +281,7 @@ MonoBehaviour:
   currentMana: 200
   moveSpeed: 10
   Gravity: -9.81
---- !u!114 &-6197241520310322536
+--- !u!114 &-2282308041005983315
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,12 +290,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 7343044535872448894}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c538f05c18b64162b3e36b4c4c9c7f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 01accd9d9e585851f84d37c4e5e1df55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultWeapon: {fileID: 6178781514430296132, guid: 8c0fb396a2a0f5840bf9fd50b75b2774, type: 3}
+  _weapons: []
+  _weaponPoint: {fileID: 4197936874088068993}
+--- !u!114 &1682990883313654878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7343044535872448894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af79d48e938c96115a17483db16a76b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponPoint: {fileID: 4197936874088068993}
   _target: {fileID: 0}
   _currentWeapon: {fileID: 0}
   isPlayer: 1
-  _weapons: []
-  _defaultWeapon: {fileID: 6178781514430296132, guid: 8c0fb396a2a0f5840bf9fd50b75b2774, type: 3}

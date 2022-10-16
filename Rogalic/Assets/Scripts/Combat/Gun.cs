@@ -13,7 +13,7 @@ public  class Gun : Weapon, IAttack
 		checkCooldown();
 		
 	}
-	public virtual void Attack(float damageMultiplier, Vector3 target){
+	public virtual void PrimaryAttack(float damageMultiplier, Vector3 target){
         shootingPoint = gameObject.GetComponent<Transform>();
         if (canAttack){
             

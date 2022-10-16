@@ -27,10 +27,13 @@ public class Weapon : MonoBehaviour, IAttack
     protected bool canAttack = true;
 	
 	protected Vector3 target;
-	public virtual void Attack(float damageMultiplier, Vector3 target){
+	public virtual void PrimaryAttack(float damageMultiplier, Vector3 target){
 		return;
 	}
 
+    public virtual void SecondaryAttack(float damageMultiplier, Vector3 target){
+        return;
+    }
 
    protected void checkCooldown(){
 		if(timeStamp <= Time.time){
