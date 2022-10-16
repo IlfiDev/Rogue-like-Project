@@ -48,7 +48,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951597320441938472}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 4197936874088068993}
   m_Layer: 0
   m_Name: shootPoint
-  m_TagString: Untagged
+  m_TagString: WeaponPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 4197936873883915607}
   - component: {fileID: 4197936873883915605}
   - component: {fileID: 4687766698007398027}
-  - component: {fileID: -6197241520310322536}
+  - component: {fileID: -3700226574863964277}
   m_Layer: 0
   m_Name: Zhenya_CubePlayer
   m_TagString: Player
@@ -364,7 +364,8 @@ MonoBehaviour:
   currentMana: 200
   moveSpeed: 10
   Gravity: -9.81
---- !u!114 &-6197241520310322536
+  _defaultWeapon: {fileID: 6178781514430296132, guid: 8c0fb396a2a0f5840bf9fd50b75b2774, type: 3}
+--- !u!114 &-3700226574863964277
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -373,12 +374,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7343044535872448894}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c538f05c18b64162b3e36b4c4c9c7f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 309b312743a87d148bd81df567ff2597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponPoint: {fileID: 4197936874088068993}
-  _target: {fileID: 0}
-  _currentWeapon: {fileID: 0}
-  isPlayer: 1
-  _weapons: []
-  _defaultWeapon: {fileID: 6178781514430296132, guid: 8c0fb396a2a0f5840bf9fd50b75b2774, type: 3}
+  abiility_1: {fileID: 11400000, guid: 965005904e4ae9c47aacfda92c62a2be, type: 2}
+  abiility_2: {fileID: 11400000, guid: 965005904e4ae9c47aacfda92c62a2be, type: 2}
+  abiility_3: {fileID: 11400000, guid: 965005904e4ae9c47aacfda92c62a2be, type: 2}
+  key_1: 257
+  key_2: 258
+  key_3: 259

@@ -27,16 +27,6 @@ public class Player : Unit, IDamagable
 
         manaBar = GameObject.FindGameObjectWithTag("Mana bar").GetComponent<ManaBar>();
         manaBar.SetMaxMana(getMaxMana());
-
-        MeshRenderer[] meshObjects = gameObject.GetComponentsInChildren<MeshRenderer>();
-        
-        foreach (MeshRenderer meshRenderer in meshObjects)
-        {
-            if (meshRenderer.name == "Cylinder")
-            {
-                blinkRadius = meshRenderer;
-            }
-        }
     }
 
     void Update()
@@ -45,25 +35,7 @@ public class Player : Unit, IDamagable
         {
             TakeDamage(20);
         }
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            Plane playerPlane = new Plane(Vector3.up, transform.position);
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            float hitdist;
-            if (playerPlane.Raycast(ray, out hitdist))
-            {
-                Vector3 targetpoint = ray.GetPoint(hitdist);
-                blink(targetpoint);
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            blinkRadius.enabled = true;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftAlt))
-        {
-            blinkRadius.enabled = false;
-        }
+
         if (gameObject.transform.position.y < -50f)
         {
             Death();
@@ -104,18 +76,6 @@ public class Player : Unit, IDamagable
         {
             setCurrentHealth(temp_health);
             healthBar.SetHealth(temp_health);
-        }
-    }
-
-    private void blink(Vector3 targetPosition)
-    {
-        if(Vector3.Distance(gameObject.transform.position, targetPosition) < 20f)
-        {
-            gameObject.transform.position = targetPosition;
-        }
-        else
-        {
-            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, targetPosition, 20f);
         }
     }
 }
