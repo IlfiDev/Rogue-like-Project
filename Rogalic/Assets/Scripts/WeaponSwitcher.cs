@@ -8,18 +8,20 @@ public class WeaponSwitcher : MonoBehaviour
     private int _slotIndex = 0;
     [SerializeField] private List<GameObject> _weapons = new List<GameObject>();
     [SerializeField] private Transform _weaponPoint;
-    private AttackerNew _attacker;
+    [SerializeField]private AttackerNew _attacker;
+    [SerializeField] private Transform[] _imya;
+    void Awake(){
+        _imya = gameObject.GetComponentsInChildren<Transform>();
+        foreach(Transform trans in _imya){
+            if(trans.tag == "WeaponPoint"){
+                _weaponPoint = trans;
+            }
+        }
+    }
     void Start()
     {
         _attacker = gameObject.GetComponent<AttackerNew>();
-        for(int i = 0; i < 3; i++) {
-            _weapons.Add(_defaultWeapon);
-            _weapons[i] = Instantiate(_weapons[i], _weaponPoint.position, _weaponPoint.rotation);
-            _weapons[i].transform.parent = _weaponPoint.parent;
-            _weapons[i].SetActive(false);
-        }
-        _weapons[0].SetActive(true);
-        _attacker.SetWeapon(_weapons[0]);
+        
     }
 
     // Update is called once per frame
@@ -55,5 +57,30 @@ public class WeaponSwitcher : MonoBehaviour
         _slotIndex = index;
         _weapons[index].SetActive(true);
         _attacker.SetWeapon(_weapons[index]);
+    }
+
+    public void InitWeapons(){
+        if(_weapons == null){
+            Debug.Log("Cock Dick");
+        }
+        Debug.Log(_weaponPoint);
+        for(int i = 0; i < 3; i++) {
+            GameObject obj = Instantiate(
+                        _defaultWeapon,
+                        _weaponPoint.position,
+                        _weaponPoint.rotation);
+            _weapons.Add(obj);
+            _weapons[i].transform.parent = _weaponPoint.parent;
+            _weapons[i].SetActive(false);
+        }
+        _weapons[0].SetActive(true);
+        _attacker.SetWeapon(
+                _weapons[0]);
+    }
+    public void SetDefaultWeapon(GameObject weapon){
+        _defaultWeapon = weapon;
+    }
+    public void SetAttacker(AttackerNew attacker){
+        _attacker = attacker;
     }
 }

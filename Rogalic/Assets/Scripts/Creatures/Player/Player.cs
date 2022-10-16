@@ -8,9 +8,17 @@ public class Player : Unit, IDamagable
     HealthBar healthBar;
     ManaBar manaBar;
     private MeshRenderer blinkRadius = null;
+    [SerializeField] private GameObject _defaultWeapon;
+    private AttackerNew _attacker;
+    private WeaponSwitcher _switcher;
 
     private void Start()
     {
+        _attacker = gameObject.AddComponent<AttackerNew>();
+        _switcher = gameObject.AddComponent<WeaponSwitcher>();
+        _switcher.SetDefaultWeapon(_defaultWeapon);
+        _switcher.SetAttacker(_attacker);
+        _switcher.InitWeapons();
         playerMovement = gameObject.AddComponent<PlayerMovement>();
         Inventory inventory = gameObject.AddComponent<Inventory>();
 

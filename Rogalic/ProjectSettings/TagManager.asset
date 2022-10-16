@@ -29,6 +29,7 @@ TagManager:
   - Stage_2_Room
   - Stage_3_Room
   - RoomStand
+  - WeaponPoint
   layers:
   - Default
   - TransparentFX

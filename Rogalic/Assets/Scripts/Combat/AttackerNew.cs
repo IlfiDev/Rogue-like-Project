@@ -15,7 +15,7 @@ public class AttackerNew : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _weaponPoint = transform.GetChild(0).GetChild(0);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
