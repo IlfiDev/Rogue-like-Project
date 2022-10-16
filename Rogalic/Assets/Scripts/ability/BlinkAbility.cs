@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
-[CreateAssetMenu(fileName = "BlinkAbility", menuName = "AbilityHolder/ability")]
+[CreateAssetMenu(fileName = "BlinkAbility", menuName = "AbilityHolder/blink")]
 public class BlinkAbility : Abiility
 {
     public override void Activate(GameObject user)

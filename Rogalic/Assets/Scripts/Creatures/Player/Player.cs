@@ -11,10 +11,12 @@ public class Player : Unit, IDamagable
     [SerializeField] private GameObject _defaultWeapon;
     private AttackerNew _attacker;
     private WeaponSwitcher _switcher;
+    AbilityCoroutineController _abilityCoroutineController;
 
     private void Start()
     {
         _attacker = gameObject.AddComponent<AttackerNew>();
+        _abilityCoroutineController = gameObject.AddComponent<AbilityCoroutineController>();
         _switcher = gameObject.AddComponent<WeaponSwitcher>();
         _switcher.SetDefaultWeapon(_defaultWeapon);
         _switcher.SetAttacker(_attacker);
