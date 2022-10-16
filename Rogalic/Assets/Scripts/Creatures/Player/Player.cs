@@ -12,15 +12,19 @@ public class Player : Unit, IDamagable
     private AttackerNew _attacker;
     private WeaponSwitcher _switcher;
 
-    private void Start()
+    private void Awake()
     {
+        Inventory inventory = gameObject.AddComponent<Inventory>();
         _attacker = gameObject.AddComponent<AttackerNew>();
         _switcher = gameObject.AddComponent<WeaponSwitcher>();
+    }
+
+    private void Start()
+    {
         _switcher.SetDefaultWeapon(_defaultWeapon);
         _switcher.SetAttacker(_attacker);
         _switcher.InitWeapons();
         playerMovement = gameObject.AddComponent<PlayerMovement>();
-        Inventory inventory = gameObject.AddComponent<Inventory>();
 
         healthBar = GameObject.FindGameObjectWithTag("Health Bar").GetComponent<HealthBar>();
         healthBar.SetMaxHealth(getMaxHealth());

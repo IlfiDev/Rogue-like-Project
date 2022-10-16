@@ -12,15 +12,20 @@ public class InventoryUI : MonoBehaviour
     InventorySlot[] slots;
     int what_slot_active = 0;
     Player player;
-    void Awake(){
 
+    void Awake() 
+    {
+        switcher = GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponSwitcher>();
+        if(switcher == null) Debug.Log("Fuck");
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        if(inventory == null) Debug.Log("Fuck");
+        player = inventory.GetComponent<Player>();
     }
+
     void Start()
     {
         
-        switcher = GameObject.FindGameObjectWithTag("Player").GetComponent<WeaponSwitcher>();
-        inventory = switcher.GetComponent<Inventory>();
-        player = inventory.GetComponent<Player>();
+        
 
         inventory.itemsChanged += UpdateUI;
 
