@@ -30,7 +30,7 @@ public class BulletBehaviour : MonoBehaviour, IKnockable
 		}
 		
         rb.AddForce(shootDir * moveSpeed, ForceMode.Impulse);
-        Destroy(gameObject, 1.5f);
+        Destroy(gameObject, 5f);
     }
 
     // public void Update(){
@@ -48,6 +48,8 @@ public class BulletBehaviour : MonoBehaviour, IKnockable
         
     }
 	public void TakeKnockback(float power, Vector3 direction){
-		rb.AddForce((transform.position - direction).normalized * power * moveSpeed, ForceMode.Impulse);
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero; 
+		rb.AddForce( direction * moveSpeed , ForceMode.Impulse);
 	}
 }

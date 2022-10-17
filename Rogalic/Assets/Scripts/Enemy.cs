@@ -7,9 +7,20 @@ public class Enemy : Unit, IDamagable, IKnockable
 
     private EnemyHealthBar _healthBar;
     private CharacterController _characterController;
-
+    private AttackerNew _attacker;
+    private WeaponSwitcher _switcher;
+    [SerializeField] private GameObject _defaultWeapon;
+    
+    private void Awake(){
+        _attacker = gameObject.AddComponent<AttackerNew>();
+        _switcher = gameObject.AddComponent<WeaponSwitcher>();
+    }
     private void Start()
     {
+        
+        _switcher.SetDefaultWeapon(_defaultWeapon);
+        _switcher.SetAttacker(_attacker);
+        _switcher.InitWeapons();
         _healthBar = gameObject.GetComponentInChildren<EnemyHealthBar>();
         _healthBar.SetMaxHealth(getMaxHealth());
 
@@ -19,6 +30,10 @@ public class Enemy : Unit, IDamagable, IKnockable
     private void FixedUpdate()
     {
         EnemyMovements();
+        if(impact.magnitude > 0.2){
+            _characterController.Move(impact * Time.deltaTime);
+        }
+        impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);
     }
 
     public void TakeDamage(float damage)
@@ -61,6 +76,6 @@ public class Enemy : Unit, IDamagable, IKnockable
         _characterController.Move(gravity);
     }
 	public void TakeKnockback(float power, Vector3 direction){
-		_characterController.Move((transform.position - direction).normalized * power);
+        impact += direction * power / mass;
 	}
 }

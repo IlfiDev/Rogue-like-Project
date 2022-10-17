@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 3385503912169719834}
   m_Layer: 0
   m_Name: WeaponPoint
-  m_TagString: Untagged
+  m_TagString: WeaponPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140372554696167055}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.436}
+  m_LocalPosition: {x: 0.246, y: -1.253, z: 1.436}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -221,7 +221,6 @@ GameObject:
   - component: {fileID: 2324292422778724099}
   - component: {fileID: 7654473444382252745}
   - component: {fileID: 2932352810434964394}
-  - component: {fileID: 8354480026079242775}
   m_Layer: 0
   m_Name: Temp Enemy
   m_TagString: Untagged
@@ -314,6 +313,9 @@ MonoBehaviour:
   currentMana: 200
   moveSpeed: 10
   Gravity: -9.81
+  mass: 1
+  impact: {x: 0, y: 0, z: 0}
+  _defaultWeapon: {fileID: 5489719287712737001, guid: bc1e89526896515ed8e8eb1f4495d451, type: 3}
 --- !u!143 &2932352810434964394
 CharacterController:
   m_ObjectHideFlags: 0
@@ -332,24 +334,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8354480026079242775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2354656150475187748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c538f05c18b64162b3e36b4c4c9c7f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _weaponPoint: {fileID: 3385503912169719834}
-  _target: {fileID: 0}
-  _currentWeapon: {fileID: 0}
-  isPlayer: 0
-  _weapons:
-  - {fileID: 3225507498030711872, guid: 48a8f6b9440fb48969baf2cb33c9f20c, type: 3}
 --- !u!1 &4584925390817088552
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7649d9bd2dab234d943266139eee75a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tooltipTrigger: {fileID: 0}
 --- !u!114 &7118943889672593302
 MonoBehaviour:
   m_ObjectHideFlags: 0

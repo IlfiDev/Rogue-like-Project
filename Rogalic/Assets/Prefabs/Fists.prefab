@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 454924149177838468}
   - component: {fileID: 511204794771253213}
   - component: {fileID: 4506370178980306958}
+  - component: {fileID: -1792903043903341833}
   m_Layer: 0
   m_Name: Fists
   m_TagString: Fists
@@ -111,3 +112,20 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &-1792903043903341833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6178781514430296132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79dba2258d85c304e88875d19cbaaf28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 3
+  player_coordinates: {fileID: 0}
+  item: {fileID: 6178781514430296132}
+  icon: {fileID: 21300000, guid: 967929c6b9ca22b43a654a0f000b33bb, type: 3}
+  tooltip: {fileID: 4848206261288463084, guid: 24e914e44f573a04aa8e0a7667000530, type: 3}

@@ -10,7 +10,8 @@ public class Unit : MonoBehaviour
     [SerializeField] protected float currentMana = 200;
     [SerializeField] protected float moveSpeed = 10f;
     [SerializeField] protected float Gravity = -9.81f;
-
+    [SerializeField] protected float mass = 1f;
+    [SerializeField] protected Vector3 impact = Vector3.zero;
     public void setMaxHealth(float newMaxHealth)
     {
         maxHealth = newMaxHealth;

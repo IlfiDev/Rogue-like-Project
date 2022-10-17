@@ -211,6 +211,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 675551611097004975}
+  - {fileID: 2267944552938945220}
   m_Father: {fileID: 4378539285654485685}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -313,7 +314,40 @@ MonoBehaviour:
   currentMana: 200
   moveSpeed: 10
   Gravity: -9.81
-  characterController: {fileID: 0}
+  mass: 1
+  impact: {x: 0, y: 0, z: 0}
+  _defaultWeapon: {fileID: 6178781514430296132, guid: 8c0fb396a2a0f5840bf9fd50b75b2774, type: 3}
+--- !u!1 &4319474362946824251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2267944552938945220}
+  m_Layer: 0
+  m_Name: WeaponPoint
+  m_TagString: WeaponPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2267944552938945220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4319474362946824251}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.983, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8037751085874933568}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4584925390817088552
 GameObject:
   m_ObjectHideFlags: 0

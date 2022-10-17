@@ -28,7 +28,7 @@ public class SimpleSword : MeleeWeapon
 					
 				}
 				if(enemy.TryGetComponent(out IKnockable knockable)){
-						knockable.TakeKnockback(KnockbackPower, shootingPoint.position);
+						knockable.TakeKnockback(KnockbackPower, shootingPoint.forward);
 					}
 			}
 		}

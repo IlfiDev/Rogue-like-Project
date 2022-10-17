@@ -12,9 +12,16 @@ public class AttackerNew : MonoBehaviour
     [SerializeField] bool isPlayer = false;
     private List<GameObject> _projectiles = new List<GameObject>();
 	private int _slotIndex = 0;
+    [SerializeField] private Transform[] _transformName;
     // Start is called before the first frame update
     void Start()
     {
+        _transformName= gameObject.GetComponentsInChildren<Transform>();
+        foreach(Transform trans in _transformName){
+            if(trans.tag == "WeaponPoint"){
+                _weaponPoint = trans;
+            }
+        }
         _weaponPoint = transform.GetChild(0).GetChild(0);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -38,6 +45,7 @@ public class AttackerNew : MonoBehaviour
         else
         {
             _target = GameObject.FindGameObjectWithTag("Player");
+            PrimaryAttack(_target.transform.position);
         }
     }
 
@@ -56,5 +64,8 @@ public class AttackerNew : MonoBehaviour
     }
     public void SetWeapon(GameObject weapon){
         _currentWeapon = weapon;
+    }
+    public void SetAsPlayer(){
+        isPlayer = true;
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2122617167564542238}
   - component: {fileID: 7045804904142546792}
+  - component: {fileID: -2580315050275390243}
   m_Layer: 0
   m_Name: SimpleSword
   m_TagString: Untagged
@@ -44,13 +45,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 502cd02d6049ceb0c935ddddb958244a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
-  _cooldownTime: 0.3
-  _radius: 1
-  attackArea: {fileID: 0}
-  canDeflectProjectiles: 0
-  canDestroyProjectiles: 0
-  _layer:
+  CooldownTime: 0.3
+  Scatter: 0
+  NumberOfAttacks: 1
+  StartupTime: 0
+  Damage: 10
+  Knockback: 0.1
+  shootingPoint: {fileID: 0}
+  radius: 1
+  AttackArea: {fileID: 0}
+  CanDeflectProjectiles: 1
+  CanDestroyProjectiles: 0
+  KnockbackPower: 10
+  layer:
     serializedVersion: 2
     m_Bits: 2147483647
-  _knockbackPower: 10
+--- !u!114 &-2580315050275390243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4787107561935268918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79dba2258d85c304e88875d19cbaaf28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 3
+  player_coordinates: {fileID: 0}
+  item: {fileID: 4787107561935268918}
+  icon: {fileID: 21300000, guid: 2b88d8f04bdfde94aad0c719f881dd62, type: 3}
+  tooltip: {fileID: 4848206261288463084, guid: 24e914e44f573a04aa8e0a7667000530, type: 3}

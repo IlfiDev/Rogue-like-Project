@@ -19,6 +19,7 @@ public class Player : Unit, IDamagable
         _attacker = gameObject.AddComponent<AttackerNew>();
         _abilityCoroutineController = gameObject.AddComponent<AbilityCoroutineController>();
         _switcher = gameObject.AddComponent<WeaponSwitcher>();
+        _attacker.SetAsPlayer();
     }
 
     private void Start()
