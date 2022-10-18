@@ -32,10 +32,10 @@ public class PlayerMovement : MonoBehaviour, IKnockable
     }
 
     private void FixedUpdate(){
-        if(impact.magnitude > 0.2){
-            _characterController.Move(impact * Time.deltaTime);
+        if(_impact.magnitude > 0.2){
+            characterController.Move(_impact * Time.deltaTime);
         }
-        impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);
+        _impact = Vector3.Lerp(_impact, Vector3.zero, 5 * Time.deltaTime);
     }
     public void SecondGoodMoveVersion()
     {
