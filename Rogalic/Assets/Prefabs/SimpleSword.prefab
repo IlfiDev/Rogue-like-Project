@@ -52,7 +52,7 @@ MonoBehaviour:
   Damage: 10
   Knockback: 0.1
   shootingPoint: {fileID: 0}
-  radius: 1
+  radius: 1.5
   AttackArea: {fileID: 0}
   CanDeflectProjectiles: 1
   CanDestroyProjectiles: 0

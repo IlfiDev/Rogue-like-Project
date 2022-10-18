@@ -315,7 +315,7 @@ MonoBehaviour:
   Gravity: -9.81
   mass: 1
   impact: {x: 0, y: 0, z: 0}
-  _defaultWeapon: {fileID: 5489719287712737001, guid: bc1e89526896515ed8e8eb1f4495d451, type: 3}
+  _defaultWeapon: {fileID: 7725362219913092248, guid: 639749386da4254e686346480b2db35c, type: 3}
 --- !u!143 &2932352810434964394
 CharacterController:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IKnockable
 {
     [SerializeField] public Transform player_coordinates;
 
@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private static float Speed;
     [SerializeField] private static float ShiftSpeed;
     [SerializeField] private static float Gravity;
+    [SerializeField] private float _mass;
+    private Vector3 _impact;
 
     private void Start()
     {
@@ -29,6 +31,12 @@ public class PlayerMovement : MonoBehaviour
         SecondGoodMoveVersion();
     }
 
+    private void FixedUpdate(){
+        if(impact.magnitude > 0.2){
+            _characterController.Move(impact * Time.deltaTime);
+        }
+        impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);
+    }
     public void SecondGoodMoveVersion()
     {
         float x = Input.GetAxisRaw("Horizontal");
@@ -204,5 +212,8 @@ public class PlayerMovement : MonoBehaviour
             Quaternion Rotation = Quaternion.LookRotation(move_x_z, Vector3.up);
             player_coordinates.rotation = Quaternion.RotateTowards(player_coordinates.rotation, Rotation, RotationSpeed * Time.deltaTime);
         }
+    }
+    public void TakeKnockback(float power, Vector3 direction){
+        _impact += direction * power / _mass;
     }
 }
