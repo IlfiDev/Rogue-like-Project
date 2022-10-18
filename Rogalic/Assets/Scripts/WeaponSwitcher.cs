@@ -10,16 +10,15 @@ public class WeaponSwitcher : MonoBehaviour
     [SerializeField] private Transform _weaponPoint;
     [SerializeField]private AttackerNew _attacker;
     [SerializeField] private Transform[] _imya;
-    void Awake(){
+        
+    void Start()
+    {
         _imya = gameObject.GetComponentsInChildren<Transform>();
         foreach(Transform trans in _imya){
             if(trans.tag == "WeaponPoint"){
                 _weaponPoint = trans;
             }
         }
-    }
-    void Start()
-    {
         _attacker = gameObject.GetComponent<AttackerNew>();
         
     }
