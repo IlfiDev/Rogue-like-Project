@@ -45,7 +45,7 @@ public class AttackerNew : MonoBehaviour
         else
         {
             _target = GameObject.FindGameObjectWithTag("Player");
-            PrimaryAttack(_target.transform.position);
+            PrimaryAttack((_weaponPoint.position + _weaponPoint.forward) * 1.5f);
         }
     }
 

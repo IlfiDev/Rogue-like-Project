@@ -12,8 +12,8 @@ public class PlayerMovement : MonoBehaviour, IKnockable
     [SerializeField] private static float Speed;
     [SerializeField] private static float ShiftSpeed;
     [SerializeField] private static float Gravity;
-    [SerializeField] private float _mass;
-    private Vector3 _impact;
+    [SerializeField] private float _mass = 1f;
+    public Vector3 _impact;
 
     private void Start()
     {
@@ -214,6 +214,7 @@ public class PlayerMovement : MonoBehaviour, IKnockable
         }
     }
     public void TakeKnockback(float power, Vector3 direction){
+        Debug.LogError("Knock");
         _impact += direction * power / _mass;
     }
 }
