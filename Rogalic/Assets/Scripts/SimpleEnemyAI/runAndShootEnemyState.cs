@@ -6,7 +6,6 @@ public class runAndShootEnemyState : StateMachineBehaviour
 {
 
     private Transform player_coordinates;
-    private
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
