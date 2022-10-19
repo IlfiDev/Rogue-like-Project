@@ -12,6 +12,9 @@ public class EnemyHealthBar : MonoBehaviour
     private void Awake()
     {
         slider = this.GetComponent<Slider>();
+    }
+
+    private void Start() {
         my_camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 

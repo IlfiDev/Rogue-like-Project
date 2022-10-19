@@ -6,10 +6,13 @@ public class Enemy : Unit, IDamagable, IKnockable
 {
 
     private EnemyHealthBar _healthBar;
-    private CharacterController _characterController;
+    [SerializeField] private CharacterController _characterController;
     private AttackerNew _attacker;
     private WeaponSwitcher _switcher;
     [SerializeField] private GameObject _defaultWeapon;
+
+    public float AngerRadius = 15f;
+    public float ChaseRange = 15f;
     
     private void Awake(){
         _attacker = gameObject.AddComponent<AttackerNew>();

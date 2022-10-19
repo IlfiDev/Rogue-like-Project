@@ -140,7 +140,7 @@ MonoBehaviour:
   ProjectileSize: 0.43
   _layerMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 256
   _rayObject: {fileID: 2747757848105701106, guid: cc9e6c5ccbf0835cfa5c942aeac16e1c, type: 3}
 --- !u!114 &1753900760425618038
 MonoBehaviour:

@@ -27,7 +27,6 @@ public class NewGameController : MonoBehaviour
         SpawnPlayer();
         SpawnCamera();
 
-        SpawnSimpleEnemy();
         SpawnChest();
         SpawnUserUI();
         SpawnTooltip();
@@ -86,14 +85,6 @@ public class NewGameController : MonoBehaviour
         player_coordinates.SetPositionAndRotation(spawnPosition, spawnRotation);
 
         characterController.enabled = true;
-    }
-
-    void SpawnSimpleEnemy()
-    {
-        Vector3 spawnPosition = new Vector3(0f, 1f, 0f);
-        Quaternion spawnRotation = Quaternion.identity;
-
-        Instantiate(simple_enemy, spawnPosition, spawnRotation);
     }
 
     public void SpawnChest()

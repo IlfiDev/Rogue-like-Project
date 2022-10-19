@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour, IKnockable
             }
             else
             {
-                characterController.Move(move_x_z * PlayerMovement.ShiftSpeed * Time.deltaTime);
+                characterController.Move(move_x_z * (PlayerMovement.ShiftSpeed) * Time.deltaTime);
             }
         }
         else
