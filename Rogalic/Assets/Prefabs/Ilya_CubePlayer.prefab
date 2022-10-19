@@ -281,4 +281,4 @@ MonoBehaviour:
   Gravity: -9.81
   mass: 1
   impact: {x: 0, y: 0, z: 0}
-  _defaultWeapon: {fileID: 4787107561935268918, guid: 8f4b09271904c6d71a1c2176c706019c, type: 3}
+  _defaultWeapon: {fileID: 689334894203433016, guid: 32abb066ce1ee203ab4ef44644b6b6f4, type: 3}

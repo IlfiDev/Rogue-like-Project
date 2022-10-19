@@ -74,9 +74,7 @@ public class WeaponSwitcher : MonoBehaviour
             _weapons.Add(obj);
             _weapons[i].transform.parent = _weaponPoint.parent;
             if(_weapons[i].GetComponent<Interactible>() != null){
-                if(_weapons[i].transform.tag != _defaultWeapon.transform.tag){
-                    _weapons[i].GetComponent<Interactible>().enabled = false;
-                }
+                _weapons[i].GetComponent<Interactible>().enabled = false;
             }
             _weapons[i].SetActive(false);
         }

@@ -1,45 +1,35 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public  class Gun : Weapon, IAttack
+public class DoubleBarrel : Gun, IAttack
 {
-	[SerializeField] protected GameObject projectile;
-	public float ProjectileSize = 0.43f;
-	protected List<GameObject> bullets = new List<GameObject>();
-    [SerializeField] protected int totalAmountOfAmmo = 10;
-    [SerializeField] protected int currentAmountOfAmmo = 10;
-    [SerializeField] protected float reloadTime = 1f;
-	private void Update(){
+   
 
-		checkCooldown();
-		
-	}
-	public override void PrimaryAttack(float damageMultiplier, Vector3 target){
-        if(currentAmountOfAmmo > 0){
+    void Update()
+    {
+        checkCooldown(); 
+    }
+
+    public void SecondaryAttack(float damageMultiplier, Vector3 target){
+        if(currentAmountOfAmmo > 1){
             shootingPoint = gameObject.GetComponent<Transform>();
             if (canAttack){
             
                 timeStamp = Time.time + CooldownTime;
 		
-                for(int i = 0; i < NumberOfAttacks; i++){
+                for(int i = 0; i < NumberOfAttacks * 2; i++){
                     GameObject bullet = Instantiate(projectile, shootingPoint.position,shootingPoint.rotation);
                     Vector3 shootDir = (target - shootingPoint.position).normalized + new Vector3 (Random.Range(-Scatter, Scatter), 0f, Random.Range(-Scatter, Scatter));
                     bullet.GetComponent<BulletBehaviour>().Setup(Damage * damageMultiplier, shootDir, ProjectileSize);
                     bullets.Add(bullet);
                 }
-                currentAmountOfAmmo -= 1;
+                currentAmountOfAmmo -= 2;
 		    }
 
         }
         else{
             StartCoroutine(Reload(reloadTime));
         }
-        
-	}
-    protected IEnumerator Reload(float time){
-        yield return new WaitForSeconds(time);
-        currentAmountOfAmmo = totalAmountOfAmmo;
     }
 }
