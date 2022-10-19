@@ -13,13 +13,13 @@ public class runAndShootEnemyState : StateMachineBehaviour
         Debug.Log("Run and shoot enemy state");
     }
 
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       
+
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       
+
     }
 }

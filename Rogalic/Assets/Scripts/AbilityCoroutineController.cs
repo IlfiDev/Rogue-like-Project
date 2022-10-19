@@ -32,11 +32,11 @@ public class AbilityCoroutineController : MonoBehaviour
         user.GetComponent<PlayerMovement>().enabled = true;
         
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out IDamagable damagable))
-        {
-            damagable.TakeDamage(20f);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.TryGetComponent(out IDamagable damagable))
+    //    {
+    //        damagable.TakeDamage(20f);
+    //    }
+    //}
 }
