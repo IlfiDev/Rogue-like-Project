@@ -75,7 +75,7 @@ public class RoomController : MonoBehaviour
             {
                 int i = 0;
                 GameObject[] StandsOnScene = GameObject.FindGameObjectsWithTag("RoomStand");
-                while(i < StageTags.Count)
+                while (i < StageTags.Count)
                 {
                     if (StageTags[i] == MyTag)
                     {

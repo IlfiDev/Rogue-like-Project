@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackerNew : MonoBehaviour
 {
-    [SerializeField] private Transform _weaponPoint;
+    [SerializeField] public Transform _weaponPoint;
     private GameObject physicalWeapon;
     [SerializeField] private GameObject _target;
     [SerializeField] private GameObject _currentWeapon;
@@ -47,7 +47,7 @@ public class AttackerNew : MonoBehaviour
         else
         {
             _target = GameObject.FindGameObjectWithTag("Player");
-            PrimaryAttack((_weaponPoint.forward * 1.5f + _weaponPoint.position));
+            //PrimaryAttack((_weaponPoint.forward * 1.5f + _weaponPoint.position));
         }
     }
 
