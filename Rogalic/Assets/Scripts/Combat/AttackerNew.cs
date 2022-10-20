@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackerNew : MonoBehaviour
 {
-    [SerializeField] public Transform _weaponPoint;
+    [SerializeField] private Transform _weaponPoint;
     private GameObject physicalWeapon;
     [SerializeField] private GameObject _target;
     [SerializeField] private GameObject _currentWeapon;
@@ -63,6 +63,9 @@ public class AttackerNew : MonoBehaviour
     }
     public Vector3 GetTargetVector(){
         return _target.transform.position;
+    }
+    public Transform GetWeaponPoint() {
+        return _weaponPoint;
     }
     public void SetWeapon(GameObject weapon){
         _currentWeapon = weapon;

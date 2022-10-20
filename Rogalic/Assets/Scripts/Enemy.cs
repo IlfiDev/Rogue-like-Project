@@ -81,4 +81,33 @@ public class Enemy : Unit, IDamagable, IKnockable
 	public void TakeKnockback(float power, Vector3 direction){
         impact += direction * power / mass;
 	}
+
+    private void DrawRay() {
+        Vector3 something3 = _attacker.GetWeaponPoint().forward * ChaseRange;
+        Debug.DrawRay(_attacker.GetWeaponPoint().position, something3, Color.green);
+
+        Vector3 something21 = _attacker.GetWeaponPoint().forward * 10f;
+        something21.x = something21.x - 0.3f;
+        something21.z = something21.z - 0.3f;
+
+        Debug.DrawLine(_attacker.GetWeaponPoint().position, _attacker.GetWeaponPoint().position + something21, Color.green);
+
+        Vector3 something22 = _attacker.GetWeaponPoint().forward * 10f;
+        something22.x = something22.x - 0.3f;
+        something22.z = something22.z + 0.3f;
+
+        Debug.DrawLine(_attacker.GetWeaponPoint().position, _attacker.GetWeaponPoint().position + something22, Color.green);
+
+        Vector3 something23 = _attacker.GetWeaponPoint().forward * 10f;
+        something23.x = something23.x + 0.3f;
+        something23.z = something23.z - 0.3f;
+
+        Debug.DrawLine(_attacker.GetWeaponPoint().position, _attacker.GetWeaponPoint().position + something23, Color.green);
+
+        Vector3 something24 = _attacker.GetWeaponPoint().forward * 10f;
+        something24.x = something24.x + 0.3f;
+        something24.z = something24.z + 0.3f;
+
+        Debug.DrawLine(_attacker.GetWeaponPoint().position, _attacker.GetWeaponPoint().position + something24, Color.green);
+    }
 }
