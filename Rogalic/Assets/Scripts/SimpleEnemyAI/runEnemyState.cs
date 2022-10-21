@@ -45,11 +45,14 @@ public class runEnemyState : StateMachineBehaviour
         }
         */
 
+        _enemy.transform.LookAt(_player_coordinates);
+
         createRayArray();
         foreach(Ray i in _rayArr) {
             if(Physics.Raycast(i, out RaycastHit hit)) {
                 if(hit.transform.tag == "Player") {
                     _attacker.PrimaryAttack((_weapon_point.forward * 1.5f + _weapon_point.position));
+                    _agent.SetDestination(_enemy.transform.position);
                 } else {
                      _agent.SetDestination(_player_coordinates.position);
                 }
