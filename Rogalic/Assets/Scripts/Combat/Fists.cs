@@ -16,7 +16,7 @@ public class Fists : MeleeWeapon, IAttack
 		checkCooldown();
     }
 
-	public void Attack(float damageMultiplier, Vector3 target){
+	public void PrimaryAttack(float damageMultiplier, Vector3 target){
 		if (canAttack){
 			this.target = target;
 			Transform shootingPoint = gameObject.GetComponent<Transform>();
@@ -28,7 +28,7 @@ public class Fists : MeleeWeapon, IAttack
 					damagable.TakeDamage(Damage * damageMultiplier);
 				}
 				if(enemy.TryGetComponent(out IKnockable knockable)){
-					knockable.TakeKnockback(KnockbackPower, shootingPoint.position);
+					knockable.TakeKnockback(KnockbackPower, shootingPoint.forward);
 				}
 			}
 		}

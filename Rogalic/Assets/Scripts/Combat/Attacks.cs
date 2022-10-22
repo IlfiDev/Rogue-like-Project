@@ -5,7 +5,9 @@ public interface IAttack{
     public void PrimaryAttack(float damageMultiplier, Vector3 target);
     public void SecondaryAttack(float damageMultiplier, Vector3 target);
 }
-
+public interface IStopAttack{
+    public void StopPrimaryAttack();
+}
 public interface IReload{
     public void Reload();
 }
