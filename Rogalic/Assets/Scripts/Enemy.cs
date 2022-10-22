@@ -10,11 +10,13 @@ public class Enemy : Unit, IDamagable, IKnockable
     private AttackerNew _attacker;
     private WeaponSwitcher _switcher;
     [SerializeField] private GameObject _defaultWeapon;
+    private Transform _player_coordinates;
 
     public GameObject EnemyPoints = null;
 
     public float AngerRadius = 25f;
     public float ChaseRange = 25f;
+    public Vector3? Bykanut;
     
     private void Awake(){
         _attacker = gameObject.AddComponent<AttackerNew>();
@@ -30,6 +32,7 @@ public class Enemy : Unit, IDamagable, IKnockable
         _healthBar.SetMaxHealth(getMaxHealth());
 
         _characterController = gameObject.GetComponent<CharacterController>();
+        _player_coordinates = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     private void FixedUpdate()
@@ -53,6 +56,7 @@ public class Enemy : Unit, IDamagable, IKnockable
         {
             setCurrentHealth(temp_health);
 
+            Bykanut = _player_coordinates.position;
             _healthBar.SetHealth(temp_health);
         }
     }

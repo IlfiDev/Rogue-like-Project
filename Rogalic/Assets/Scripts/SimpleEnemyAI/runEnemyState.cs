@@ -50,9 +50,8 @@ public class runEnemyState : StateMachineBehaviour
         createRayArray();
         if(Physics.Linecast(_enemy_coordinates.position, _player_coordinates.position, out hit)) {
             if(hit.transform.tag == "Player") {
-                if(_agent.hasPath) {
-                    _agent.isStopped = true;
-                }
+                _agent.SetDestination(_enemy_coordinates.position);
+
                 Vector3 lookDir = _player_coordinates.position - _enemy_coordinates.position;
                 lookDir.y = 0f;
                 Quaternion lookRotation = Quaternion.FromToRotation(_enemy_coordinates.forward, lookDir);
@@ -67,11 +66,9 @@ public class runEnemyState : StateMachineBehaviour
                 }
 
             } else {
-                _agent.isStopped = false;
                 _agent.SetDestination(_player_coordinates.position);
             }
         } else {
-            _agent.isStopped = false;
             _agent.SetDestination(_player_coordinates.position);
         }
 
