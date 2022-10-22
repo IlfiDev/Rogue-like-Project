@@ -219,6 +219,7 @@ MonoBehaviour:
   impact: {x: 0, y: 0, z: 0}
   _characterController: {fileID: 0}
   _defaultWeapon: {fileID: 7725362219913092248, guid: e74ce8fd322cce18caed1a1c6cdaa72c, type: 3}
+  EnemyPoints: {fileID: 0}
   AngerRadius: 15
   ChaseRange: 15
 --- !u!195 &2621243149878473317

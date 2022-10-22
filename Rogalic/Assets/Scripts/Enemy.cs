@@ -11,8 +11,10 @@ public class Enemy : Unit, IDamagable, IKnockable
     private WeaponSwitcher _switcher;
     [SerializeField] private GameObject _defaultWeapon;
 
-    public float AngerRadius = 15f;
-    public float ChaseRange = 15f;
+    public GameObject EnemyPoints = null;
+
+    public float AngerRadius = 25f;
+    public float ChaseRange = 25f;
     
     private void Awake(){
         _attacker = gameObject.AddComponent<AttackerNew>();

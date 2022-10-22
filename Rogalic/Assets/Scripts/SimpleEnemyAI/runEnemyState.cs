@@ -32,6 +32,7 @@ public class runEnemyState : StateMachineBehaviour
         float distance = Vector3.Distance(_enemy_coordinates.position, _player_coordinates.position);
         if (distance > _enemy.ChaseRange)
         {
+            _agent.isStopped = true;
             animator.SetBool("PlayerClose", false);
         }
         
@@ -45,11 +46,39 @@ public class runEnemyState : StateMachineBehaviour
         }
         */
 
-        _enemy.transform.LookAt(_player_coordinates);
+        RaycastHit hit;
+        createRayArray();
+        if(Physics.Linecast(_enemy_coordinates.position, _player_coordinates.position, out hit)) {
+            if(hit.transform.tag == "Player") {
+                if(_agent.hasPath) {
+                    _agent.isStopped = true;
+                }
+                Vector3 lookDir = _player_coordinates.position - _enemy_coordinates.position;
+                lookDir.y = 0f;
+                Quaternion lookRotation = Quaternion.FromToRotation(_enemy_coordinates.forward, lookDir);
+                _enemy_coordinates.rotation = Quaternion.RotateTowards(_enemy_coordinates.rotation, Quaternion.LookRotation(lookDir), Time.time * 0.5f);
 
+                foreach(Ray i in _rayArr) {
+                    if(Physics.Raycast(i, out hit)) {
+                        if(hit.transform.tag == "Player") {
+                            _attacker.PrimaryAttack((_weapon_point.forward * 1.5f + _weapon_point.position));
+                        }
+                    }
+                }
+
+            } else {
+                _agent.isStopped = false;
+                _agent.SetDestination(_player_coordinates.position);
+            }
+        } else {
+            _agent.isStopped = false;
+            _agent.SetDestination(_player_coordinates.position);
+        }
+
+/*
         createRayArray();
         foreach(Ray i in _rayArr) {
-            if(Physics.Raycast(i, out RaycastHit hit)) {
+            if(Physics.Raycast(i, out hit)) {
                 if(hit.transform.tag == "Player") {
                     _attacker.PrimaryAttack((_weapon_point.forward * 1.5f + _weapon_point.position));
                     _agent.SetDestination(_enemy.transform.position);
@@ -58,6 +87,7 @@ public class runEnemyState : StateMachineBehaviour
                 }
             }
         }
+        */
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
