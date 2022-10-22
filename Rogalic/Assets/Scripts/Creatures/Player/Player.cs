@@ -5,17 +5,25 @@ using UnityEngine.AI;
 
 public class Player : Unit, IDamagable
 {
-    PlayerMovement playerMovement;
-    HealthBar healthBar;
-    ManaBar manaBar;
+    private PlayerMovement playerMovement;
+    private HealthBar healthBar;
+    private ManaBar manaBar;
     private MeshRenderer blinkRadius = null;
-    [SerializeField] private GameObject _defaultWeapon;
     private AttackerNew _attacker;
     private WeaponSwitcher _switcher;
-    AbilityCoroutineController _abilityCoroutineController;
+    private AbilityCoroutineController _abilityCoroutineController;
+
+    [SerializeField] private GameObject _defaultWeapon;
+
+    private GameObject gameController;
+
+    public bool isDead = false;
+    public bool canBeRespawned = false;
+
 
     private void Awake()
     {
+        gameController = GameObject.FindGameObjectWithTag("GameController");
         Inventory inventory = gameObject.AddComponent<Inventory>();
         _attacker = gameObject.AddComponent<AttackerNew>();
         _abilityCoroutineController = gameObject.AddComponent<AbilityCoroutineController>();
@@ -35,18 +43,27 @@ public class Player : Unit, IDamagable
 
         manaBar = GameObject.FindGameObjectWithTag("Mana bar").GetComponent<ManaBar>();
         manaBar.SetMaxMana(getMaxMana());
+
+        StartCoroutine(regeneration());
+        StartCoroutine(manaRegeneration());
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(20);
-        }
+        healthBar.SetHealth(currentHealth);
+        manaBar.SetMana(currentMana);
 
-        if (gameObject.transform.position.y < -50f)
+        if (gameObject.transform.position.y < -50f && canBeRespawned == false)
         {
             Death();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (canBeRespawned == true)
+        {
+            respawn();
         }
     }
 
@@ -58,18 +75,13 @@ public class Player : Unit, IDamagable
 
     private void Death()
     {
-        Debug.Log("you died");
-
-        float temp_max_health = getMaxHealth();
-        setCurrentHealth(temp_max_health);
-        healthBar.SetHealth(temp_max_health);
-
-        float temp_max_mana = getMaxMana();
-        setCurrentMana(temp_max_mana);
-        manaBar.SetMana(temp_max_mana);
-
-        NewGameController gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<NewGameController>();
-        gameController.RespawnPlayer();
+        gameObject.GetComponent<PlayerMovement>().enabled = false;
+        isDead = true;
+        healthBar.SetHealth(currentHealth);
+        foreach(MeshRenderer obj in gameObject.GetComponentsInChildren<MeshRenderer>())
+        {
+            obj.enabled = false;
+        }
     }
 
     public void TakeDamage(float damage)
@@ -78,12 +90,72 @@ public class Player : Unit, IDamagable
 
         if (temp_health <= 0)
         {
+            setCurrentHealth(temp_health);
             Death();
         }
         else
         {
             setCurrentHealth(temp_health);
-            healthBar.SetHealth(temp_health);
+        }
+    }
+
+    public bool UseMana(float value)
+    {
+        float temp_mana = getCurrentMana() - value;
+
+        if (temp_mana <= 0)
+        {
+            return false;
+        }
+        else
+        {
+            setCurrentMana(temp_mana);
+            return true;
+        }
+    }
+
+    public void respawn()
+    {
+        Vector3 spawnPosition = GameObject.FindGameObjectWithTag("PlayerSpawnPoint").transform.position;
+        gameObject.transform.position = spawnPosition;
+
+        canBeRespawned = false;
+
+        foreach (MeshRenderer obj in gameObject.GetComponentsInChildren<MeshRenderer>())
+        {
+            obj.enabled = true;
+        }
+
+        setCurrentHealth(maxHealth);
+        setCurrentMana(maxMana);
+
+        gameObject.GetComponent<PlayerMovement>().enabled = true;
+
+        StartCoroutine(regeneration());
+        StartCoroutine(manaRegeneration());
+    }
+
+    IEnumerator regeneration()
+    {
+        while(true)
+        {
+            yield return new WaitForEndOfFrame();
+            if (currentHealth < maxHealth)
+            {
+                heal(5f * Time.deltaTime);
+            }
+        }
+    }
+
+    IEnumerator manaRegeneration()
+    {
+        while(true)
+        {
+            yield return new WaitForEndOfFrame();
+            if (currentMana < maxMana)
+            {
+                healMana(10f * Time.deltaTime);
+            }
         }
     }
 }

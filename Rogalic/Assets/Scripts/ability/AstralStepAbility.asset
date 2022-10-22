@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: AstralStepAbility
   m_EditorClassIdentifier: 
   name: 
-  cooldownTime: 1
+  cooldownTime: 0
   activeTime: 0
+  manaCost: 40
+  radius: 30

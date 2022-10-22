@@ -66,4 +66,28 @@ public class Unit : MonoBehaviour
     {
         return Gravity;
     }
+
+    public void heal(float value)
+    {
+        if(currentHealth + value > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth += value;
+        }
+    }
+
+    public void healMana(float value)
+    {
+        if (currentMana + value > maxMana)
+        {
+            currentMana = maxMana;
+        }
+        else
+        {
+            currentMana += value;
+        }
+    }
 }

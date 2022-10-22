@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
 {
+    public Abiility blinkAbility;
     public Abiility abiility_1;
     public Abiility abiility_2;
-    public Abiility abiility_3;
 
 
     public KeyCode key_1;
     public KeyCode key_2;
     public KeyCode key_3;
+
+    public LineRenderer lineRenderer;
 
 
     float cooldownTime_1;
@@ -40,7 +42,7 @@ public class AbilityHolder : MonoBehaviour
         MeshRenderer[] meshObjects = gameObject.GetComponentsInChildren<MeshRenderer>();
         foreach (MeshRenderer meshRenderer in meshObjects)
         {
-            if (meshRenderer.name == "Cylinder")
+            if (meshRenderer.name == "BlinkRadious")
             {
                 blinkRadius = meshRenderer;
             }
@@ -55,9 +57,9 @@ public class AbilityHolder : MonoBehaviour
             case AbilityOneState.ready:
                 if(Input.GetKeyDown(key_1))
                 {
-                    abiility_1.Activate(gameObject);
+                    blinkAbility.Activate(gameObject);
                     state_1 = AbilityOneState.active;
-                    activeTime_1 = abiility_1.activeTime;
+                    activeTime_1 = blinkAbility.activeTime;
                 }
                 break;
             case AbilityOneState.active:
@@ -68,7 +70,7 @@ public class AbilityHolder : MonoBehaviour
                 else
                 {
                     state_1 = AbilityOneState.onCooldown;
-                    cooldownTime_1 = abiility_1.cooldownTime;
+                    cooldownTime_1 = blinkAbility.cooldownTime;
                 }
                 break;
             case AbilityOneState.onCooldown:
@@ -89,9 +91,9 @@ public class AbilityHolder : MonoBehaviour
             case AbilityTwoState.ready:
                 if (Input.GetKeyDown(key_2))
                 {
-                    abiility_2.Activate(gameObject);
+                    abiility_1.Activate(gameObject);
                     state_2 = AbilityTwoState.active;
-                    activeTime_2 = abiility_1.activeTime;
+                    activeTime_2 = blinkAbility.activeTime;
                 }
                 break;
             case AbilityTwoState.active:
@@ -102,7 +104,7 @@ public class AbilityHolder : MonoBehaviour
                 else
                 {
                     state_2 = AbilityTwoState.onCooldown;
-                    cooldownTime_2 = abiility_2.cooldownTime;
+                    cooldownTime_2 = abiility_1.cooldownTime;
                 }
                 break;
             case AbilityTwoState.onCooldown:
@@ -123,9 +125,9 @@ public class AbilityHolder : MonoBehaviour
             case AbilityThreeState.ready:
                 if (Input.GetKeyDown(key_3))
                 {
-                    abiility_3.Activate(gameObject);
+                    abiility_2.Activate(gameObject);
                     state_3 = AbilityThreeState.active;
-                    activeTime_2 = abiility_3.activeTime;
+                    activeTime_2 = abiility_2.activeTime;
                 }
                 break;
             case AbilityThreeState.active:
@@ -136,7 +138,7 @@ public class AbilityHolder : MonoBehaviour
                 else
                 {
                     state_3 = AbilityThreeState.onCooldown;
-                    cooldownTime_3 = abiility_3.cooldownTime;
+                    cooldownTime_3 = abiility_2.cooldownTime;
                 }
                 break;
             case AbilityThreeState.onCooldown:
@@ -153,11 +155,40 @@ public class AbilityHolder : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
-            blinkRadius.enabled = true;
+            lineRenderer.enabled = true;
         }
         if (Input.GetKeyUp(KeyCode.LeftAlt))
         {
-            blinkRadius.enabled = false;
+            lineRenderer.enabled = false;
         }
+
+        try
+        {
+            drawRadious(50, blinkAbility.radius);
+        }
+        catch
+        {
+
+        }
+    }
+
+    void drawRadious(int steps, int radius)
+    {
+        lineRenderer.positionCount = steps + 1;
+
+        for(int currentStep = 0; currentStep < steps; currentStep++)
+        {
+            float circumferenceProgress = (float)currentStep / steps;
+            float currentRadian = circumferenceProgress * 2 * Mathf.PI;
+            float xScaled = Mathf.Cos(currentRadian);
+            float zScaled = Mathf.Sin(currentRadian);
+            float x = xScaled * radius;
+            float z = zScaled * radius;
+
+            Vector3 currentPossition = new Vector3(x + gameObject.transform.position.x, 1, z + gameObject.transform.position.z);
+
+            lineRenderer.SetPosition(currentStep, currentPossition);
+        }
+        lineRenderer.SetPosition(steps, lineRenderer.GetPosition(0));
     }
 }

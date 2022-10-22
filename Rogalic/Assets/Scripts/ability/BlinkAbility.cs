@@ -19,13 +19,13 @@ public class BlinkAbility : Abiility
     }
     private void blink(Vector3 targetPosition, GameObject user)
     {
-        if (Vector3.Distance(user.transform.position, targetPosition) < 20f)
+        if (Vector3.Distance(user.transform.position, targetPosition) < (float)radius)
         {
             user.transform.position = targetPosition;
         }
         else
         {
-            user.transform.position = Vector3.MoveTowards(user.transform.position, targetPosition, 20f);
+            user.transform.position = Vector3.MoveTowards(user.transform.position, targetPosition, (float)radius);
         }
     }
 }
