@@ -533,7 +533,7 @@ MonoBehaviour:
   _defaultWeapon: {fileID: 6178781514430296132, guid: 8c0fb396a2a0f5840bf9fd50b75b2774, type: 3}
   EnemyPoints: {fileID: 0}
   AngerRadius: 25
-  ChaseRange: 15
+  ChaseRange: 25
 --- !u!195 &8261855714053127027
 NavMeshAgent:
   m_ObjectHideFlags: 0

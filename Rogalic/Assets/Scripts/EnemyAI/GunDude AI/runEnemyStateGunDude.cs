@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class runEnemyStateGunDude : StateMachineBehaviour
 {
-    private Transform _player_coordinates;
+    private Transform _player_coordinates = null;
     private Transform _enemy_coordinates;
     private Enemy _enemy;
     private NavMeshAgent _agent;
@@ -18,7 +18,11 @@ public class runEnemyStateGunDude : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Run Enemy State");
-        _player_coordinates = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        GameObject temp_player = GameObject.FindGameObjectWithTag("Player");
+        if(temp_player != null) {
+            _player_coordinates = temp_player.GetComponent<Transform>();
+        }
+
         _enemy_coordinates = animator.GetComponent<Transform>();
         _enemy = animator.GetComponent<Enemy>();
         _agent = animator.GetComponent<NavMeshAgent>();
@@ -30,7 +34,12 @@ public class runEnemyStateGunDude : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(_player_coordinates == null) return;
+        if(_player_coordinates == null) {
+            GameObject temp_player = GameObject.FindGameObjectWithTag("Player");
+            if(temp_player == null) return;
+
+            _player_coordinates = temp_player.GetComponent<Transform>();
+        }
 
         float distance = Vector3.Distance(_enemy_coordinates.position, _player_coordinates.position);
         if (distance > _enemy.ChaseRange)
