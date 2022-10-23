@@ -88,6 +88,10 @@ public class Enemy : Unit, IDamagable, IKnockable
         impact += direction * power / mass;
 	}
 
+    public GameObject GetDefaultWeapon() {
+        return _defaultWeapon;
+    }
+
     private void DrawRay() {
         Vector3 something3 = _attacker.GetWeaponPoint().forward * ChaseRange;
         Debug.DrawRay(_attacker.GetWeaponPoint().position, something3, Color.green);

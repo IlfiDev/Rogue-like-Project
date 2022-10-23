@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class runAndShootEnemyState : StateMachineBehaviour
+public class runAndShootEnemyStateShotgunner : StateMachineBehaviour
 {
 
     private Transform player_coordinates;

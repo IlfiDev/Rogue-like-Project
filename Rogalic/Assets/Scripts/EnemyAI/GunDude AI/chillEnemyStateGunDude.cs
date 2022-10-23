@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class chillEnemyState : StateMachineBehaviour
+public class chillEnemyStateGunDude : StateMachineBehaviour
 {
-    public float ChillTimer = 5f;
-    private float _timer = 0;
-
     private Transform _player_coordinates;
     private Transform _enemy_coordinates;
     private Enemy _enemy;
@@ -26,6 +23,7 @@ public class chillEnemyState : StateMachineBehaviour
         _enemy_coordinates = animator.GetComponent<Transform>();
         _agent = animator.GetComponent<NavMeshAgent>();
 
+        _agent.speed = _enemy.getMoveSpeed();
         if(_enemy.EnemyPoints != null) {
             _enemyPoints = _enemy.EnemyPoints.GetComponentsInChildren<Transform>();
         } else {
@@ -34,10 +32,13 @@ public class chillEnemyState : StateMachineBehaviour
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if(_player_coordinates == null) return;
+
         float distance = Vector3.Distance(_enemy_coordinates.position, _player_coordinates.position);
         if (distance < _enemy.AngerRadius)
         {
             animator.SetBool("PlayerClose", true);
+            return;
         }
 
         if(_agent.isStopped == true) {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 454924149177838468}
   - component: {fileID: 511204794771253213}
   - component: {fileID: 4506370178980306958}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Fists
   m_TagString: Fists
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ MonoBehaviour:
   Damage: 5
   Knockback: 0.1
   shootingPoint: {fileID: 0}
-  radius: 1
+  radius: 1.5
   AttackArea: {fileID: 0}
   CanDeflectProjectiles: 0
   CanDestroyProjectiles: 0

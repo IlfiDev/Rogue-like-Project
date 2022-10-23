@@ -34,6 +34,10 @@ public class Fists : MeleeWeapon, IAttack
 		}
 	}
 
+	public float GetAttackRadius() {
+		return radius;
+	}
+
 	void OnDrawGizmosSelected(){
 
 		Gizmos.DrawCube(target, new Vector3(radius * 2, radius * 2));

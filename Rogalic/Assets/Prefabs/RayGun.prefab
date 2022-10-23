@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5181789478186081390}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shootingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8187758587852448742}
   - component: {fileID: 1879532839436789727}
   - component: {fileID: 1753900760425618038}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RayGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}

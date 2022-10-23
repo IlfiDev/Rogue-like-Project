@@ -31,6 +31,7 @@ TagManager:
   - RoomStand
   - WeaponPoint
   - FinishRoom
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -43,7 +44,7 @@ TagManager:
   - Walls
   - SpawnPoint
   - Obstacle
-  - 
+  - Gun
   - 
   - 
   - 
