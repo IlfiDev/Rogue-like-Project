@@ -21,12 +21,14 @@ public class ManaBar : MonoBehaviour
     {
         slider.maxValue = mana;
         slider.value = mana;
-        tooltipTrigger.SetText(slider.value.ToString() + " / " + slider.maxValue.ToString());
+        int manaValue = (int) slider.value;
+        tooltipTrigger.SetText(manaValue.ToString() + " / " + slider.maxValue.ToString());
     }
 
     public void SetMana(float mana)
     {
         slider.value = mana;
-        tooltipTrigger.SetText(slider.value.ToString() + " / " + slider.maxValue.ToString());
+        int manaValue = (int) slider.value;
+        tooltipTrigger.SetText(manaValue.ToString() + " / " + slider.maxValue.ToString());
     }
 }

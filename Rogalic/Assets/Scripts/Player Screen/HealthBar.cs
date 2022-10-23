@@ -21,12 +21,14 @@ public class HealthBar : MonoBehaviour
     { 
         slider.maxValue = health;
         slider.value = health;
-        tooltipTrigger.SetText(slider.value.ToString() + " / " + slider.maxValue.ToString());
+        int healthValue = (int) slider.value;
+        tooltipTrigger.SetText(healthValue.ToString() + " / " + slider.maxValue.ToString());
     }
 
     public void SetHealth(float health)
     {
         slider.value = health;
-        tooltipTrigger.SetText(slider.value.ToString() + " / " + slider.maxValue.ToString());
+        int healthValue = (int) slider.value;
+        tooltipTrigger.SetText(healthValue.ToString() + " / " + slider.maxValue.ToString());
     }
 }

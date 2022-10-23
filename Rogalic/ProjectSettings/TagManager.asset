@@ -30,6 +30,7 @@ TagManager:
   - Stage_3_Room
   - RoomStand
   - WeaponPoint
+  - FinishRoom
   layers:
   - Default
   - TransparentFX
@@ -41,7 +42,7 @@ TagManager:
   - Player
   - Walls
   - SpawnPoint
-  - 
+  - Obstacle
   - 
   - 
   - 
