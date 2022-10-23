@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [CreateAssetMenu(fileName = "BlinkAbility", menuName = "AbilityHolder/blink")]
@@ -14,6 +15,7 @@ public class BlinkAbility : Abiility
         if (playerPlane.Raycast(ray, out hitdist))
         {
             Vector3 targetpoint = ray.GetPoint(hitdist);
+            GameObject explosion = Instantiate(particles, user.transform.position, user.transform.rotation);
             blink(targetpoint, user);
         }
     }
@@ -22,10 +24,12 @@ public class BlinkAbility : Abiility
         if (Vector3.Distance(user.transform.position, targetPosition) < (float)radius)
         {
             user.transform.position = targetPosition;
+            GameObject explosion = Instantiate(particles, user.transform.position, user.transform.rotation);
         }
         else
         {
             user.transform.position = Vector3.MoveTowards(user.transform.position, targetPosition, (float)radius);
+            GameObject explosion = Instantiate(particles, user.transform.position, user.transform.rotation);
         }
     }
 }

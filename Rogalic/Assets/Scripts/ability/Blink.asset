@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67d0314f21cbfa44983992dee5688285, type: 3}
   m_Name: Blink
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 98e06e4e767a69442a3255da62a62a9a, type: 3}
+  particles: {fileID: 2737611200855957106, guid: 4a9f3b4e4e52a444e962bc55c6cc7275, type: 3}
   name: 
   cooldownTime: 3
   activeTime: 0
