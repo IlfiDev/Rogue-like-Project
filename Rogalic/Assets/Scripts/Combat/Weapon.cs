@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour, IAttack
     public float Scatter = 0;
     public int NumberOfAttacks = 1;
     public float StartupTime = 0;
-
+    [SerializeField] protected string tag;
 	 [Space(10)]
 
 	[Header("Impact on target")]
@@ -42,6 +42,9 @@ public class Weapon : MonoBehaviour, IAttack
 		else{
 			canAttack = false;
 		}
+   }
+   public void SetTag(string tag){
+        this.tag = tag;
    }
 
 }

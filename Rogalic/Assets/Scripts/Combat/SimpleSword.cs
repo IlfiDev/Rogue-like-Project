@@ -23,13 +23,15 @@ public class SimpleSword : MeleeWeapon
 			foreach(Collider enemy in hitEnemies){
 
 				if(enemy.TryGetComponent(out IDamagable damagable)){
-					Debug.Log("Took Damage");
 					damagable.TakeDamage(Damage);
 					
 				}
 				if(enemy.TryGetComponent(out IKnockable knockable)){
-						knockable.TakeKnockback(KnockbackPower, shootingPoint.forward);
-					}
+                    if(enemy.transform.tag == "Bullet"){
+                        knockable.TakeKnockback(KnockbackPower, shootingPoint.forward);
+                    }
+					knockable.TakeKnockback(KnockbackPower, shootingPoint.forward);
+				}
 			}
 		}
 	}

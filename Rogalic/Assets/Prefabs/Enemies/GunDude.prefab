@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 5079793591499468285}
   m_Layer: 0
   m_Name: GunDude
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,7 +353,7 @@ MonoBehaviour:
   mass: 1
   impact: {x: 0, y: 0, z: 0}
   _characterController: {fileID: 0}
-  _defaultWeapon: {fileID: 7725362219913092248, guid: 639749386da4254e686346480b2db35c, type: 3}
+  _defaultWeapon: {fileID: 9039696712925227372, guid: bb59e5353b1ecc1bcb41af2158aa4ae0, type: 3}
   EnemyPoints: {fileID: 0}
   AngerRadius: 25
   ChaseRange: 25

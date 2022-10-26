@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour, IKnockable
 {
-    private Vector3 shootDir;
-    
+    protected Vector3 shootDir;
+    protected Renderer _renderer; 
     public float moveSpeed = 100f;
-    [SerializeField] private float _size = 1f; 
+    [SerializeField] protected float _size = 1f; 
     public float _damage = 20;
-
-    private Rigidbody rb;
+    protected string _tag = "Player";
+    protected Rigidbody rb;
 
     private void Start(){
         // Physics.IgnoreLayerCollision(0, 7);
@@ -18,21 +18,45 @@ public class BulletBehaviour : MonoBehaviour, IKnockable
 		rb = transform.GetComponent<Rigidbody>();
     }
 
-    public void Setup(float damage, Vector3 shootDir, float bulletSize){
+    public void Setup(float damage, Vector3 shootDir, float bulletSize, string tag){
+        _tag = tag;
         transform.localScale = transform.localScale * bulletSize;
+        if(_tag == "Enemy"){
+            
+            _renderer = transform.GetComponent<Renderer>();
+            _renderer.material.SetColor("_Color", Color.red);
+        }
+        if(_tag == "Player"){
+            _renderer = transform.GetComponent<Renderer>();
+            _renderer.material.SetColor("_Color", Color.yellow);
+        }
         this.shootDir = shootDir;
-		Debug.Log(shootDir);
-		Debug.Log(moveSpeed);
         this._damage = damage;
 		rb = gameObject.GetComponent<Rigidbody>();
-		if (rb == null){
-			Debug.Log("Cock");
-		}
 		
         rb.AddForce(shootDir * moveSpeed, ForceMode.Impulse);
         Destroy(gameObject, 5f);
     }
 
+    public void Setup(float damage, Vector3 shootDir, float bulletSize, string tag, float speed){
+        _tag = tag;
+        transform.localScale = transform.localScale * bulletSize;
+        if(_tag == "Enemy"){
+            
+            _renderer = transform.GetComponent<Renderer>();
+            _renderer.material.SetColor("_Color", Color.red);
+        }
+        if(_tag == "Player"){
+            _renderer = transform.GetComponent<Renderer>();
+            _renderer.material.SetColor("_Color", Color.yellow);
+        }
+        this.shootDir = shootDir;
+        this._damage = damage;
+		rb = gameObject.GetComponent<Rigidbody>();
+		
+        rb.AddForce(shootDir * speed, ForceMode.Impulse);
+        Destroy(gameObject, 5f);
+    }
     // public void Update(){
         
     //     transform.position += shootDir * moveSpeed * Time.deltaTime;
@@ -40,10 +64,16 @@ public class BulletBehaviour : MonoBehaviour, IKnockable
     void OnTriggerEnter(Collider other){
         if(other.tag != "Bullet" && other.tag != "FloorTrigger"){
             if(other.TryGetComponent(out IDamagable damagable)){
-            damagable.TakeDamage(_damage);
+                if(other.tag != _tag){
+                    
+                    damagable.TakeDamage(_damage);
+                    Destroy(gameObject);
+                }
             
-        }
-        Destroy(gameObject);
+            }
+            else{
+                Destroy(gameObject);
+            }
         }
         
     }

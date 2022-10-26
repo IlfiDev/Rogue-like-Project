@@ -14,9 +14,11 @@ public class Explosive : MonoBehaviour, IDamagable, IKnockable
 
     private void Start(){
         _rb = this.GetComponent<Rigidbody>();
+        
     }
-    private void Explode(){
+    public void Explode(){
         GameObject explosion = Instantiate(_particles, gameObject.transform.position, transform.rotation);
+        explosion.transform.localScale = explosion.transform.localScale * (_radius / 5);
         Collider[] hitEnemies = Physics.OverlapSphere(transform.position, _radius, _layer);
         foreach(Collider enemy in hitEnemies){
             float distanceMultiplier = 1 - Vector3.Distance(transform.position, enemy.transform.position)/ _radius;
