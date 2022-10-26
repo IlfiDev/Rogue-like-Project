@@ -4787,7 +4787,7 @@ MonoBehaviour:
   _randomWeapons:
   - {fileID: 7725362219913092248, guid: 639749386da4254e686346480b2db35c, type: 3}
   - {fileID: 7725362219913092248, guid: e74ce8fd322cce18caed1a1c6cdaa72c, type: 3}
-  - {fileID: 7725362219913092248, guid: e74ce8fd322cce18caed1a1c6cdaa72c, type: 3}
+  - {fileID: 2040150737651835214, guid: b491d0cabecaa784b9fbc639ade2dd5e, type: 3}
   - {fileID: 4787107561935268918, guid: 8f4b09271904c6d71a1c2176c706019c, type: 3}
   _waveCounter: 0
   _currentEnemies: []
