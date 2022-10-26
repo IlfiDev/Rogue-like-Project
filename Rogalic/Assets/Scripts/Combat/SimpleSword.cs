@@ -29,6 +29,7 @@ public class SimpleSword : MeleeWeapon
 				if(enemy.TryGetComponent(out IKnockable knockable)){
                     if(enemy.transform.tag == "Bullet"){
                         knockable.TakeKnockback(KnockbackPower, shootingPoint.forward);
+                        enemy.GetComponent<BulletBehaviour>().SetTag(tag);
                     }
 					knockable.TakeKnockback(KnockbackPower, shootingPoint.forward);
 				}

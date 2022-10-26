@@ -82,4 +82,17 @@ public class BulletBehaviour : MonoBehaviour, IKnockable
         rb.angularVelocity = Vector3.zero; 
 		rb.AddForce( direction * moveSpeed , ForceMode.Impulse);
 	}
+    public void SetTag(string tag){
+        _tag = tag;
+
+        if(_tag == "Enemy"){
+            
+            _renderer = transform.GetComponent<Renderer>();
+            _renderer.material.SetColor("_Color", Color.red);
+        }
+        if(_tag == "Player"){
+            _renderer = transform.GetComponent<Renderer>();
+            _renderer.material.SetColor("_Color", Color.yellow);
+        }
+    }
 }
