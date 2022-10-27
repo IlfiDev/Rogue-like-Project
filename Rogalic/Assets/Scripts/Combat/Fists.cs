@@ -24,12 +24,15 @@ public class Fists : MeleeWeapon, IAttack
 
 			Collider[] hitEnemies = Physics.OverlapBox(target, new Vector3(radius, radius, radius), Quaternion.identity, layer);
 			foreach(Collider enemy in hitEnemies){
-				if(enemy.TryGetComponent(out IDamagable damagable)){
-					damagable.TakeDamage(Damage * damageMultiplier);
-				}
-				if(enemy.TryGetComponent(out IKnockable knockable)){
-					knockable.TakeKnockback(KnockbackPower, shootingPoint.forward);
-				}
+                if(enemy.transform.tag != tag){
+                    
+				    if(enemy.TryGetComponent(out IDamagable damagable)){
+					    damagable.TakeDamage(Damage * damageMultiplier);
+				    }
+				    if(enemy.TryGetComponent(out IKnockable knockable)){
+					    knockable.TakeKnockback(KnockbackPower, shootingPoint.forward);
+				    }
+                }
 			}
 		}
 	}

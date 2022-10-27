@@ -96,11 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff4159a83e631d49bf8b8950a5ce952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CooldownTime: 1
+  CooldownTime: 1.5
   Scatter: 0
   NumberOfAttacks: 1
   StartupTime: 0
-  Damage: 5
+  tag: 
+  Damage: 25
   Knockback: 0.1
   shootingPoint: {fileID: 0}
   radius: 1.5

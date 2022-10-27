@@ -73,8 +73,9 @@ MonoBehaviour:
   Knockback: 0.1
   shootingPoint: {fileID: 8129001892377741708}
   projectile: {fileID: 2841511715096875862, guid: 392091fe9611f466ba92f2935117dff7, type: 3}
-  ProjectileSize: 0.5
-  _maxCharge: 15
+  ProjectileSize: 1
+  _maxCharge: 10
+  _maxRadius: 20
 --- !u!1 &2198020175836229325
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,6 +87,7 @@ GameObject:
   - component: {fileID: 8633959740522806102}
   - component: {fileID: 8757814858200873510}
   - component: {fileID: 6769958419597826585}
+  - component: {fileID: 5234303898681003526}
   m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
@@ -158,6 +160,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &5234303898681003526
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2198020175836229325}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f08a934f5e5fdfe16b75b94e7650b388, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8047037303661544256
 GameObject:
   m_ObjectHideFlags: 0
