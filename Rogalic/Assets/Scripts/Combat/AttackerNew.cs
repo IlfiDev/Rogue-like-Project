@@ -43,6 +43,11 @@ public class AttackerNew : MonoBehaviour
             if(Input.GetButton("Fire2")){
                 SecondaryAttack(targetVector);
             }
+            if(Input.GetButtonUp("Fire1")){
+                if(_currentWeapon.TryGetComponent(out IStopAttack stopAttack)){
+                    stopAttack.StopPrimaryAttack();
+                }
+            }
         }
         else
         {

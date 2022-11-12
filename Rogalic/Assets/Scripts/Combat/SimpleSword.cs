@@ -21,15 +21,20 @@ public class SimpleSword : MeleeWeapon
 			Collider[] hitEnemies = Physics.OverlapSphere(target, radius, layer);
 
 			foreach(Collider enemy in hitEnemies){
+                if (enemy.transform.tag != tag){
 
-				if(enemy.TryGetComponent(out IDamagable damagable)){
-					Debug.Log("Took Damage");
-					damagable.TakeDamage(Damage);
+				    if(enemy.TryGetComponent(out IDamagable damagable)){
+					    damagable.TakeDamage(Damage);
 					
-				}
-				if(enemy.TryGetComponent(out IKnockable knockable)){
-						knockable.TakeKnockback(KnockbackPower, shootingPoint.forward);
-					}
+				    }
+				    if(enemy.TryGetComponent(out IKnockable knockable)){
+                        if(enemy.transform.tag == "Bullet"){
+                            knockable.TakeKnockback(KnockbackPower, shootingPoint.forward);
+                            enemy.GetComponent<BulletBehaviour>().SetTag(tag);
+                        }
+					    knockable.TakeKnockback(KnockbackPower, shootingPoint.forward);
+				    }
+                }
 			}
 		}
 	}

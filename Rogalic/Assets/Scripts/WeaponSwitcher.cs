@@ -34,6 +34,7 @@ public class WeaponSwitcher : MonoBehaviour
             }
             _weapons[index].transform.parent = null;
             _weapons[index] = Instantiate(_defaultWeapon, _weaponPoint.position, _weaponPoint.rotation);
+            _weapons[index].GetComponent<Weapon>().SetTag(transform.tag);
         }
         else{
             if(_weapons[index].transform.tag == _defaultWeapon.transform.tag){
@@ -43,6 +44,7 @@ public class WeaponSwitcher : MonoBehaviour
                 _weapons[index].transform.parent = null;
             }
             _weapons[index] = weapon;
+            _weapons[index].GetComponent<Weapon>().SetTag(transform.tag);
             _weapons[index].transform.position = _weaponPoint.position;
             _weapons[index].transform.rotation = _weaponPoint.rotation;
         }
@@ -72,6 +74,7 @@ public class WeaponSwitcher : MonoBehaviour
                         _weaponPoint.position,
                         _weaponPoint.rotation);
             _weapons.Add(obj);
+            _weapons[i].GetComponent<Weapon>().SetTag(transform.tag);
             _weapons[i].transform.parent = _weaponPoint.parent;
             if(_weapons[i].GetComponent<Interactible>() != null){
                 _weapons[i].GetComponent<Interactible>().enabled = false;

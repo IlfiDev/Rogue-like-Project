@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3707511209497883427}
   m_Layer: 0
   m_Name: NormalSimpleEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
   mass: 1
   impact: {x: 0, y: 0, z: 0}
   _characterController: {fileID: 0}
-  _defaultWeapon: {fileID: 7725362219913092248, guid: e74ce8fd322cce18caed1a1c6cdaa72c, type: 3}
+  _defaultWeapon: {fileID: 4744218889780462665, guid: 609f688a3db90a0b6a56f752eeb3e7db, type: 3}
   EnemyPoints: {fileID: 0}
   AngerRadius: 15
   ChaseRange: 15
