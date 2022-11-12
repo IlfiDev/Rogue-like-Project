@@ -16,6 +16,8 @@ public class NewGameController : MonoBehaviour
     public GameObject player_screen;
     public GameObject tooltip;
 
+    public GameObject zxc;
+
     GameObject tempPlayer = null;
 
     void Start()
@@ -27,6 +29,7 @@ public class NewGameController : MonoBehaviour
         SpawnCamera();
         SpawnUserUI();
         SpawnTooltip();
+        SpawnZxc();
 
 
         tempPlayer = GameObject.FindGameObjectWithTag("Player");
@@ -39,6 +42,14 @@ public class NewGameController : MonoBehaviour
             StartCoroutine(onDeathWait(2f));
             tempPlayer.GetComponent<Player>().isDead = false;
         }
+    }
+
+    void SpawnZxc()
+    {
+        Vector3 spawnPosition = new Vector3(0f, 20f, 0f);
+        Quaternion spawnRotation = Quaternion.identity;
+
+        Instantiate(zxc, spawnPosition, spawnRotation);
     }
 
     void SpawnLight()
