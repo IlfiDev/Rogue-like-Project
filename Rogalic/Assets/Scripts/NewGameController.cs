@@ -108,6 +108,9 @@ public class NewGameController : MonoBehaviour
         Instantiate(tooltip, spawnPosition, spawnRotation);
     }
 
+
+
+
     public IEnumerator onDeathWait(float waitTime)
     {
         tempPlayer.SetActive(false);
